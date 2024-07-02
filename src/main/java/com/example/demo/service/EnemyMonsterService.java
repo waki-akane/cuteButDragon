@@ -8,6 +8,7 @@ public interface EnemyMonsterService {
 	
 	public static final EnemyMonsterRepository emr = new EnemyMonsterRepository();
 	
+	//emの情報表示
 	public EnemyMonsterEntity showEm(int emId);
 
 }

@@ -2,8 +2,11 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.entity.InitialMonsterEntity;
 
+@Service
 public class InitialMonsterServiceImpl implements InitialMonsterService{
 
 	@Override
@@ -17,5 +20,6 @@ public class InitialMonsterServiceImpl implements InitialMonsterService{
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
+
 
 }
