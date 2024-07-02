@@ -9,13 +9,13 @@ import lombok.Data;
 @Data
 public class UserTableEntity {
 	
-	String userName;
+	private String userName;
 	
-	String pass;
+	private String pass;
 	
-	Integer userId;
+	private Integer userId;
 	
-	Integer status;
+	private Integer status;
 	
 	//@OneToMany(mappedBy )
 

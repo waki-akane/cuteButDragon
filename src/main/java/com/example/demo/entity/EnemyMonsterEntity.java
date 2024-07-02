@@ -9,13 +9,13 @@ import lombok.Data;
 @Data
 public class EnemyMonsterEntity {
 	
-	Integer emId;
+	private Integer emId;
 	
-	String emName;
+	private String emName;
 	
-	Integer emHp;
+	private Integer emHp;
 	
-	Integer emLevel;
+	private Integer emLevel;
 	
 	//Integer emAction1;
 	

@@ -9,17 +9,17 @@ import lombok.Data;
 @Data
 public class MyMonsterEntity {
 	
-	Integer mmId;
+	private Integer mmId;
 	
-	String mmName;
+	private String mmName;
 	
-	Integer mmHp;
+	private Integer mmHp;
 	
-	Integer mmAttack;
+	private Integer mmAttack;
 	
-	Integer mmLevel;
+	private Integer mmLevel;
 	
-	Integer mmEx;
+	private Integer mmEx;
 	
 	//Integer userId;
 	

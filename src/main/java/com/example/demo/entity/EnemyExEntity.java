@@ -9,10 +9,10 @@ import lombok.Data;
 @Data
 public class EnemyExEntity {
 	
-	Integer emId;
+	private Integer emId;
 	
-	Integer win;
+	private Integer win;
 	
-	Integer lose;
+	private Integer lose;
 
 }
