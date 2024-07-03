@@ -1,15 +1,15 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.UserTableDTO;
+import com.example.demo.dto.UserTableEntryDTO;
 import com.example.demo.entity.UserTableEntity;
 
 public interface UsertableService {
 	
 	//新規登録
-	public int createUser(UserTableDTO userTableDTO);
+	public int createUser(UserTableEntryDTO userTableDTO);
 	
 	//ステージクリア時のステータス変更
-	public int clearUser(UserTableDTO usreTableDTO);
+	public int clearUser(UserTableEntryDTO usreTableDTO);
 	
 	//ユーザー情報の表示
 	public UserTableEntity showUser();
