@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,10 +23,16 @@ public class EnemyMonsterEntity {
 
 	private Integer lose;
 
-	//Integer emAction1;
+	@ManyToOne
+	@JoinColumn(name = "actionId")
+	private ActionEntity emAction1;
 
-	//Integer emAction2;
+	@ManyToOne
+	@JoinColumn(name = "actionId")
+	private ActionEntity emAction2;
 
-	//Integer emAction3;
+	@ManyToOne
+	@JoinColumn(name = "actionId")
+	private ActionEntity emAction3;
 
 }
