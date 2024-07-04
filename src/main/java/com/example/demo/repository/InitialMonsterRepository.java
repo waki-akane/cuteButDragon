@@ -1,5 +1,11 @@
 package com.example.demo.repository;
 
-public interface InitialMonsterRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.InitialMonsterEntity;
+
+public interface InitialMonsterRepository extends JpaRepository<InitialMonsterEntity, Integer>{
+	
+	
 
 }
