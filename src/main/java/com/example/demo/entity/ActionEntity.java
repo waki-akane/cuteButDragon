@@ -14,19 +14,36 @@ import lombok.Data;
 @Table(name = "action")
 @Data
 public class ActionEntity {
-	
-	private Integer attack;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer actionId;
-	
+
+	private Integer attack;
+
 	private String techName;
-	
+
 	private Integer techPoint;
-	
+
 	@OneToMany(mappedBy = "action")
 	private List<InitialMonsterEntity> imList;
-	
 
+	@OneToMany(mappedBy = "action")
+	private List<EnemyMonsterEntity> emList;
+
+	// リレーションシップの定義
+	/*	@OneToMany(mappedBy = "action")
+		private List<InitialMonsterEntity> imList1;
+		@OneToMany(mappedBy = "action")
+		private List<InitialMonsterEntity> imList2;
+		@OneToMany(mappedBy = "action")
+		private List<InitialMonsterEntity> imList3;
+	
+		@OneToMany(mappedBy = "action")
+		private List<EnemyMonsterEntity> emList1;
+		@OneToMany(mappedBy = "action")
+		private List<EnemyMonsterEntity> emList2;
+		@OneToMany(mappedBy = "action")
+		private List<EnemyMonsterEntity> emList3;
+	*/
 }
