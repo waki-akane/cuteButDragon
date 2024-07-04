@@ -7,7 +7,7 @@ import lombok.Data;
 @Entity
 @Table(name = "usertable")
 @Data
-public class UserTableEntity {
+public  class UserTableEntity {
 	
 	private String userName;
 	
