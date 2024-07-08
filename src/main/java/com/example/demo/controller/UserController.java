@@ -21,7 +21,7 @@ public class UserController {
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
 		model.addAttribute("username", principal.getUsername());
 		// ログインに成功したら表示する URL
-		return "success";
+		return "stage";
 		
 	}
 	
