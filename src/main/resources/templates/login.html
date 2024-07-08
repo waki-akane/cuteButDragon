@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>ログイン画面</title>
+    <title>ログイン</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- 追加: CSS ファイルがある場合 -->
 </head>
 <body>
- <!-- ログインエラーのときはメッセージを表示 -->
- <div th:if="${failureMessage != null}" th:text="${failureMessage}"></div>
- <!-- ログインフォーム -->
- <!-- th:action は SecurityConfig の loginProcessingUrl で指定した URL -->
- <form th:action="@{authenticate}" method="post">
- <table>
- <tr>
- <th>ID</th>
- <td><input type="text" name="username" /></td>
- </tr>
- <tr>
- <th>PASSWORD</th>
- <td><input type="password" name="password" /></td>
- </tr>
- </table>
- <input type="submit" value="login" />
- </form>
+    <h2>ログイン</h2>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label for="username">名前:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div>
+            <label for="password">パスワード:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">ログイン</button>
+        </div>
+        <div th:if="${param.error}">
+            <p>ログインに失敗しました。もう一度お試しください。</p>
+        </div>
+    </form>
+
+    <!-- 追加: 新規登録へのリンク -->
+    <div>
+        <p>アカウントをお持ちでない方は、<a th:href="@{/register}">こちら</a>から新規登録を行ってください。</p>
+    </div>
 </body>
 </html>
