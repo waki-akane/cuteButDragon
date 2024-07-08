@@ -40,10 +40,10 @@ public class UserController {
 		return "login";
 	}
 	
-	@GetMapping("addUser")
+	@GetMapping("/register")
 	public String addUser(UserTableEntryDTO ute) {
 		uts.clearUser(ute);
-		return "new";
+		return "redirect:/login";
 	}
 	
 	
