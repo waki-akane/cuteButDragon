@@ -19,5 +19,12 @@ public interface MyMonsterService {
 
 	//指定IDのドラゴンの攻撃情報の取得
 	public List<ActionEntity> mmAllAction(int mmId);
+	
+	//ステージクリア後の経験値アップ
+	public void addEx(int emId,int mmId,boolean result);
+		
+	//攻撃受けた時のHP変動
+	public int subHP(int currentHp,int actionId);
+
 
 }
