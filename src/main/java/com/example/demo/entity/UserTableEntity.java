@@ -27,5 +27,7 @@ public class UserTableEntity {
 
 	@OneToMany(mappedBy = "usertable")
 	private List<MyMonsterEntity> mmList;
+	
+	private Integer roleId;
 
 }
