@@ -3,9 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ステータス確認</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative; /* This is important to position the id-input inside */
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .status-check {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .id-input {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+        }
+        .id-input label {
+            margin-right: 10px;
+        }
+        .monster-image {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            margin-bottom: 20px;
+            line-height: 200px;
+        }
+        .monster-details {
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+        }
+        .monster-details table {
+            width: 300px;
+            border-collapse: collapse;
+        }
+        .monster-details th, .monster-details td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .back-button {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            margin: 20px auto;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="status-check">ステータス確認</div>
+        <div class="id-input">
+            <label for="monster-id">ID:</label>
+            <input type="text" id="monster-id" name="monster-id" size="3">
+        </div>
+        <div class="monster-image">モンスター画像</div>
+        <div class="monster-details">
+            <table>
+                <tr>
+                    <th colspan="2">モンスター情報</th>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>名前</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>レベル</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <a href="#" class="back-button">戻る</a>
+    </div>
 </body>
 </html>

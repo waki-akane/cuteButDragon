@@ -8,8 +8,10 @@ import lombok.Data;
 @Data
 public class MyMonsterDTO {
 
+	private Integer userId;
+
 	@NotBlank(message = "画像を選択してください")
-	private Integer imageID;
+	private Integer imId;
 
 	@NotBlank(message = "なまえを入力してください")
 	@Size(min = 1, max = 10, message = "なまえは1から10文字の間で入力してください")

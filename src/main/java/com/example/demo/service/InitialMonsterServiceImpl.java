@@ -10,8 +10,8 @@ import com.example.demo.entity.InitialMonsterEntity;
 import com.example.demo.repository.InitialMonsterRepository;
 
 @Service
-public class InitialMonsterServiceImpl implements InitialMonsterService{
-	
+public class InitialMonsterServiceImpl implements InitialMonsterService {
+
 	@Autowired
 	InitialMonsterRepository imr;
 
@@ -27,6 +27,4 @@ public class InitialMonsterServiceImpl implements InitialMonsterService{
 		InitialMonsterEntity im = op.get();
 		return im;
 	}
-
-
 }
