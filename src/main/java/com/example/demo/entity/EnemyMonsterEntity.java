@@ -10,7 +10,7 @@ import lombok.Data;
 @Table(name = "enemymonster")
 @Data
 public class EnemyMonsterEntity {
-
+	
 	private Integer emId;
 
 	private String emName;
