@@ -42,7 +42,7 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String addUser(UserTableEntryDTO ute) {
-		uts.clearUser(ute);
+		uts.createUser(ute);
 		return "redirect:/login";
 	}
 	

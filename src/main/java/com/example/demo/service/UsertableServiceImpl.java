@@ -25,15 +25,15 @@ public class UsertableServiceImpl implements UsertableService{
 	}
 
 	@Override
-	public int clearUser(UserTableEntryDTO usreTableDTO) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+	public void clearUser(int UserId,int emId) {
+		UserTableEntity ute = utr.findById(UserId).get();
+		ute.setStatus(emId);
+		utr.save(ute);
 	}
 
 	@Override
-	public UserTableEntity showUser() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public UserTableEntity showUser(int userId) {
+		return utr.findById(userId).get();
 	}
 
 
