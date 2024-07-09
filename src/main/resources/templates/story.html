@@ -3,9 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ストーリー画面</title>
 </head>
+<style>
+	/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ストーリー画面のコンテナ */
+.story-container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+/* ストーリー表示領域（1） */
+.story-box {
+    width: 60%;
+    height: 200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+/* キャラ選択へボタン（2） */
+.character-select-button {
+    width: 60%;
+    padding: 10px;
+    margin: 20px auto;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #eee;
+    font-size: 1em;
+    cursor: pointer;
+    display: block;
+}
+.character-select-button:hover {
+    background-color: #ddd;
+}
+</style>
 <body>
-    
+    <div class="story-container">
+        <!-- 1. ストーリー表示領域 -->
+        <div class="story-box">
+            <p>ストーリー</p>
+        </div>
+
+        <!-- 2. キャラ選択へボタン -->
+        <button class="character-select-button">キャラ選択へ</button>
+    </div>
 </body>
 </html>
