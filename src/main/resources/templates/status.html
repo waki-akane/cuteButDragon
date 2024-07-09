@@ -3,98 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ステータス確認</title>
+    <title>モンスター情報</title>
     <style>
+        /* 全体のリセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-        }
-        .container {
-            position: relative; /* This is important to position the id-input inside */
-            width: 80%;
-            margin: 0 auto;
+            background-color: #f0f0f0;
             padding: 20px;
-            border: 1px solid #ccc;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
-        .status-check {
-            font-size: 24px;
+
+        .monster-info {
             margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
         }
-        .id-input {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 20px;
-        }
-        .id-input label {
-            margin-right: 10px;
-        }
-        .monster-image {
-            width: 200px;
-            height: 200px;
-            border: 1px solid #ccc;
-            display: inline-block;
-            margin-bottom: 20px;
-            line-height: 200px;
-        }
-        .monster-details {
-            display: inline-block;
-            vertical-align: top;
-            text-align: left;
-        }
-        .monster-details table {
-            width: 300px;
-            border-collapse: collapse;
-        }
-        .monster-details th, .monster-details td {
-            padding: 10px;
-            border: 1px solid #ccc;
-        }
-        .back-button {
+
+        .monster-info img {
+            max-width: 100%;
+            height: auto;
             display: block;
-            width: 100px;
-            padding: 10px;
-            margin: 20px auto;
+            margin: 10px auto;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             text-decoration: none;
             border-radius: 5px;
-            text-align: center;
+            transition: background-color 0.3s ease;
         }
-        .back-button:hover {
+
+        .btn-back:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="status-check">ステータス確認</div>
-        <div class="id-input">
-            <label for="monster-id">ID:</label>
-            <input type="text" id="monster-id" name="monster-id" size="3">
+        <div class="monster-info">
+            <h2>モンスター情報</h2>
+            <p>ID: テキスト</p>
+            <p>ステータス確認: テキスト</p>
+            <img src="画像のURL" alt="モンスター画像">
+            <p>モンスター情報: テキスト</p>
         </div>
-        <div class="monster-image">モンスター画像</div>
-        <div class="monster-details">
-            <table>
-                <tr>
-                    <th colspan="2">モンスター情報</th>
-                </tr>
-                <tr>
-                    <td>ID</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>名前</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>レベル</td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-        <a href="#" class="back-button">戻る</a>
+        <a href="https://uiverse.io/Madflows/terrible-catfish-72" class="btn-back">戻る</a>
     </div>
 </body>
 </html>

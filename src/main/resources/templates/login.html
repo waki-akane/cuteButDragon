@@ -3,9 +3,94 @@
 <head>
     <title>ログイン</title>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="styles.css"> <!-- 追加: CSS ファイルがある場合 -->
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン画面</title>
+    <style>
+        /* 全体のリセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ログイン画面のコンテナ */
+        .login-container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        /* ヘッダー（1） */
+        .header {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        /* 画像のコンテナ（7） */
+        .image-container {
+            margin-bottom: 20px;
+        }
+        .image-container img {
+            width: 100px; /* 必要に応じて調整 */
+            height: auto;
+            border-radius: 50%;
+        }
+
+        /* 入力フィールド（2, 3） */
+        .input-field {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        /* ログインボタン（4） */
+        .login-button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .login-button:hover {
+            background-color: #45a049;
+        }
+
+        /* 新規登録リンク（5） */
+        .new-registration-link {
+            display: block;
+            margin-top: 20px;
+            color: #0000EE;
+            text-decoration: none;
+        }
+        .new-registration-link:hover {
+            text-decoration: underline;
+        }
+
+        /* パスワード忘れメモ（6） */
+        .password-reset-note {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+>>>>>>> stash
 </head>
 <body>
+<<<<<<< HEAD
     <h2>ログイン</h2>
     <form th:action="@{/login}" method="post">
         <div>
@@ -27,6 +112,29 @@
     <!-- 追加: 新規登録へのリンク -->
     <div>
         <p>アカウントをお持ちでない方は、<a th:href="@{/register}">こちら</a>から新規登録を行ってください。</p>
+=======
+    <div class="login-container">
+		<!-- 7. 画像 -->
+        <div class="image-container">
+            <!-- Thymeleafで画像を動的に指定 -->
+            <img th:src="@{/images/your-image.png}" alt="画像">
+        </div>
+
+        <!-- 2. メール入力 -->
+        <input type="email" placeholder="ニックネーム" class="input-field">
+
+        <!-- 3. パスワード入力 -->
+        <input type="password" placeholder="パスワード" class="input-field">
+
+        <!-- 4. ログインボタン -->
+        <button class="login-button">ログイン</button>
+
+        <!-- 5. 新規登録リンク -->
+        <a href="#" class="new-registration-link">新しく冒険を始める (新規登録)</a>
+
+        <!-- 6. パスワード忘れメモ -->
+        <p class="password-reset-note">*ログインできない方は新規登録からとなります</p>
+>>>>>>> stash
     </div>
 </body>
 </html>
