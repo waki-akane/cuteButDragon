@@ -45,7 +45,6 @@ public class UserController {
 	
 	@PostMapping("/register")
 	public String addUser(UserTableEntryDTO ute,Model model) {
-		System.out.println(ute);
 		uts.createUser(ute);
 		model.addAttribute("user", new UserTableEntryDTO()); 
 		return "redirect:login";
@@ -53,7 +52,6 @@ public class UserController {
 	
 	@GetMapping("/register")
 	public String showForm(Model model) {
-		System.out.println("aaa");
 		model.addAttribute("user",new UserTableEntryDTO());
 		return "register";
 	}
