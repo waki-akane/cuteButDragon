@@ -9,9 +9,9 @@ public interface UsertableService {
 	public int createUser(UserTableEntryDTO userTableDTO);
 	
 	//ステージクリア時のステータス変更
-	public void clearUser(int userId,int emId);
+	public int clearUser(UserTableEntryDTO usreTableDTO);
 	
 	//ユーザー情報の表示
-	public UserTableEntity showUser(int userId);
+	public UserTableEntity showUser();
 
 }

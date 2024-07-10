@@ -19,21 +19,22 @@ public class UsertableServiceImpl implements UsertableService{
 		UserTableEntity ute = new UserTableEntity();
 		ute.setUserName(userTableDTO.getName());
 		String pass = new BCryptPasswordEncoder().encode(userTableDTO.getPass());
+		System.out.println(pass); 
 		ute.setPass(pass);
 		utr.save(ute);
 		return 0;
 	}
 
 	@Override
-	public void clearUser(int UserId,int emId) {
-		UserTableEntity ute = utr.findById(UserId).get();
-		ute.setStatus(emId);
-		utr.save(ute);
+	public int clearUser(UserTableEntryDTO usreTableDTO) {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
 	}
 
 	@Override
-	public UserTableEntity showUser(int userId) {
-		return utr.findById(userId).get();
+	public UserTableEntity showUser() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 
