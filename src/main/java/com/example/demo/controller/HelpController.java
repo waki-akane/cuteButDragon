@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 public class HelpController {
 	
 	//stageへ
-	public String toStage() {
+	@GetMapping("toStage")
+	public String toStage(int userId) {
 		
 		return "stage";
 	}
