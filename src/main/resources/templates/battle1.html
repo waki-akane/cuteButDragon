@@ -3,15 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monster Battle Interface</title>
+    <title>モンスターバトルインターフェース</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            /* 背景画像をstatic/img内に保存している画像に変更 */
+            background-image: url('/img/背景.jpg');
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: white; /* 文字を白っぽく変更 */
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 100px; /* 下部からのマージンを調整 */
         }
         .monsters {
             display: flex;
@@ -20,6 +33,7 @@
         }
         .monster {
             text-align: center;
+            position: relative; /* ヘルスバーを名前の上に配置 */
         }
         .monster img {
             width: 150px;
@@ -28,8 +42,10 @@
             width: 100px;
             height: 20px;
             background-color: grey;
-            position: relative;
-            margin-top: 5px;
+            position: absolute;
+            top: -25px; /* ヘルスバーを名前の上に配置 */
+            left: 50%;
+            transform: translateX(-50%);
         }
         .health {
             height: 100%;
@@ -40,14 +56,37 @@
         }
         .commands {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin-top: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
         }
         .commands button {
-            margin: 5px;
+            margin: 0 5px;
             padding: 10px;
             cursor: pointer;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px; /* コマンドのボタンをテキストに変更 */
+        }
+        .commands button:hover {
+            background-color: #e0e0e0;
+        }
+        .logout-button {
+            margin-top: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px; /* ログアウトボタンのテキストに変更 */
+        }
+        .logout-button:hover {
+            background-color: #e0e0e0;
         }
     </style>
 </head>
@@ -56,7 +95,8 @@
         <div class="monsters">
             <div class="monster">
                 <h2>あなたのドラゴン</h2>
-                <img src="path_to_your_dragon_image" alt="Your Dragon">
+                <!-- 画像パスを修正 -->
+                <img th:src="@{/img/test1.png}" alt="Your Dragon">
                 <div class="health-bar">
                     <div class="health" style="width: 100%;"></div>
                 </div>
@@ -64,21 +104,22 @@
             </div>
             <div class="monster">
                 <h2>○○ドラゴン</h2>
-                <img src="path_to_enemy_dragon_image" alt="Enemy Dragon">
+                <!-- 画像パスを修正 -->
+                <img th:src="@{/img/test2.png}" alt="Enemy Dragon">
                 <div class="health-bar">
                     <div class="health" style="width: 100%;"></div>
                 </div>
                 <p>HP: 300</p>
             </div>
         </div>
-        <div class="commands">
-            <button>ひっかく 10/10</button>
-            <button>上目づかい 20/20</button>
-            <button>じゃれる 20/20</button>
-            <button>火を吐く 5/5</button>
-            <button>逃げる</button>
-        </div>
-        <button>ログアウト</button>
+    </div>
+    <div class="commands">
+        <button>ひっかく 10/10</button>
+        <button>上目づかい 20/20</button>
+        <button>じゃれる 20/20</button>
+        <button>火を吐く 5/5</button>
+        <button>逃げる</button>
+        <button class="logout-button">ログアウト</button>
     </div>
 </body>
 </html>

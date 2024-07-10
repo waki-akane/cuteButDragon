@@ -2,12 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>ログイン</title>
-    <meta charset="UTF-8">
-<<<<<<< HEAD
-    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- 追加: CSS ファイルがある場合 -->
-=======
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン画面</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- 追加: CSS ファイルがある場合 -->
     <style>
         /* 全体のリセット */
         * {
@@ -35,10 +31,10 @@
 
         /* 画像のコンテナ（7） */
         .image-container {
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
         .image-container img {
-            width: 100px; /* 必要に応じて調整 */
+            width: 150px; /* 必要に応じて調整 */
             height: auto;
             border-radius: 50%;
         }
@@ -83,58 +79,40 @@
         /* パスワード忘れメモ（6） */
         .password-reset-note {
             margin-top: 10px;
-            font-size: 0.9em;
+            font-size: 0.7em;
             color: #555;
         }
     </style>
->>>>>>> stash
+
 </head>
 <body>
-<<<<<<< HEAD
-    <h2>ログイン</h2>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="username">名前:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-        <div>
-            <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div>
-            <button type="submit">ログイン</button>
-        </div>
-        <div th:if="${param.error}">
-            <p>ログインに失敗しました。もう一度お試しください。</p>
-        </div>
-    </form>
 
-    <!-- 追加: 新規登録へのリンク -->
-    <div>
-        <p>アカウントをお持ちでない方は、<a th:href="@{/register}">こちら</a>から新規登録を行ってください。</p>
-=======
+    <form th:action="@{/login}" method="post">
     <div class="login-container">
 		<!-- 7. 画像 -->
         <div class="image-container">
             <!-- Thymeleafで画像を動的に指定 -->
-            <img th:src="@{/images/your-image.png}" alt="画像">
+            <img th:src="@{/img/画像1.png}" alt="画像">
         </div>
 
         <!-- 2. メール入力 -->
-        <input type="email" placeholder="ニックネーム" class="input-field">
+        <input type="text" placeholder="ニックネーム" class="input-field" required>
 
         <!-- 3. パスワード入力 -->
-        <input type="password" placeholder="パスワード" class="input-field">
+        <input type="password" placeholder="パスワード" class="input-field" required>
 
         <!-- 4. ログインボタン -->
-        <button class="login-button">ログイン</button>
+        <button  type="submit" class="login-button">ログイン</button>
+
 
         <!-- 5. 新規登録リンク -->
-        <a href="#" class="new-registration-link">新しく冒険を始める (新規登録)</a>
+        <a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
 
         <!-- 6. パスワード忘れメモ -->
-        <p class="password-reset-note">*ログインできない方は新規登録からとなります</p>
->>>>>>> stash
+        <p class="password-reset-note">*ログインできない場合は新規登録してください</p>
+        </div>
     </div>
 </body>
 </html>
+
+

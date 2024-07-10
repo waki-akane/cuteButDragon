@@ -31,10 +31,10 @@
 
         /* 画像のコンテナ（7） */
         .image-container {
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
         .image-container img {
-            width: 100px; /* 必要に応じて調整 */
+            width: 150px; /* 必要に応じて調整 */
             height: auto;
             border-radius: 50%;
         }
@@ -78,25 +78,24 @@
 </head>
 <body>
     <div class="login-container">
-         <!-- 7. 画像 -->
+       <!-- ユーザー登録の見出し -->
+        <h1 class="header">ユーザー登録</h1>
+        
+        <!-- 画像 -->
         <div class="image-container">
             <!-- 画像を静的に指定 -->
-            <img src="your-image.png" alt="画像">
+            <img th:src="@{/img/画像1.png}" alt="画像">
         </div>
-       <!-- 1. ユーザー登録の見出し -->
-
-        <h1 class="header">ユーザー登録</h1>
-
-
-        <!-- 2. ニックネームの入力 -->
+        
+        <!-- ニックネームの入力 -->
         <label for="nickname" class="label">ニックネーム</label>
         <input type="text" id="nickname" placeholder="1〜10文字のひらがな" class="input-field">
 
-        <!-- 3. パスワードの入力 -->
+        <!-- パスワードの入力 -->
         <label for="password" class="label">パスワード</label>
         <input type="password" id="password" placeholder="8〜16文字の半角英数字" class="input-field">
 
-        <!-- 6. 登録ボタン -->
+        <!-- 登録ボタン -->
         <button class="register-button">登録</button>
 
     </div>

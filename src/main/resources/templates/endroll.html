@@ -5,64 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>動画再生</title>
 <style>
-        /* 全体のリセット */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    padding: 20px;
-  }
-  .container {
-    max-width: 600px;
-    margin: auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  video {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-  }
-  .btn-back {
-    display: none;
-    width: 120px;
-    padding: 10px 20px;
-    margin-top: 20px;
-    text-align: center;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  .btn-back:hover {
-    background-color: #0056b3;
-  }
+    /* 全体のリセット */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    video {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto 20px;
+    }
+    .btn-back {
+        opacity: 0;
+        visibility: hidden;
+        width: 120px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-align: center;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .btn-back.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    .btn-back:hover {
+        background-color: #0056b3;
+    }
 </style>
 </head>
 <body>
-  <div class="container">
-    <video id="myVideo" controls onended="showButton()">
-      <source src="動画のURL" type="video/mp4">
-      Your browser does not support the video tag.
+<div class="container">
+    <video id="myVideo" controls>
+        <source src="動画のURL" type="video/mp4">
+        Your browser does not support the video tag.
+        <track kind="metadata" src="metadata.vtt" default>
     </video>
-    <a id="btnBack" class="btn-back" href="https://uiverse.io/Madflows/terrible-catfish-72">戻る</a>
-  </div>
+    <a id="btnBack" class="btn-back" th:href="@{/login}">タイトルへ</a>
+</div>
 
-  <script>
-    function showButton() {
-      var btnBack = document.getElementById("btnBack");
-      btnBack.style.display = "block";
-    }
-  </script>
+<script>
+    document.getElementById('myVideo').addEventListener('ended', function() {
+        document.getElementById('btnBack').classList.add('visible');
+    });
+</script>
 </body>
 </html>

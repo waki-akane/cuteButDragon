@@ -63,7 +63,8 @@
         </div>
 
         <!-- 2. キャラ選択へボタン -->
-        <button class="character-select-button">キャラ選択へ</button>
+        <form th:action="@{/character}" method="get">
+        <button  type="submit" class="character-select-button">キャラ選択へ</button>
     </div>
 </body>
 </html>
