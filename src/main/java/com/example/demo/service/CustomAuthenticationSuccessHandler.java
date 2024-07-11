@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+//セッション機能の追加
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 

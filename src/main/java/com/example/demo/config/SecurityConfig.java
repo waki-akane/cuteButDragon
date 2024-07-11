@@ -17,6 +17,7 @@ import com.example.demo.service.CustomAuthenticationSuccessHandler;
 @EnableWebSecurity
 public class SecurityConfig {
 	
+	//セッション機能の追加
 	@Autowired
     private CustomAuthenticationSuccessHandler successHandler;
 	
@@ -28,6 +29,7 @@ public class SecurityConfig {
 	            .defaultSuccessUrl("/loginsuccess") // ログイン成功後のリダイレクト先 URL
 	            .failureUrl("/login?failure") // ログイン失敗後のリダイレクト先 URL
 	            .permitAll() // ログイン画面は未ログインでもアクセス可能
+	            //セッション機能の追加
 	            .successHandler(successHandler)
 	        )
 	        .logout(logout -> logout
@@ -50,6 +52,7 @@ public class SecurityConfig {
 	
 	}
 	
+	//セッション機能の追加
 //	@Bean
 //    public WebSecurityCustomizer webSecurityCustomizer() {
 //        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
