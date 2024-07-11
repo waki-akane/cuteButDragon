@@ -1,0 +1,77 @@
+/* 全体のリセット */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ログイン画面のコンテナ */
+.login-container {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+/* ヘッダー（1） */
+.header {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* 画像のコンテナ（7） */
+.image-container {
+    margin-bottom: 0px;
+}
+.image-container img {
+    width: 150px; /* 必要に応じて調整 */
+    height: auto;
+    border-radius: 50%;
+}
+
+/* 入力フィールド（2, 3） */
+.input-field {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* ログインボタン（4） */
+.login-button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+.login-button:hover {
+    background-color: #45a049;
+}
+
+/* 新規登録リンク（5） */
+.new-registration-link {
+    display: block;
+    margin-top: 20px;
+    color: #0000EE;
+    text-decoration: none;
+}
+.new-registration-link:hover {
+    text-decoration: underline;
+}
+
+/* パスワード忘れメモ（6） */
+.password-reset-note {
+    margin-top: 10px;
+    font-size: 0.7em;
+    color: #555;
+}

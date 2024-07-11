@@ -1,0 +1,62 @@
+/* 全体のリセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ログイン画面のコンテナ */
+.login-container {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+/* ヘッダー */
+.header {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+/* 画像のコンテナ */
+.image-container {
+  margin-bottom: 0px;
+}
+.image-container img {
+  width: 150px; /* 必要に応じて調整 */
+  height: auto;
+  border-radius: 50%;
+}
+/* 入力フィールド */
+.input-field {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+/* ラベル */
+.label {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: #555;
+  display: block;
+}
+/* 登録ボタン */
+.register-button {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
+.register-button:hover {
+  background-color: #45a049;
+}

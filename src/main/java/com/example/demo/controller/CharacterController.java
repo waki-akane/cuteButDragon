@@ -10,21 +10,15 @@ import com.example.demo.service.MyMonsterService;
 
 @Controller
 public class CharacterController {
-	
+
 	@Autowired
 	MyMonsterService mms;
-	
+
 	//[ルール説明へ]ボタン押下時処理、キャラ選択情報DBへ登録
 	@GetMapping("toHelp")
-	public String addCharacter(MyMonsterDTO mmDTO,Model model) {
+	public String addCharacter(MyMonsterDTO mmDTO, Model model) {
 		mms.createMm(mmDTO);
 		model.addAttribute(mmDTO.getUserId());
 		return "help";
 	}
-	
-	
-	
-	
-	
-
 }

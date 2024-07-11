@@ -1,32 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>ログイン</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- 追加: CSS ファイルがある場合 -->
+    <title>可愛いけどドラゴン</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
-    <h2>ログイン</h2>
-    <form th:action="@{/authenticate}" method="post">
-        <div>
-            <label for="username">名前:</label>
-            <input type="text" id="username" name="username" required>
+    <form th:action="@{/login}" method="post">
+    <div class="login-container">
+		<!-- 画像 -->
+        <div class="image-container">
+            <!-- Thymeleafで画像を動的に指定 -->
+            <img th:src="@{/img/画像1.png}" alt="画像">
         </div>
-        <div>
-            <label for="password">パスワード:</label>
-            <input type="password" id="password" name="password" required>
+        <!-- メール入力 -->
+        <input type="text" placeholder="ニックネーム" class="input-field" required>
+        <!-- パスワード入力 -->
+        <input type="password" placeholder="パスワード" class="input-field" required>
+        <!-- ログインボタン -->
+        <button  type="submit" class="login-button">ログイン</button>
+        <!-- 新規登録リンク -->
+        <a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
+        <!-- パスワード忘れメモ -->
+        <p class="password-reset-note">*ログインできない場合は新規登録してください</p>
         </div>
-        <div>
-            <button type="submit">ログイン</button>
-        </div>
-        <div th:if="${param.error}">
-            <p>ログインに失敗しました。もう一度お試しください。</p>
-        </div>
-    </form>
-
-    <!-- 追加: 新規登録へのリンク -->
-    <div>
-        <p>アカウントをお持ちでない方は、<a th:href="@{/register}">こちら</a>から新規登録を行ってください。</p>
     </div>
 </body>
 </html>
+
+
