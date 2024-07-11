@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +10,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.example.demo.service.CustomAuthenticationSuccessHandler;
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	@Autowired
+    private CustomAuthenticationSuccessHandler successHandler;
+	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	    http.formLogin(form -> form
@@ -20,6 +28,7 @@ public class SecurityConfig {
 	            .defaultSuccessUrl("/loginsuccess") // ログイン成功後のリダイレクト先 URL
 	            .failureUrl("/login?failure") // ログイン失敗後のリダイレクト先 URL
 	            .permitAll() // ログイン画面は未ログインでもアクセス可能
+	            .successHandler(successHandler)
 	        )
 	        .logout(logout -> logout
 	            .logoutSuccessUrl("/login?logout") // ログアウト成功後のリダイレクト先 URL
@@ -40,5 +49,11 @@ public class SecurityConfig {
 	return new BCryptPasswordEncoder();
 	
 	}
+	
+//	@Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return (web) -> web.ignoring().requestMatchers("/images/**", "/js/**", "/webjars/**");
+//    }
+
 
 }
