@@ -12,6 +12,6 @@ public interface UsertableService {
 	public int clearUser(UserTableEntryDTO usreTableDTO);
 	
 	//ユーザー情報の表示
-	public UserTableEntity showUser();
+	public UserTableEntity getByUserId(int userId);
 
 }

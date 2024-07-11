@@ -32,7 +32,7 @@ public class UsertableServiceImpl implements UsertableService{
 	}
 
 	@Override
-	public UserTableEntity showUser() {
+	public UserTableEntity getByUserId(int userId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}
