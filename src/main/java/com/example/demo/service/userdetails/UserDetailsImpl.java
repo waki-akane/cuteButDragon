@@ -10,6 +10,7 @@ import com.example.demo.entity.UserTableEntity;
 public class UserDetailsImpl implements UserDetails {
 	
 	private final UserTableEntity userTableEntity;
+	int userId;
 
 	private Collection<GrantedAuthority> authorities;
 	
@@ -34,6 +35,14 @@ public class UserDetailsImpl implements UserDetails {
 	public String getUsername() {
 		
 		return userTableEntity.getUserName();
+	}
+	
+	public int getUserId() {
+		return userTableEntity.getUserId();
+	}
+	
+	public UserTableEntity getUser() {
+		return this.userTableEntity;
 	}
 	
 	@Override

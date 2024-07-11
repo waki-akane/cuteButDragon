@@ -19,7 +19,7 @@ public class UserTableEntity {
 
 	private String pass;
 
-//	private Integer status;
+	private Integer status;
 //
 //	@OneToMany(mappedBy = "usertable")
 //	private List<MyMonsterEntity> mmList;
