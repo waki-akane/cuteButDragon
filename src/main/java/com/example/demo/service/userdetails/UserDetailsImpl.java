@@ -10,7 +10,6 @@ import com.example.demo.entity.UserTableEntity;
 public class UserDetailsImpl implements UserDetails {
 	
 	private final UserTableEntity userTableEntity;
-	int userId;
 
 	private Collection<GrantedAuthority> authorities;
 	
