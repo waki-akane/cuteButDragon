@@ -4,42 +4,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.service.userdetails.UserDetailsImpl;
+
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class StageController {
-	
+
 	//[ステータス]ボタン押下時処理、stage→status
-	@GetMapping()
-	public String showStatus(Model model,int userId) {
-		//userIdからUserTableEntityの情報を取得→Modelに詰める
-		
-		return "";
+	@GetMapping("/status")
+	public String showStatus(Model model, HttpSession session) {
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		int status = user.getUser().getStatus();
+		model.addAttribute("userId", user.getUserId());
+		return "status";
 	}
-	
-	//[戻る]ボタン押下時処理、status→stage
-	@GetMapping()
-	public String toStage(int userId,Model model){
-		//HelpControllerのtoStageメソッドと同じ処理（まとめてもいけるんかもしれません）
-		return "";
-	}
-	
+
 	//[チュートリアル]ボタン押下時処理、stage→help
-	@GetMapping()
+	@GetMapping("/Help")
 	public String toHelp() {
-		
-		return "";
-	}
-	
-	@GetMapping()
-	//[ログアウト]ボタン押下時処理、stage→title
-	public String logput() {
-		return "";
-	}
-	
-	//ステージ選択時処理、stage→battle1
-	@GetMapping()
-	public String toBattle(int userId,int selectStage,Model model) {
-		
-		return "";
+		return "help";
 	}
 
 }

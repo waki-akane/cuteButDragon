@@ -3,27 +3,21 @@
 <head>
     <title>可愛いけどドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="/css/style1.css">
 </head>
 <body>
 	<form th:action="@{/user}" th:object="${user}" method="post">
 		<div class="login-container">
-			<!-- ユーザー登録の見出し -->
-			<h1 class="header">ユーザー登録</h1>
-			<!-- 画像 -->
 			<div class="image-container">
-				<!-- 画像を静的に指定 -->
 				<img th:src="@{/img/画像1.png}" alt="画像" />
 			</div>
-			<!-- ニックネームの入力 -->
+			<h1 class="header">ユーザー登録</h1>
 			<label for="name" class="label">ニックネーム</label>
 			<input type="text" id="name" placeholder="1〜10文字のひらがな" class="input-field" th:field="*{name}" required/>
 			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-			<!-- パスワードの入力 -->
 			<label for="pass" class="label">パスワード</label>
 			<input type="password" id="pass" placeholder="8〜16文字の半角英数字" class="input-field" th:field="*{pass}" required/>
 			<p th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></p>
-			<!-- 登録ボタン -->
 			<button type="submit" class="register-button">登録</button>
 		</div>
 	</form>

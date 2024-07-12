@@ -3,25 +3,18 @@
 <head>
     <title>可愛いけどドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/style1.css">
 </head>
 <body>
     <form th:action="@{/login}" method="post">
     <div class="login-container">
-		<!-- 画像 -->
         <div class="image-container">
-            <!-- Thymeleafで画像を動的に指定 -->
             <img th:src="@{/img/画像1.png}" alt="画像">
         </div>
-        <!-- メール入力 -->
         <input type="text" placeholder="ニックネーム" class="input-field" required>
-        <!-- パスワード入力 -->
         <input type="password" placeholder="パスワード" class="input-field" required>
-        <!-- ログインボタン -->
         <button  type="submit" class="login-button">ログイン</button>
-        <!-- 新規登録リンク -->
         <a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
-        <!-- パスワード忘れメモ -->
         <p class="password-reset-note">*ログインできない場合は新規登録してください</p>
         </div>
     </div>

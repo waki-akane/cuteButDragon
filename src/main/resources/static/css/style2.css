@@ -1,11 +1,13 @@
+/* help、story共通 */
+
 /* 全体のリセット */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-/* ストーリー画面のコンテナ */
-.story-container {
+/* コンテナ */
+.container {
     width: 80%;
     margin: 50px auto;
     padding: 20px;
@@ -16,8 +18,8 @@
     position: relative;
 }
 
-/* ストーリー表示領域（1） */
-.story-box {
+/* 表示領域 */
+.box {
     width: 60%;
     height: 200px;
     margin: 20px auto;
@@ -31,7 +33,7 @@
 }
 
 /* キャラ選択へボタン（2） */
-.character-select-button {
+.button {
     width: 60%;
     padding: 10px;
     margin: 20px auto;
@@ -42,6 +44,6 @@
     cursor: pointer;
     display: block;
 }
-.character-select-button:hover {
+.button:hover {
     background-color: #ddd;
 }
