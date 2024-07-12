@@ -30,7 +30,7 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 
 	@Autowired
 	private UserTableRepository utr;
-	
+
 	@Autowired
 	private EnemyMonsterRepository emr;
 
@@ -68,15 +68,15 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 	public List<ActionEntity> mmAllAction(int mmId) {
 		return actr.findByMmId(mmId);
 	}
-	
+
 	//ステージクリア後の経験値アップ
 	@Override
 	public void addEx(int emId, int mmId, boolean result) {
 		EnemyMonsterEntity em = emr.findById(emId).get();
 		MyMonsterEntity mm = mmr.findById(mmId).get();
-		if(result) {
+		if (result) {
 			mm.setMmEx(mm.getMmEx() + em.getWin());
-		}else {
+		} else {
 			mm.setMmEx(mm.getMmEx() + em.getLose());
 		}
 		mmr.save(mm);
@@ -87,7 +87,11 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 		currentHp = currentHp - actr.findById(actionId).get().getAttack();
 		return currentHp;
 	}
-	
-	
-	
+
+	@Override
+	public MyMonsterEntity findByUserId(int userId) {
+		MyMonsterEntity mm = mmr.findByUserId(userId);
+		return mm;
+	}
+
 }

@@ -1,43 +1,59 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.dto.MyMonsterDTO;
+import com.example.demo.entity.MyMonsterEntity;
+import com.example.demo.service.MyMonsterService;
+import com.example.demo.service.userdetails.UserDetailsImpl;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HrsController {
 
+	@Autowired
+	MyMonsterService mms;
+
 	//[閉じる]ボタン押下時処理、ルール説明画面からステージ選択画面へ
-	//[ステージ選択へ]ボタン押下時処理、result→stage	
-	public String toStage(int userId, Model model) {
-		//ステージ選択ボタンの表示をステータスによって変更したい
-		//→HTMLファイルで分岐処理になるかと思うのでModelにuserIdから取得したUserTableEntityをつめてください
-		return "";
+	@GetMapping("/toStage")
+	public String toStage(Model model, HttpSession session) {
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		int status = user.getStatus();
+		model.addAttribute("status", status);
+
+		return "stage"; //stageページにリダイレクト
 	}
 
-	//もう一度ボタン押下時処理、result→battle1
-	//StageControllerの同名メソッドと同じ処理（まとめてもいいのかも）
-	@GetMapping()
-	public String toBattle(int userId, int selectStage, Model model) {
+	//もう一度ボタンを押したとき、resultからbattle1へ
+	//stage選択時処理、stage→battle1
+	@GetMapping("/toBattle")
+	public String toBattle(Model model, HttpSession session, int selectStage) {
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		int userId = user.getUserId();
+		MyMonsterEntity mm = mms.findByUserId(userId);
+		model.addAttribute("mm", mm);
 
-		return "";
+		// StageControllerの同名メソッドと同じ処理を行う
+		// ここで必要なデータの準備などを行う
+		return "battle1";
 	}
 
 	//OP、[キャラ選択へ]ボタン押下時処理、ストーリー画面からキャラ選択画面へ
-	@GetMapping("toCharcter")
-	public String toCharacter(Model model, int userId) {
-		model.addAttribute(userId);
+	@GetMapping("/toCharcter")
+	public String toCharacter(Model model) {
 		model.addAttribute("mmDTO", new MyMonsterDTO());
 		return "character";
 	}
 
 	//ED、[戻る]ボタン押下時処理、endroll→login
-	@GetMapping()
-	public String toLogin(int userId, Model model) {
-		//HelpControllerのtoStageメソッドと同じ処理（まとめてもいけるんかもしれません）
-		return "";
-	}
+	//@GetMapping() 
+	//public String toLogin(int userId, Model model) {
+	//HelpControllerのtoStageメソッドと同じ処理（まとめてもいけるんかもしれません）
+	//return "";
+	//}
 
 }

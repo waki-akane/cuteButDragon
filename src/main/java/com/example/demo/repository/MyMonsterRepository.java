@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.MyMonsterEntity;
 
 public interface MyMonsterRepository extends JpaRepository<MyMonsterEntity, Integer> {
+	MyMonsterEntity findByUserId(int userId);
 
 }
