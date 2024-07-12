@@ -14,7 +14,7 @@ public class GameController {
         UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
         int status = user.getUser().getStatus();
         if (user != null) {
-            model.addAttribute("username", user.getUserId());
+            model.addAttribute("userId", user.getUserId());
         }
         return "home";
     }
