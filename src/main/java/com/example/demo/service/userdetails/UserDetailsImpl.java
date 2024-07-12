@@ -44,6 +44,11 @@ public class UserDetailsImpl implements UserDetails {
 		return this.userTableEntity;
 	}
 	
+	public int getStatus() {
+		return userTableEntity.getStatus();
+	}
+
+	
 	@Override
 	public boolean isAccountNonExpired() {
 	// ユーザーが期限切れでなければ true を返す
