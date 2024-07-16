@@ -1,9 +1,4 @@
-/* 全体のリセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@charset "UTF-8";
 body {
     font-family: Arial, sans-serif;
     /* 背景画像をstatic/img内に保存している画像に変更 */

@@ -1,11 +1,6 @@
+@charset "UTF-8";
 /* help、story共通 */
 
-/* 全体のリセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 /* コンテナ */
 .container {
     width: 80%;
@@ -32,18 +27,3 @@
     background-color: #fff;
 }
 
-/* キャラ選択へボタン（2） */
-.button {
-    width: 60%;
-    padding: 10px;
-    margin: 20px auto;
-    border: 2px solid #000;
-    border-radius: 8px;
-    background-color: #eee;
-    font-size: 1em;
-    cursor: pointer;
-    display: block;
-}
-.button:hover {
-    background-color: #ddd;
-}
