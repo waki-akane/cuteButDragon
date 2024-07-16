@@ -1,15 +1,14 @@
 package com.example.demo.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.MyMonsterDTO;
-import com.example.demo.entity.ActionEntity;
 import com.example.demo.entity.EnemyMonsterEntity;
 import com.example.demo.entity.MyMonsterEntity;
+import com.example.demo.entity.UserTableEntity;
 import com.example.demo.repository.ActionRepository;
 import com.example.demo.repository.EnemyMonsterRepository;
 import com.example.demo.repository.InitialMonsterRepository;
@@ -54,20 +53,15 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 
 	// ｍｍの登録
 	@Override
-	public void createMm(MyMonsterDTO myMonsterDTO) {
+	public void createMm(MyMonsterDTO myMonsterDTO, UserTableEntity user) {
 		MyMonsterEntity mm = new MyMonsterEntity();
 		// DTOの内容をエンティティに設定
 		mm.setMmName(myMonsterDTO.getName());
-		mm.setUserId(utr.findById(myMonsterDTO.getUserId()).get());
+		mm.setUserId(user);
 		mm.setImId(imr.findById(myMonsterDTO.getImId()).get());
 		mmr.save(mm);
 	}
 
-	// 指定IDのドラゴンの攻撃情報の取得
-	@Override
-	public List<ActionEntity> mmAllAction(int mmId) {
-		return actr.findByMmId(mmId);
-	}
 
 	//ステージクリア後の経験値アップ
 	@Override

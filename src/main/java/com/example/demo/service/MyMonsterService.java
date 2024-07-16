@@ -1,10 +1,8 @@
 package com.example.demo.service;
 
-import java.util.List;
-
 import com.example.demo.dto.MyMonsterDTO;
-import com.example.demo.entity.ActionEntity;
 import com.example.demo.entity.MyMonsterEntity;
+import com.example.demo.entity.UserTableEntity;
 
 public interface MyMonsterService {
 
@@ -15,10 +13,8 @@ public interface MyMonsterService {
 	public int mmLevelUp(int mmId);
 
 	//ｍｍの登録
-	public void createMm(MyMonsterDTO myMonsterDTO);
+	public void createMm(MyMonsterDTO myMonsterDTO,UserTableEntity user);
 
-	//指定IDのドラゴンの攻撃情報の取得
-	public List<ActionEntity> mmAllAction(int mmId);
 
 	//ステージクリア後の経験値アップ
 	public void addEx(int emId, int mmId, boolean result);
