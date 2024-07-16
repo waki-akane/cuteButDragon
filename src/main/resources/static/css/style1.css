@@ -1,11 +1,6 @@
+@charset "UTF-8";
 /*ユーザー、ログイン共通*/
 
-/* 全体のリセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 /* ログイン画面のコンテナ (共通) */
 .login-container {
     width: 300px;

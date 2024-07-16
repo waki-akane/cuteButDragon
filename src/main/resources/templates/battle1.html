@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>可愛いけどドラゴン</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/battle1.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="monsters">
+            <div class="monster">
+                <h2>あなたのドラゴン</h2>
+                <!-- 画像パスを修正 -->
+                <img th:src="@{/img/test1.png}" alt="Your Dragon">
+                <div class="health-bar">
+                    <div class="health" style="width: 100%;"></div>
+                </div>
+                <p>HP: 300</p>
+            </div>
+            <div class="monster">
+                <h2>○○ドラゴン</h2>
+                <!-- 画像パスを修正 -->
+                <img th:src="@{/img/test2.png}" alt="Enemy Dragon">
+                <div class="health-bar">
+                    <div class="health" style="width: 100%;"></div>
+                </div>
+                <p>HP: 300</p>
+            </div>
+        </div>
+    </div>
+    <div class="commands">
+        <button>ひっかく 10/10</button>
+        <button>上目づかい 20/20</button>
+        <button>じゃれる 20/20</button>
+        <button>火を吐く 5/5</button>
+        <button>逃げる</button>
+        <button class="logout-button">ログアウト</button>
+    </div>
+</body>
+</html>
