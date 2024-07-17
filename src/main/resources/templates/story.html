@@ -5,14 +5,52 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style2.css">
     <link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
+<style>
+	h1 {
+		font-family: "M PLUS Rounded 1c", sans-serif;
+		text-align: center;
+		margin-bottom: 10px;
+		font-size: 24px
+	}	
+        .scroll-text {
+            font-family: "VT323";
+            font-size: 16px;
+            text-align: left;
+            width: 100%;
+            animation: scrollUp 10s linear forwards;
+        }
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        .box p {
+            text-align: left;
+            text-indent: 1em;
+            font-size: 18px;
+            margin: 0;
+        }
+</style>
 <body>
-    <div class="story-container">
-        <div class="story-box">
-        <p>ストーリー</p>
+    <div class="container">
+		<h1>ストーリー</h1>
+        <div class="box">
+			<div class="scroll-text">
+				<p>遥か昔、神秘の森の奥深くに、畏れ多きドラゴンが住んでいた。<br>
+				その姿は可憐ながらも、その心に宿る闇は深く、誰もがその力に恐れをなしていた。<br>
+				<br>
+				<p>このゲームは、神秘の森で開かれる伝説のドラゴンバトル物語です。<br>
+				プレイヤーは「可憐で残酷なドラゴン」としてさまざまなステージで戦い、経験値を積み重ねながら他のドラゴンたちと対戦します。<br>
+				<br>
+				<p>好きなドラゴンを選択し、名前を付けてゲームを始めてください。</p>
+			</div>
         </div>
-        <form th:action="@{/character}" method="get">
-        <button  type="submit" class="character-select-button">キャラ選択へ</button>
+        <button type="submit" class="common-button">キャラクター選択へ</button>
     </div>
 </body>
 </html>

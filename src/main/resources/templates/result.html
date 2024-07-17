@@ -3,8 +3,9 @@
 <head>
     <title>可愛いけどドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/result.css">
+    <link rel="stylesheet" href="/css/style3.css">
     <link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
     <div class="background-overlay"></div>
@@ -17,12 +18,8 @@
         </div>
     </div>
     <div class="footer">
-        <form th:action="@{/battle}" method="get">
-            <button type="submit" class="learn-more">もう一度</button>
-        </form>
-        <form th:action="@{/stage}" method="get">
-            <button type="submit" class="learn-more">ステージ選択へ戻る</button>
-        </form>
+            <button type="submit" class="common-button">もう一度</button>
+            <button type="submit" class="common-button">ステージ選択へ戻る</button>
     </div>
 </body>
 </html>

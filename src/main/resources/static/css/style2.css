@@ -15,15 +15,13 @@
 
 /* 表示領域 */
 .box {
-    width: 60%;
-    height: 200px;
+    width: 70%;
+    height: 250px;
     margin: 20px auto;
     padding: 20px;
     border: 2px solid #000;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
+    align-items: flex-start;
+    overflow-y: auto;
+    background-color: rgb(255, 255, 255);
 }
-

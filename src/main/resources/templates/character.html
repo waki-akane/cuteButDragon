@@ -1,79 +1,69 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>可愛いけどドラゴン</title>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/character.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+	<title>可愛いけどドラゴン</title>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/character.css">
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
-    <h2 style="text-align: center; margin-bottom: 10px">キャラクター選択</h2>
-    <!-- フォームセクション -->
-    <form action="/submit" method="post" class="form-container">    
-    <!-- 画像選択セクション -->
-    <form action="/submit-url" method="post">
-      <div class="image-container">
-        <!-- ラジオボタンとラベルを使った画像選択 -->
-        <input type="radio" name="selectedImage" id="image1" value="1" hidden />
-        <label for="image1" class="image-label">
-          <img th:src="@{/img/1.png}" alt="Image 1">
-          <div class="image-description">
-            カード 1 の説明がここに表示されます。<br />これは複数行に<br />わたる可能性があります。
-          </div>
-        </label>
+	<h1>キャラクター選択</h1>
+	<!-- フォームセクション -->
+	<form action="/submit" method="post" class="form-container">    
+		<!-- 画像選択セクション -->
+		<div class="image-container">
+			<!-- ラジオボタンとラベルを使った画像選択 -->
+			<input type="radio" name="selectedImage" id="image1" value="1" hidden />
+			<label for="image1" class="image-label">
+				<img th:src="@{/img/1.png}" alt="Image 1">
+				<div class="image-description">
+					ドラゴン1<br>ここにドラゴン1の<br>説明を入力します
+				</div>
+			</label>
+	
+			<input type="radio" name="selectedImage" id="image2" value="2" hidden />
+			<label for="image2" class="image-label">
+				<img th:src="@{/img/2.png}" alt="Image 2">
+				<div class="image-description">
+					ドラゴン2<br>ここにドラゴン2の<br>説明を入力します
+				</div>
+			</label>
+	
+			<input type="radio" name="selectedImage" id="image3" value="3" hidden />
+			<label for="image3" class="image-label">
+				<img th:src="@{/img/3.png}" alt="Image 3">
+				<div class="image-description">
+					ドラゴン3<br>ここにドラゴン3の<br>説明を入力します
+				</div>
+			</label>
+	
+			<input type="radio" name="selectedImage" id="image4" value="4" hidden />
+			<label for="image4" class="image-label">
+				<img th:src="@{/img/4.png}" alt="Image 4">
+				<div class="image-description">
+					ドラゴン4<br>ここにドラゴン4の<br>説明を入力します
+				</div>
+			</label>
+	
+			<input type="radio" name="selectedImage" id="image5" value="5" hidden />
+			<label for="image5" class="image-label">
+				<img th:src="@{/img/5.png}" alt="Image 5">
+				<div class="image-description">
+					ドラゴン5<br>ここにドラゴン5の<br>説明を入力します
+				</div>
+			</label>
+		</div>
 
-        <input type="radio" name="selectedImage" id="image2" value="2" hidden />
-        <label for="image2" class="image-label">
-          <img th:src="@{/img/2.png}" alt="Image 2">
-          <div class="image-description">
-            カード 2 の説明がここに表示されます。<br />これは複数行に<br />わたる可能性があります。
-          </div>
-        </label>
-
-        <input type="radio" name="selectedImage" id="image3" value="3" hidden />
-        <label for="image3" class="image-label">
-          <img th:src="@{/img/3.png}" alt="Image 3">
-          <div class="image-description">
-            カード 3 の説明がここに表示されます。<br />これは複数行に<br />わたる可能性があります。
-          </div>
-        </label>
-
-        <input type="radio" name="selectedImage" id="image4" value="4" hidden />
-        <label for="image4" class="image-label">
-          <img th:src="@{/img/4.png}" alt="Image 4">
-          <div class="image-description">
-            カード 4 の説明がここに表示されます。<br />これは複数行に<br />わたる可能性があります。
-          </div>
-        </label>
-
-        <input type="radio" name="selectedImage" id="image5" value="5" hidden />
-        <label for="image5" class="image-label">
-          <img th:src="@{/img/5.png}" alt="Image 5">
-          <div class="image-description">
-            カード 5 の説明がここに表示されます。<br />これは複数行に<br />わたる可能性があります。
-          </div>
-        </label>
-      </div>
-
-      <!-- フォームセクション -->
-      <div class="form-container">
-        <!-- なまえラベルとテキストボックス -->
-        <div class="input-group">
-          <label for="name" style="font-size: 14px">なまえ</label>
-          <div class="InputContainer">
-            <input
-              type="text"
-              id="name"
-              name="inputText"
-              class="input"
-              placeholder="1〜10文字のひらがな"
-            />
-          </div>
-        </div>
-        <br />
-        <button type="submit" class="learn-more">ルール説明へ</button>
-      </div>
-    </form>
+		<!-- 入力セクション -->
+		<div class="form-container">
+			<div class="InputContainer">
+				<input type="text" id="name" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
+			</div>
+			<label for="name" class="form-label">なまえを入力してください</label>
+			<br>
+			<button type="submit" class="common-button">つぎへ　　</button>
+		</div>
+	</form>
 </body>
 </html>
