@@ -14,6 +14,7 @@ import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.service.ActionService;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
+import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +30,9 @@ public class GameController {
 	
 	@Autowired
 	EnemyMonsterService ems;
+	
+	@Autowired
+	UsertableService uts;
 	
 	int currentEmHp;
 	
@@ -228,6 +232,10 @@ public class GameController {
 			}
 			
 			model.addAttribute("mm", mm);
+			
+			if(user.getStatus() < selectStage) {
+				uts.clearUser(user.getUserId(), selectStage);
+			}
 			
 			return "result";
 		}

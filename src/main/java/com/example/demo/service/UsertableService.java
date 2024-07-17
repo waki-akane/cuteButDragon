@@ -9,7 +9,7 @@ public interface UsertableService {
 	public int createUser(UserTableEntryDTO userTableDTO);
 	
 	//ステージクリア時のステータス変更
-	public int clearUser(UserTableEntryDTO usreTableDTO);
+	public void clearUser(int userId,int selectStage);
 	
 	//ユーザー情報の表示
 	public UserTableEntity getByUserId(int userId);
