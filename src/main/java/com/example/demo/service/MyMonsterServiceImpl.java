@@ -13,7 +13,6 @@ import com.example.demo.repository.ActionRepository;
 import com.example.demo.repository.EnemyMonsterRepository;
 import com.example.demo.repository.InitialMonsterRepository;
 import com.example.demo.repository.MyMonsterRepository;
-import com.example.demo.repository.UserTableRepository;
 
 @Service
 public class MyMonsterServiceImpl implements MyMonsterService {
@@ -26,9 +25,6 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 
 	@Autowired
 	private InitialMonsterRepository imr;
-
-	@Autowired
-	private UserTableRepository utr;
 
 	@Autowired
 	private EnemyMonsterRepository emr;
