@@ -44,27 +44,12 @@ public class StageController {
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
+		model.addAttribute("mm",mm);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 
-		// 背景や敵キャラクターの情報をステージ番号に応じて追加
-		//画像は仮のファイル名です
-		switch (selectStage) {
-		case 1:
-			model.addAttribute("background", "bg1.jpg");//背景
-			model.addAttribute("enemy", "em1.png");//敵モンスター
-			break;
-		case 2:
-			model.addAttribute("background", "bg2.jpg");
-			model.addAttribute("enemy", "em2.png");
-			break;
-		case 3:
-			model.addAttribute("background", "bbg3.jpg");
-			model.addAttribute("enemy", "em3.png");
-			break;
-		}
-		return "battle1";
+		return "battle/battle1";
 	}
 
 }
