@@ -11,10 +11,7 @@ public interface EnemyMonsterService {
 	
 	//ドラゴン攻撃時のHP減少
 	public int subEmHp(int currentEmHp,int actionId,int mmId);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> stash
 
 }

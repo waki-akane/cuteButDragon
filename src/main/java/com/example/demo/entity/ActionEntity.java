@@ -25,25 +25,19 @@ public class ActionEntity {
 
 	private Integer techPoint;
 
-	@OneToMany(mappedBy = "action")
-	private List<InitialMonsterEntity> imList;
-
-	@OneToMany(mappedBy = "action")
-	private List<EnemyMonsterEntity> emList;
 
 	// リレーションシップの定義
-	/*	@OneToMany(mappedBy = "action")
-		private List<InitialMonsterEntity> imList1;
-		@OneToMany(mappedBy = "action")
-		private List<InitialMonsterEntity> imList2;
-		@OneToMany(mappedBy = "action")
-		private List<InitialMonsterEntity> imList3;
+	@OneToMany(mappedBy = "imAction1")
+	private List<InitialMonsterEntity> imList1;
+	@OneToMany(mappedBy = "imAction2")
+	private List<InitialMonsterEntity> imList2;
+	@OneToMany(mappedBy = "imAction3")
+	private List<InitialMonsterEntity> imList3;
 	
-		@OneToMany(mappedBy = "action")
-		private List<EnemyMonsterEntity> emList1;
-		@OneToMany(mappedBy = "action")
-		private List<EnemyMonsterEntity> emList2;
-		@OneToMany(mappedBy = "action")
-		private List<EnemyMonsterEntity> emList3;
-	*/
+	@OneToMany(mappedBy = "emAction1")
+	private List<EnemyMonsterEntity> emList1;
+	@OneToMany(mappedBy = "emAction2")
+	private List<EnemyMonsterEntity> emList2;
+	@OneToMany(mappedBy = "emAction3")
+	private List<EnemyMonsterEntity> emList3;
 }

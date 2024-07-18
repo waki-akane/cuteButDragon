@@ -58,7 +58,7 @@ public class GameController {
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm",mm);
 		
-		List<ActionEntity> actionList = as.imAllAction(mm.getImId().getImId());
+		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actionList", actionList);
 		
 		EnemyMonsterEntity em = ems.showEm(userId);
@@ -127,7 +127,7 @@ public class GameController {
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm",mm);
 		
-		List<ActionEntity> actionList = as.imAllAction(mm.getImId().getImId());
+		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actionList", actionList);
 		
 		EnemyMonsterEntity em = ems.showEm(selectStage);

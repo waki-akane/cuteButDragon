@@ -36,7 +36,7 @@ public class SecurityConfig {
 	            .logoutSuccessUrl("/login?logout") // ログアウト成功後のリダイレクト先 URL
 	        )
 	        .authorizeHttpRequests(authz -> authz
-	            .requestMatchers("/login", "/register").permitAll() // 「/login」「/register」はすべて許可
+	            .requestMatchers("/login", "/user").permitAll() // 「/login」「/register」はすべて許可
 	            .anyRequest().authenticated() // それ以外のリクエストは認証が必要
 	        );
 	    

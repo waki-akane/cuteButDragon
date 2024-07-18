@@ -12,13 +12,6 @@ public interface UsertableService {
 	public void clearUser(int userId,int selectStage);
 	
 	//ユーザー情報の表示
-<<<<<<< HEAD
 	public UserTableEntity getByUserId(int userId);
-=======
-	public UserTableEntity showUser(int userId);
-	
-	//最新ユーザーの検索
-	public int getMaxId();
->>>>>>> stash
 
 }

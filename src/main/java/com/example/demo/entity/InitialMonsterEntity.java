@@ -25,18 +25,18 @@ public class InitialMonsterEntity {
 	private String photo;
 
 	@ManyToOne
-	@JoinColumn(name = "actionId")
+	@JoinColumn(name = "imAction1")
 	private ActionEntity imAction1;
 
 	@ManyToOne
-	@JoinColumn(name = "actionId")
+	@JoinColumn(name = "imAction2")
 	private ActionEntity imAction2;
 
 	@ManyToOne
-	@JoinColumn(name = "actionId")
+	@JoinColumn(name = "imAction3")
 	private ActionEntity imAction3;
 
-	@OneToMany(mappedBy = "initialmonster")
-	private List<MyMonsterEntity> mmList;
+	@OneToMany(mappedBy = "im")
+	private List<MyMonsterEntity> imList;
 
 }

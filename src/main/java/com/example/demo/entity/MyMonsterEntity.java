@@ -33,6 +33,6 @@ public class MyMonsterEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "imId")
-	private InitialMonsterEntity imId;
+	private InitialMonsterEntity im;
 
 }

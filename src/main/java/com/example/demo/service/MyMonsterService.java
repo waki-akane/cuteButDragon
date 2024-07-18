@@ -10,12 +10,11 @@ public interface MyMonsterService {
 	public MyMonsterEntity showMm(int mmId);
 
 	//指定IDのｍｍのレベルアップ時のステータス変更（ＨＰ・攻撃力・レベル）
-	public String mmLevelUp(int mmId);
+	public int mmLevelUp(int mmId);
 
 	//ｍｍの登録
 	public void createMm(MyMonsterDTO myMonsterDTO,UserTableEntity user);
 
-<<<<<<< HEAD
 
 	//ステージクリア後の経験値アップ
 	public void addEx(int emId, int mmId, boolean result);
@@ -25,15 +24,5 @@ public interface MyMonsterService {
 
 	//指定ユーザーIDが所持するMM情報の取得
 	public MyMonsterEntity findByUserId(int userId);
-=======
-	//指定IDのドラゴンの攻撃情報の取得
-	public List<ActionEntity> mmAllAction(int mmId);
-	
-	//ステージクリア後の経験値アップ
-	public void addEx(int emId,int mmId,boolean result);
-	
-	//攻撃受けた時のHP変動
-	public int subHP(int currentHp,int actionId);
->>>>>>> stash
 
 }

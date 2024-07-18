@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.entity.EnemyMonsterEntity;
-import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
@@ -38,18 +36,18 @@ public class StageController {
 	}
 
 	//stage→battle
-	@GetMapping("/toBattle")
-	public String toBattle(Model model, HttpSession session, int selectStage) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-		int userId = user.getUserId();
-
-		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("mm",mm);
-
-		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em", em);
-
-		return "battle/battle1";
-	}
+//	@GetMapping("/toBattle")
+//	public String toBattle(Model model, HttpSession session, int selectStage) {
+//		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+//		int userId = user.getUserId();
+//
+//		MyMonsterEntity mm = mms.findByUserId(userId);
+//		model.addAttribute("mm",mm);
+//
+//		EnemyMonsterEntity em = ems.showEm(selectStage);
+//		model.addAttribute("em", em);
+//
+//		return "battle/battle1";
+//	}
 
 }

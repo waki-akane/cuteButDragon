@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,20 +13,17 @@ import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
 @Controller
-=======
->>>>>>> stash
 public class UserController {
-<<<<<<< HEAD
-
+	
 	@Autowired
 	UsertableService uts;
-
+	
 	@GetMapping("/login")
 	public String loginForm() {
 		// ログイン画面を表示
 		return "login";
 	}
-
+	
 	@GetMapping("loginsuccess")
 	public String loginSuccess(Model model) {
 		// ユーザー名
@@ -36,33 +32,30 @@ public class UserController {
 		model.addAttribute("username", principal.getUsername());
 		// ログインに成功したら表示する URL
 		return "stage";
-
+		
 	}
-
+	
 	// SecurityConfig の failureUrl で指定した URL と?のうしろのパラメータ
-	@GetMapping(value = "/login", params = "failure")
+	@GetMapping(value="/login", params="failure")
 	public String loginFail(Model model) {
 		model.addAttribute("failureMessage", "ログインに失敗しました");
 		// ログイン画面を表示
 		return "login";
 	}
-
+	
 	@PostMapping("/user")
-	public String addUser(UserTableEntryDTO ute, Model model) {
+	public String addUser(UserTableEntryDTO ute,Model model) {
 		uts.createUser(ute);
-		model.addAttribute("user", new UserTableEntryDTO());
-		return "redirect:login";
-	}
-
-	@GetMapping("/user")
-	public String showForm(Model model) {
-		model.addAttribute("user", new UserTableEntryDTO());
+		model.addAttribute("user", new UserTableEntryDTO()); 
 		return "user";
 	}
-=======
+	
+	@GetMapping("/user")
+	public String showForm(Model model) {
+		model.addAttribute("user",new UserTableEntryDTO());
+		return "user";
+	}
 	
 	
-	
->>>>>>> stash
-
+		
 }
