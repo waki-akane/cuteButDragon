@@ -41,14 +41,14 @@
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: rgb(192, 139, 147);
+    background-color: rgb(192, 139, 169);
     color: white;
     font-size: 1em;
     cursor: pointer;
 }
 
 .log-button:hover {
-    background-color: rgb(167, 128, 135);
+    background-color: rgb(186, 126, 160);
 }
 
 /* 新規登録リンク (ログイン) */
