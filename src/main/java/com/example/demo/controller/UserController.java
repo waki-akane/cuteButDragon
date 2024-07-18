@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.UserTableEntryDTO;
+import com.example.demo.entity.URL;
 import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
@@ -19,7 +20,8 @@ public class UserController {
 	UsertableService uts;
 	
 	@GetMapping("/login")
-	public String loginForm() {
+	public String loginForm(Model model) {
+		model.addAttribute("url",URL.url);
 		// ログイン画面を表示
 		return "login";
 	}
