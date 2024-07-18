@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,7 +14,10 @@ import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
 @Controller
+=======
+>>>>>>> stash
 public class UserController {
+<<<<<<< HEAD
 
 	@Autowired
 	UsertableService uts;
@@ -55,5 +59,10 @@ public class UserController {
 		model.addAttribute("user", new UserTableEntryDTO());
 		return "user";
 	}
+=======
+	
+	
+	
+>>>>>>> stash
 
 }
