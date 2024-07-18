@@ -46,7 +46,7 @@ public class UserController {
 	@PostMapping("/user")
 	public String addUser(UserTableEntryDTO ute,Model model) {
 		uts.createUser(ute);
-		model.addAttribute("user", new UserTableEntryDTO()); 
+		model.addAttribute("user", new UserTableEntryDTO());
 		return "user";
 	}
 	
