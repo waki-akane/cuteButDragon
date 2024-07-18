@@ -16,7 +16,7 @@
 			<form th:action="@{/login}" method="post">
 				<div class="login-container">
 					<div class="image-container">
-						<img src="https://waki-akane.github.io/cuteButDragon/src/main/resources/static/img/画像1.png" alt="画像">
+						<img th:src="@{img/画像1.png}" alt="画像">
 					</div>
 					<input type="text" placeholder="ニックネーム" class="input-field" required>
 					<input type="password" placeholder="パスワード" class="input-field" required>
