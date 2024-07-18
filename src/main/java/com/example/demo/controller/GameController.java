@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.entity.ActionEntity;
 import com.example.demo.entity.EnemyMonsterEntity;
 import com.example.demo.entity.MyMonsterEntity;
+import com.example.demo.entity.URL;
 import com.example.demo.service.ActionService;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
@@ -69,6 +70,7 @@ public class GameController {
 		currentEmHp = em.getEmHp();
 		model.addAttribute("currentEmHp",currentEmHp);
 		
+		model.addAttribute("url",URL.url);
 		
 		return "battle/battle2";
 	}
@@ -90,6 +92,8 @@ public class GameController {
 		
 		ActionEntity action = as.showAction(selectAction);
 		model.addAttribute(action);
+		
+		model.addAttribute("url",URL.url);
 		
 		return "battle/battle3";
 	}
@@ -114,6 +118,8 @@ public class GameController {
 		
 		model.addAttribute("currentMmHp",currentMmHp);
 		model.addAttribute("currentEmHp",currentEmHp);
+		
+		model.addAttribute("url",URL.url);
 		
 		return "battle/battle4";
 	}
@@ -152,6 +158,8 @@ public class GameController {
 		
 		model.addAttribute("currentMmHp",currentMmHp);
 		model.addAttribute("currentEmHp",currentEmHp);
+		
+		model.addAttribute("url",URL.url);
 		
 		return "battle/battle2";
 	}
@@ -192,6 +200,8 @@ public class GameController {
 		}
 		
 		model.addAttribute("mm", mm);
+		
+		model.addAttribute("url",URL.url);
 		
 		return "result";
 	}
@@ -236,6 +246,8 @@ public class GameController {
 			if(user.getStatus() < selectStage) {
 				uts.clearUser(user.getUserId(), selectStage);
 			}
+			
+			model.addAttribute("url",URL.url);
 			
 			return "result";
 		}

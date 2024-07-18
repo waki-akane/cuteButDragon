@@ -32,6 +32,7 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
 		model.addAttribute("username", principal.getUsername());
+		model.addAttribute("url",URL.url);
 		// ログインに成功したら表示する URL
 		return "stage";
 		
@@ -41,6 +42,7 @@ public class UserController {
 	@GetMapping(value="/login", params="failure")
 	public String loginFail(Model model) {
 		model.addAttribute("failureMessage", "ログインに失敗しました");
+		model.addAttribute("url",URL.url);
 		// ログイン画面を表示
 		return "login";
 	}
@@ -49,12 +51,14 @@ public class UserController {
 	public String addUser(UserTableEntryDTO ute,Model model) {
 		uts.createUser(ute);
 		model.addAttribute("user", new UserTableEntryDTO());
+		model.addAttribute("url",URL.url);
 		return "user";
 	}
 	
 	@GetMapping("/user")
 	public String showForm(Model model) {
 		model.addAttribute("user",new UserTableEntryDTO());
+		model.addAttribute("url",URL.url);
 		return "user";
 	}
 	

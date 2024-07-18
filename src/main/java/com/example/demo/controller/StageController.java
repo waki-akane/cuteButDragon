@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.demo.entity.URL;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
@@ -26,12 +27,16 @@ public class StageController {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int status = user.getStatus();
 		model.addAttribute("status", status);
+		
+		model.addAttribute("url",URL.url);
+		
 		return "status";
 	}
 
 	//[チュートリアル]ボタン押下時処理、stage→help
 	@GetMapping("/Help")
-	public String toHelp() {
+	public String toHelp(Model model) {
+		model.addAttribute("url",URL.url);
 		return "help";
 	}
 

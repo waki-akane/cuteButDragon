@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo.dto.MyMonsterDTO;
 import com.example.demo.entity.EnemyMonsterEntity;
 import com.example.demo.entity.MyMonsterEntity;
+import com.example.demo.entity.URL;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
@@ -29,6 +30,8 @@ public class HrsController {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int status = user.getStatus();
 		model.addAttribute("status", status);
+		
+		model.addAttribute("url",URL.url);
 
 		return "stage"; //stageページにリダイレクト
 	}
@@ -44,6 +47,8 @@ public class HrsController {
 		
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em",em);
+		
+		model.addAttribute("url",URL.url);
 
 		// StageControllerの同名メソッドと同じ処理を行う
 		// ここで必要なデータの準備などを行う
@@ -55,6 +60,9 @@ public class HrsController {
 	@GetMapping("/toCharcter")
 	public String toCharacter(Model model) {
 		model.addAttribute("mmDTO", new MyMonsterDTO());
+		
+		model.addAttribute("url",URL.url);
+		
 		return "character";
 	}
 
