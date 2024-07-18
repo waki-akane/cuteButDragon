@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>可愛いけどドラゴン</title>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/css/character.css">
-	<link rel="stylesheet" href="/css/styles.css">
+    <title>可愛いけどドラゴン</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/battle1.css">
+    <link rel="stylesheet" href="/css/styles.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
-    <div class="container">
-        <div class="monsters">
-            <div class="monster">
-                <h2>あなたのドラゴン</h2>
-                <!-- 画像パスを修正 -->
-                <img th:src="@{/img/test1.png}" alt="Your Dragon">
-                <div class="health-bar">
-                    <div class="health" style="width: 100%;"></div>
-                </div>
-                <p>HP: 300</p>
-            </div>
-            <div class="monster">
-                <h2>○○ドラゴン</h2>
-                <!-- 画像パスを修正 -->
-                <img th:src="@{/img/test2.png}" alt="Enemy Dragon">
-                <div class="health-bar">
-                    <div class="health" style="width: 100%;"></div>
-                </div>
-                <p>HP: 300</p>
-            </div>
-        </div>
-    </div>
-    <div class="commands">
-        <button>ひっかく 10/10</button>
-        <button>上目づかい 20/20</button>
-        <button>じゃれる 20/20</button>
-        <button>火を吐く 5/5</button>
-        <button>逃げる</button>
-        <button class="logout-button">ログアウト</button>
-    </div>
+	<div class="game-container">
+		<header>
+		</header>
+		<main>
+			<section id="game-area">
+				<p>ここにバトルの内容が表示されます</p>
+			</section>
+		</main>
+		<footer>
+			<button class="bookmarkBtn">
+			  <span class="IconContainer">
+				<svg viewBox="0 0 384 512" height="0.9em" class="icon">
+				  <path
+					d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+				  ></path>
+				</svg>
+			  </span>
+			  <p class="text">ログアウト</p>
+			</button>
+		</footer>
+	</div>
 </body>
 </html>

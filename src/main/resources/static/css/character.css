@@ -16,19 +16,20 @@
   flex-direction: column;
   align-items: center;
   margin: 10px; 
-  width: 150px; /* 画像の幅に合わせて調整 */
+  width: 150px;
   transition: transform 0.2s;
 }
 
 /* 画像フレームのスタイル */
 .image-label img {
-  border: 3px solid #ccc; /* 初期の枠線色をグレーに設定 */
+  border: 5px solid #ccc;
+  background-color: rgb(192, 192, 192);
 }
 
 /* 選択された画像のスタイル */
 input[type="radio"]:checked + .image-label img {
-  border-color: #f00; /* 選択時の枠線色を赤に設定 */
-  transform: scale(1.05); /* 選択時の拡大を設定 */
+  border-color: rgb(155, 155, 155);
+  transform: scale(1.05); 
 }
 
 /* ホバー時の画像の拡大効果 */
