@@ -1,27 +1,2 @@
 @charset "UTF-8";
-/* help、story共通 */
-
-/* コンテナ */
-.container {
-    width: 80%;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
-    position: relative;
-}
-
-/* 表示領域 */
-.box {
-    width: 70%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 2px solid #000;
-    border-radius: 8px;
-    align-items: flex-start;
-    overflow-y: auto;
-    background-color: rgb(255, 255, 255);
-}
+/* result、status共通 */

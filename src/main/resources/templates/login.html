@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <form th:action="@{/login}" method="post">
-    <div class="login-container">
-        <div class="image-container">
-            <img th:src="@{/img/画像1.png}" alt="画像">
-        </div>
-        <input type="text" placeholder="ニックネーム" class="input-field" required>
-        <input type="password" placeholder="パスワード" class="input-field" required>
-        <button  type="submit" class="login-button">ログイン</button>
-        <a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
-        <p class="password-reset-note">*ログインできない場合は新規登録してください</p>
-        </div>
-    </div>
+	<div class="game-container">
+	<header>
+		<h1>ログイン</h1>
+	</header>
+		<main>
+			<form th:action="@{/login}" method="post">
+				<div class="login-container">
+					<div class="image-container">
+						<img th:src="@{/img/画像1.png}" alt="画像">
+					</div>
+					<input type="text" placeholder="ニックネーム" class="input-field" required>
+					<input type="password" placeholder="パスワード" class="input-field" required>
+					<button  type="submit" class="log-button">ログイン</button>
+					<a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
+					<p class="password-reset-note">*ログインできない場合は新規登録してください</p>
+				</div>
+			</form>
+		</main>
+	</div>
+		<footer></footer>
 </body>
 </html>
 

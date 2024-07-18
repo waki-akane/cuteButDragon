@@ -1,56 +1,48 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>可愛いけどドラゴン</title>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style2.css">
-    <link rel="stylesheet" href="/css/styles.css">
+	<title>可愛いけどドラゴン</title>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/styles.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
-<style>
-	h1 {
-		font-family: "M PLUS Rounded 1c", sans-serif;
-		text-align: center;
-		margin-bottom: 10px;
-		font-size: 24px
-	}	
-        .scroll-text {
-            font-family: "VT323";
-            font-size: 16px;
-            text-align: left;
-            width: 100%;
-            animation: scrollUp 10s linear forwards;
-        }
-        @keyframes scrollUp {
-            0% {
-                transform: translateY(100%);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        .box p {
-            text-align: left;
-            text-indent: 1em;
-            font-size: 18px;
-            margin: 0;
-        }
-</style>
-<body>
-    <div class="container">
-		<h1>ストーリー</h1>
-        <div class="box">
-			<div class="scroll-text">
-				<p>遥か昔、神秘の森の奥深くに、畏れ多きドラゴンが住んでいた。<br>
-				その姿は可憐ながらも、その心に宿る闇は深く、誰もがその力に恐れをなしていた。<br>
-				<br>
-				<p>このゲームは、神秘の森で開かれる伝説のドラゴンバトル物語です。<br>
-				プレイヤーは「可憐で残酷なドラゴン」としてさまざまなステージで戦い、経験値を積み重ねながら他のドラゴンたちと対戦します。<br>
-				<br>
-				<p>好きなドラゴンを選択し、名前を付けてゲームを始めてください。</p>
-			</div>
-        </div>
-        <button type="submit" class="common-button">キャラクター選択へ</button>
-    </div>
-</body>
+	<body>
+		<div class="game-container">
+			<header>
+				<h1>ストーリー</h1>
+				<button class="bookmarkBtn">
+				  <span class="IconContainer">
+					<svg viewBox="0 0 384 512" height="0.9em" class="icon">
+					  <path
+						d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+					  ></path>
+					</svg>
+				  </span>
+				  <p class="text">ログアウト</p>
+				</button>
+			</header>
+			<main>
+				<section id="game-area">
+					<div class="box">
+						<div class="scroll-text">
+							<p>遥か昔、神秘の森の奥深くに、畏れ多きドラゴンが住んでいた。<br>
+							その姿は可憐ながらも、その心に宿る闇は深く、誰もがその力に恐れをなしていた。<br>
+							<br>
+							<p>このゲームは、神秘の森で開かれる伝説のドラゴンバトル物語です。<br>
+							プレイヤーは「可憐で残酷なドラゴン」としてさまざまなステージで戦い<br>
+							経験値を積み重ねながら他のドラゴンたちと対戦します。<br>
+							<br>
+							<p>好きなドラゴンを選択し、名前を付けてゲームを始めてください。</p>
+							<br><br><br><br><br>
+						</div>
+					</div>	
+				</section>
+			</main>
+			<footer>
+				<button type="submit" class="commonBtn">キャラクター選択へ</button>
+			</footer>
+		</div>
+	</body>
 </html>
+
+

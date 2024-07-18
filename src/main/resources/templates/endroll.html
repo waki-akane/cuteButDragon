@@ -7,19 +7,17 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-<div class="container">
-    <video id="myVideo" controls>
-        <source src="動画のURL" type="video/mp4">
-        Your browser does not support the video tag.
-        <track kind="metadata" src="metadata.vtt" default>
-    </video>
-    <a id="btnBack" class="btn-back" th:href="@{/login}">タイトルへ</a>
-</div>
-
-<script>
-    document.getElementById('myVideo').addEventListener('ended', function() {
-        document.getElementById('btnBack').classList.add('visible');
-    });
-</script>
+	<div class="game-container">
+		<header>
+		</header>
+		<main>
+			<section id="game-area">
+				<p>ここにエンドロールの内容が表示されます</p>
+			</section>
+		</main>
+		<footer>
+			<button type="submit" class="commonBtn">タイトルへ</button>
+		</footer>
+	</div>
 </body>
 </html>

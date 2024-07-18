@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /*ユーザー、ログイン共通*/
-
 /* ログイン画面のコンテナ (共通) */
 .login-container {
     width: 300px;
@@ -9,27 +8,23 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     text-align: center;
-    background-color: #f9f9f9;
-}
-
-/* ヘッダー (共通) */
-.header {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    background-color: #ffd1dc; 
 }
 
 /* 画像のコンテナ (共通) */
 .image-container {
     margin-bottom: 0px;
 }
+
 .image-container img {
-    width: 150px; /* 必要に応じて調整 */
+    width: 150px; 
     height: auto;
     border-radius: 50%;
 }
 
 /* 入力フィールド (共通) */
 .input-field {
+	font-family: 'M PLUS Rounded 1c', sans-serif;	
     width: 80%;
     padding: 10px;
     margin: 10px 0;
@@ -38,24 +33,27 @@
     font-size: 1em;
 }
 
-/* ログインボタン (ログイン) */
-.login-button {
+/* 共通ボタン*/
+.log-button {
+	font-family: 'M PLUS Rounded 1c', sans-serif;
     width: 80%;
     padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
+    background-color: rgb(192, 139, 147);
     color: white;
     font-size: 1em;
     cursor: pointer;
 }
-.login-button:hover {
-    background-color: #45a049;
+
+.log-button:hover {
+    background-color: rgb(167, 128, 135);
 }
 
 /* 新規登録リンク (ログイン) */
 .new-registration-link {
+	font-family: 'M PLUS Rounded 1c', sans-serif;
     display: block;
     margin-top: 20px;
     color: #0000EE;
@@ -67,6 +65,7 @@
 
 /* パスワード忘れメモ (ログイン) */
 .password-reset-note {
+	font-family: 'M PLUS Rounded 1c', sans-serif;
     margin-top: 10px;
     font-size: 0.7em;
     color: #555;
@@ -78,19 +77,4 @@
   font-size: 0.9em;
   color: #555;
   display: block;
-}
-/* 登録ボタン (ユーザー) */
-.register-button {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
-  font-size: 1em;
-  cursor: pointer;
-}
-.register-button:hover {
-  background-color: #45a049;
 }

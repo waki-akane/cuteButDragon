@@ -5,32 +5,39 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/stage.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <!-- 外部スタイルのリンク -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
-    <link rel="stylesheet" href="https://uiverse.io/css/heavy-badger-29.css">
-    <link rel="stylesheet" href="https://uiverse.io/css/terrible-catfish-72.css">
-    <link rel="stylesheet" href="https://uiverse.io/css/orange-lionfish-62.css">
 </head>
 <body>
-    <div class="stage-selection-container">
-        <!-- 1. ヘルプボタン -->
-        <button class="help-button">ヘルプ</button>
-        <!-- 2. ユーザー名（ID） -->
-        <p class="user-name">ユーザー名: <span th:text="${userName}">サンプルユーザー</span></p>
-        <!-- 3. ドラゴン画像 -->
-        <img src="/images/dragon.png" alt="ドラゴン" class="dragon-image">
-        <!-- 4. ドラゴン情報 -->
-        <p class="dragon-info">ドラゴン名: <span>炎のドラゴン</span><br>レベル: <span>10 (経験値: 1500)</span></p>
-        <!-- 5. 詳細ボタン -->
-        <button class="details-button">詳細</button>
-        <!-- 6. ステージボタン -->
-        <div class="stage-buttons">
-            <button class="stage-button">ステージ 1</button>
-            <button class="stage-button">ステージ 2</button>
-            <button class="stage-button">ステージ 3</button>
-        </div>
-        <!-- 7. ログアウトボタン -->
-        <button class="logout-button">ログアウト</button>
-    </div>
+	<div class="game-container">
+		<header>
+			<h1></h1>
+			<button class="bookmarkBtn">
+			  <span class="IconContainer">
+				<svg viewBox="0 0 384 512" height="0.9em" class="icon">
+				  <path
+					d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+				  ></path>
+				</svg>
+			  </span>
+			  <p class="text">ヘルプ</p>
+			</button>
+		</header>
+		<main>
+			<section id="game-area">
+				<p>ここにステージの内容が表示されます</p>
+			</section>
+		</main>
+		<footer>
+			<button class="bookmarkBtn">
+			  <span class="IconContainer">
+				<svg viewBox="0 0 384 512" height="0.9em" class="icon">
+				  <path
+					d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+				  ></path>
+				</svg>
+			  </span>
+			  <p class="text">ログアウト</p>
+			</button>
+		</footer>
+	</div>
 </body>
 </html>

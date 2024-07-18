@@ -8,20 +8,26 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
-	<form th:action="@{/user}" th:object="${user}" method="post">
-		<div class="login-container">
-			<div class="image-container">
-				<img th:src="@{/img/画像1.png}" alt="画像" />
-			</div>
-			<h1 class="header">ユーザー登録</h1>
-			<label for="name" class="label">ニックネーム</label>
-			<input type="text" id="name" placeholder="1〜10文字のひらがな" class="input-field" th:field="*{name}" required/>
-			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-			<label for="pass" class="label">パスワード</label>
-			<input type="password" id="pass" placeholder="8〜16文字の半角英数字" class="input-field" th:field="*{pass}" required/>
-			<p th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></p>
-			<button type="submit" class="register-button">登録</button>
-		</div>
-	</form>
+	<div class="game-container">
+	<header>
+		<h1>ユーザー登録</h1>
+		</header>
+			<main>
+				<form th:action="@{/user}" th:object="${user}" method="post">
+					<div class="login-container">
+						<div class="image-container">
+							<img th:src="@{/img/画像1.png}" alt="画像" />
+						</div>
+						<label for="name" class="label">ニックネーム</label>
+						<input type="text" id="name" placeholder="1〜10文字のひらがな" class="input-field" th:field="*{name}" required/>
+						<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+						<label for="pass" class="label">パスワード</label>
+						<input type="password" id="pass" placeholder="8〜16文字の半角英数字" class="input-field" th:field="*{pass}" required/>
+						<p th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></p>
+						<button type="submit" class="log-button">登録</button>
+					</div>
+				</form>	
+			</main>
+			<footer></footer>
 </body>
 </html>

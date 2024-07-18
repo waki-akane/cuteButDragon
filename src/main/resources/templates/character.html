@@ -7,63 +7,81 @@
 	<link rel="stylesheet" href="/css/styles.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
-<body>
-	<h1>キャラクター選択</h1>
-	<!-- フォームセクション -->
-	<form action="/submit" method="post" class="form-container">    
-		<!-- 画像選択セクション -->
-		<div class="image-container">
-			<!-- ラジオボタンとラベルを使った画像選択 -->
-			<input type="radio" name="selectedImage" id="image1" value="1" hidden />
-			<label for="image1" class="image-label">
-				<img th:src="@{/img/1.png}" alt="Image 1">
-				<div class="image-description">
-					ドラゴン1<br>ここにドラゴン1の<br>説明を入力します
-				</div>
-			</label>
-	
-			<input type="radio" name="selectedImage" id="image2" value="2" hidden />
-			<label for="image2" class="image-label">
-				<img th:src="@{/img/2.png}" alt="Image 2">
-				<div class="image-description">
-					ドラゴン2<br>ここにドラゴン2の<br>説明を入力します
-				</div>
-			</label>
-	
-			<input type="radio" name="selectedImage" id="image3" value="3" hidden />
-			<label for="image3" class="image-label">
-				<img th:src="@{/img/3.png}" alt="Image 3">
-				<div class="image-description">
-					ドラゴン3<br>ここにドラゴン3の<br>説明を入力します
-				</div>
-			</label>
-	
-			<input type="radio" name="selectedImage" id="image4" value="4" hidden />
-			<label for="image4" class="image-label">
-				<img th:src="@{/img/4.png}" alt="Image 4">
-				<div class="image-description">
-					ドラゴン4<br>ここにドラゴン4の<br>説明を入力します
-				</div>
-			</label>
-	
-			<input type="radio" name="selectedImage" id="image5" value="5" hidden />
-			<label for="image5" class="image-label">
-				<img th:src="@{/img/5.png}" alt="Image 5">
-				<div class="image-description">
-					ドラゴン5<br>ここにドラゴン5の<br>説明を入力します
-				</div>
-			</label>
-		</div>
+	<body>
+		<div class="game-container">
+			<header>
+				<h1>キャラクター選択</h1>
+				<button class="bookmarkBtn">
+				  <span class="IconContainer">
+					<svg viewBox="0 0 384 512" height="0.9em" class="icon">
+					  <path
+						d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+					  ></path>
+					</svg>
+				  </span>
+				  <p class="text">ログアウト</p>
+				</button>
+			</header>
+			<main>
+				<section id="game-area">
+						<!-- フォームセクション -->
+						<form action="/submit" method="post" class="form-container">    
+							<!-- 画像選択セクション -->
+							<div class="image-container">
+								<!-- ラジオボタンとラベルを使った画像選択 -->
+								<input type="radio" name="selectedImage" id="image1" value="1" hidden />
+								<label for="image1" class="image-label">
+									<img th:src="@{/img/mm/1.png}" alt="Image 1">
+									<div class="image-description">
+										ドラゴン1<br>ここにドラゴン1の<br>説明を入力します
+									</div>
+								</label>
 
-		<!-- 入力セクション -->
-		<div class="form-container">
-			<div class="InputContainer">
-				<input type="text" id="name" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
-			</div>
-			<label for="name" class="form-label">なまえを入力してください</label>
-			<br>
-			<button type="submit" class="common-button">つぎへ　　</button>
+								<input type="radio" name="selectedImage" id="image2" value="2" hidden />
+								<label for="image2" class="image-label">
+									<img th:src="@{/img/mm/2.png}" alt="Image 2">
+									<div class="image-description">
+										ドラゴン2<br>ここにドラゴン2の<br>説明を入力します
+									</div>
+								</label>
+
+								<input type="radio" name="selectedImage" id="image3" value="3" hidden />
+								<label for="image3" class="image-label">
+									<img th:src="@{/img/mm/3.png}" alt="Image 3">
+									<div class="image-description">
+										ドラゴン3<br>ここにドラゴン3の<br>説明を入力します
+									</div>
+								</label>
+
+								<input type="radio" name="selectedImage" id="image4" value="4" hidden />
+								<label for="image4" class="image-label">
+									<img th:src="@{/img/mm/4.png}" alt="Image 4">
+									<div class="image-description">
+										ドラゴン4<br>ここにドラゴン4の<br>説明を入力します
+									</div>
+								</label>
+
+								<input type="radio" name="selectedImage" id="image5" value="5" hidden />
+								<label for="image5" class="image-label">
+									<img th:src="@{/img/mm/5.png}" alt="Image 5">
+									<div class="image-description">
+										ドラゴン5<br>ここにドラゴン5の<br>説明を入力します
+									</div>
+								</label>
+							</div>
+							<!-- 入力セクション -->
+								<div class="InputContainer">
+									<input type="text" id="name" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
+								</div>
+								<label for="name" class="form-label">なまえを入力してください</label>
+				</section>
+			</main>
+			<footer>
+				<button type="submit" class="commonBtn">つぎへ　　</button>
+			</footer>
 		</div>
-	</form>
-</body>
+		</form>
+	</body>
 </html>
+
+
