@@ -2,13 +2,24 @@
 /*ユーザー、ログイン共通*/
 /* ログイン画面のコンテナ (共通) */
 .login-container {
-    width: 300px;
+    width: 90%; /* パーセンテージで幅を設定し、レスポンシブ対応 */
+    max-width: 350px; /* 最大幅を設定して、幅が大きくなりすぎないようにする */
     margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 15px;
+    border: 2px solid #ffe4e1;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #ffd1dc; 
+    background-color: rgb(255, 218, 228);
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+}
+
+/* 小さな画面向けのメディアクエリ */
+@media (max-width: 600px) {
+    .login-container {
+        width: 95%; /* 小さな画面では幅のパーセンテージを増やす */
+        margin: 20px auto; /* 小さな画面ではマージンを調整 */
+    }
 }
 
 /* 画像のコンテナ (共通) */
@@ -41,14 +52,14 @@
     margin: 10px 0;
     border: none;
     border-radius: 5px;
-    background-color: rgb(192, 139, 169);
+    background-color: rgb(192, 139, 147);
     color: white;
     font-size: 1em;
     cursor: pointer;
 }
 
 .log-button:hover {
-    background-color: rgb(186, 126, 160);
+    background-color: rgb(167, 128, 135);
 }
 
 /* 新規登録リンク (ログイン) */
@@ -59,6 +70,7 @@
     color: #0000EE;
     text-decoration: none;
 }
+
 .new-registration-link:hover {
     text-decoration: underline;
 }
@@ -70,6 +82,7 @@
     font-size: 0.7em;
     color: #555;
 }
+
 /* ラベル (ユーザー) */
 .label {
   text-align: left;

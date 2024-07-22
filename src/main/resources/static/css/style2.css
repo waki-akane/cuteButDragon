@@ -1,55 +1,134 @@
 @charset "UTF-8";
 /* result、status共通 */
+.center-box {
+    padding: 15px 10px;
+    background: #d0b78f;
+    color: #431a1a;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.03);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 45%;
+    height: 50%;
+    z-index: 1000;
+}
+
+.center-box_title {
+    text-align: center;
+    font-size: calc(1.7vw + 0.6em);
+    position: fixed;
+    top: 15px;
+    left: 50%; 
+    transform: translateX(-50%); 
+    margin-top: 10px;
+    z-index: 1001;
+}
+
+.center-box_tape {
+    width: 50%;
+    height: 35px;
+    margin: -15px auto 0;
+    background: rgb(170, 121, 65);
+    transform: rotate(-3deg);
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    left: 25%;
+}
+
+@keyframes win {
+    0%, 100% { transform: rotate(0deg); }
+    25%, 75% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+@keyframes lose {
+    0% { transform: rotate(0deg); }
+    40% { transform: rotate(15deg); }
+    100% { transform: rotate(15deg); }
+}
+
 .left-images {
     position: absolute;
-    top: 20%; /* 調整可能 */
-    left: 30%; /* 調整可能 */
-    cursor: pointer;
+    bottom: 20%;
+    left: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px;
-    width: 150px;
+    width: 25%;
+    height: 55%;
     transition: transform 0.2s;
 }
 
+.left-images img {
+    width: 100%;
+    height: 60%;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.left-images img:first-of-type {
+    height: 40%;
+    object-fit: contain;
+}
+
+.left-images img:last-of-type {
+    height: 60%;
+    object-fit: contain;
+}
+
+.win-image {
+    animation: win 1.5s ease-in-out 0.8;
+    animation-fill-mode: forwards;
+}
+
+.lose-image {
+    animation: lose 1.5s ease-in-out forwards;
+}
+
 .right-box {
-    position: absolute;
-    top: 20%; /* 調整可能 */
-    right: 30%; /* 調整可能 */
-    width: 260px;
-    padding: 15px;
-    margin: 2em auto;
-    background: #d0b78f;
+    width: 35%;
     color: #431a1a;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.03);
-    transform: rotate(2deg);
-    word-break: break-all;
+    text-align: left;
+    z-index: 1001;
+    position: absolute; 
+    right: 22%; 
+    top: 30%; 
+    font-size: calc(1vw + 0.5em);
+    padding-bottom: 3vw; /* スペースを確保するためにパディングを追加 */
 }
 
-.right-box p {
+/* EXPバーのコンテナスタイル */
+.exp-bar-container {
+    margin-top: 4vw; /* ステータス情報との間に十分なスペースを確保 */
+    width: 100%;
+    position: relative;
+}
+
+/* EXPバーのスタイル */
+.exp-bar {
+    background-color: #383838;
+    border-radius: 0.4vw;
+    overflow: hidden;
+    height: 1vw;
+}
+
+/* EXP進行のスタイル */
+.exp-progress {
+    background-color: #4caf50;
+    height: 100%;
+}
+
+/* EXPテキストのスタイル */
+.exp-text {
+    color: #333;
+    line-height: 1;
+    white-space: nowrap;
     margin: 0;
-    padding: 0;
-    font-size: 1.3em;
-    line-height: 1.5;
+    position: absolute;
+    left: 0.8vw;
+    bottom: 100%; /* バーのすぐ上に表示 */
+    transform: translateY(-50%);
 }
-
-.right-box_tape {
-    width: 50%;
-    height: 35px;
-    margin: -25px auto 0;
-    background: #eef47bb6;
-    transform: rotate(-3deg);
-    opacity: 0.5;
-}
-.right-box_title {
-    text-align: center;
-    font-size: 2.3em !important;
-    margin-top: 10px !important;
-}
-.right-box_subtitle {
-    text-align: center;
-    font-size: 0.9em !important;
-    margin-bottom: 1em !important;
-}
-        

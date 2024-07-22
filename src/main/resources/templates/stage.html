@@ -23,9 +23,32 @@
 			</button>
 		</header>
 		<main>
-			<section id="game-area">
-				<p>ここにステージの内容が表示されます</p>
-			</section>
+			<section id="game-area" style="background:#e5c18d;">
+				<div class="background-container" style="background-image: url('img/bg/map.jpg');">
+
+				<p class="player-name">プレイヤー名</p>
+				
+				<div class="status-bar">
+				    <!-- ステータスバー内にアイコンを配置 -->
+				    <div class="icon-frame">
+				        <img src="icon.png" alt="アイコン" class="status-icon" th:src="@{img/mm/1.png}">
+				    </div>
+					<!-- ステータス情報 -->
+				    <div class="status">
+				        <p class="monster-info">モンスター名　　レベル 1</p>
+				        <div class="exp-bar-container">
+				            <div class="exp-bar">
+								
+				                <div class="exp-progress" style="width: 10%;"></div> 
+				            </div>
+				            <div class="exp-text">EXP:50/100</div>
+				        </div>
+				    </div>
+
+				</div>
+				    <!-- 詳細ボタン -->
+				    <button class="details-button">詳細</button>
+		</section>
 		</main>
 		<footer>
 			<button class="bookmarkBtn">
