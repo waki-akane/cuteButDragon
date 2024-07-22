@@ -82,7 +82,9 @@ public class GameController {
 	
 	//battle2→battle3
 	@GetMapping("/battle/battle3")
-	public String toBattle3(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,@RequestParam("selectAction")int selectAction) {
+	public String toBattle3(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
+			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,
+			@RequestParam("selectAction")int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -105,7 +107,9 @@ public class GameController {
 	
 	//battle3 -> battle4 or battle3 -> battle6
 	@GetMapping("/battle/battle4")
-	public String toBattle4(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,@RequestParam("selectAction")int selectAction) {
+	public String toBattle4(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
+			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,
+			@RequestParam("selectAction")int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -131,7 +135,8 @@ public class GameController {
 	
 	//battle4 -> battle2 or battle4 -> battle5
 	@GetMapping("/battle/battle2")
-	public String toBattle2(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp) {
+	public String toBattle2(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
+			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -229,7 +234,6 @@ public class GameController {
 			
 			model.addAttribute("beforeMm",mm);
 			
-			//これだと連続レベルアップしたときにbeforeMmに入っているデータがおかしくなるんよなー
 			if(mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
 				//model.addAttribute("beforeMm",mm);
 				mms.mmLevelUp(mm.getMmId());
