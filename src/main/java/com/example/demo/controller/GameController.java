@@ -226,22 +226,24 @@ public class GameController {
 			mms.addEx(selectStage, mm.getMmId(), result);
 			mm = mms.findByUserId(userId);
 			
+			model.addAttribute("beforeMm",mm);
+			
 			//これだと連続レベルアップしたときにbeforeMmに入っているデータがおかしくなるんよなー
 			if(mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-				model.addAttribute("beforeMm",mm);
+				//model.addAttribute("beforeMm",mm);
 				mms.mmLevelUp(mm.getMmId());
 				mm = mms.showMm(mm.getMmId());
 			}
 			
 			if(mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-				model.addAttribute("beforeMm",mm);
+				//model.addAttribute("beforeMm",mm);
 				mms.mmLevelUp(mm.getMmId());
 				mm = mms.showMm(mm.getMmId());
 			}
 			
 			if(mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
 				model.addAttribute("beforeMm",mm);
-				mms.mmLevelUp(mm.getMmId());
+				//mms.mmLevelUp(mm.getMmId());
 				mm = mms.showMm(mm.getMmId());
 			}
 			
