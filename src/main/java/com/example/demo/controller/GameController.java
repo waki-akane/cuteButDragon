@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.ActionEntity;
 import com.example.demo.entity.EnemyMonsterEntity;
@@ -56,7 +57,7 @@ public class GameController {
 	
 	//battle1 -> Battle2(技選択画面)へ
 	@GetMapping("/next")
-    public String toBattle2(HttpSession session, Model model,int selectStage) {
+    public String toBattle2(HttpSession session, Model model,@RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -81,7 +82,7 @@ public class GameController {
 	
 	//battle2→battle3
 	@GetMapping("/battle/battle3")
-	public String toBattle3(HttpSession session,Model model,int selectStage,int currentEmHp,int currentMmHp,int selectAction) {
+	public String toBattle3(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,@RequestParam("selectAction")int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -104,7 +105,7 @@ public class GameController {
 	
 	//battle3 -> battle4 or battle3 -> battle6
 	@GetMapping("/battle/battle4")
-	public String toBattle4(HttpSession session,Model model,int selectStage,int currentEmHp,int currentMmHp,int selectAction) {
+	public String toBattle4(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,@RequestParam("selectAction")int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -130,7 +131,7 @@ public class GameController {
 	
 	//battle4 -> battle2 or battle4 -> battle5
 	@GetMapping("/battle/battle2")
-	public String toBattle2(HttpSession session,Model model,int selectStage,int currentMmHp,int currentEmHp) {
+	public String toBattle2(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -170,7 +171,7 @@ public class GameController {
 	
 	//battle5 -> result
 	@GetMapping("/toLoseResult")
-	public String lose(HttpSession session,Model model,int selectStage) {
+	public String lose(HttpSession session,Model model,@RequestParam("selectStage")int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		
@@ -212,7 +213,7 @@ public class GameController {
 	
 	//battle6 -> result
 		@GetMapping("/toWinResult")
-		public String win(HttpSession session,Model model,int selectStage) {
+		public String win(HttpSession session,Model model,@RequestParam("selectStage")int selectStage) {
 			UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 			int userId = user.getUserId();
 			
