@@ -14,6 +14,7 @@ import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.entity.URL;
 import com.example.demo.service.ActionService;
 import com.example.demo.service.EnemyMonsterService;
+import com.example.demo.service.InitialMonsterService;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
@@ -34,6 +35,9 @@ public class GameController {
 	
 	@Autowired
 	UsertableService uts;
+	
+	@Autowired
+	InitialMonsterService ims;
 	
 	int currentEmHp;
 	
