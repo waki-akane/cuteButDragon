@@ -50,9 +50,8 @@ public class UserController {
 	@PostMapping("/user")
 	public String addUser(UserTableEntryDTO ute,Model model) {
 		uts.createUser(ute);
-		model.addAttribute("user", new UserTableEntryDTO());
 		model.addAttribute("url",URL.url);
-		return "user";
+		return "redirect:login";
 	}
 	
 	@GetMapping("/user")
