@@ -23,7 +23,7 @@
 	</header>
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="background-image: url(' + ${url} + 'img/bg/bg.jpg);'"></div>
+			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/bg.jpg);'">
 			<div class="overlay"></div>
 				<div class="box">
 					<div class="help-text">
@@ -33,7 +33,10 @@
 		</section>
 	</main>
 	<footer>
-		<button class="commonBtn">ステージ選択へ</button>
+		<form th:action="@{/toStage }">
+
+		<button class="commonBtn" type="submit">ステージ選択へ</button>
+		</form>
 	</footer>
 	</div>
 </body>
