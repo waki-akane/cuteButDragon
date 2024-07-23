@@ -12,7 +12,8 @@
     <div class="game-container">
 	<header>
 		<h1>可愛いけどドラゴン</h1>				
-		<button class="bookmarkBtn">
+		<form th:action="@{/logout}" method="post" style="display: inline;">
+		<button type="submit" class="bookmarkBtn">
 		  <span class="IconContainer">
 			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
 			  <path
@@ -25,7 +26,7 @@
 	</header>
 	<main>
 		<section id="game-area">
-            <div class="background-image" th:style="background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+            <div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
 			<div class="dialogue-bar">
                 <p text="dialogue">ここに本文を入れます♪</p>
                 <div class="choices">

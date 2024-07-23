@@ -12,32 +12,47 @@
     <div class="game-container">
 	<header>
 		<h1>可愛いけどドラゴン</h1>				
-		<button class="bookmarkBtn">
-		  <span class="IconContainer">
-			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
-			  <path
-				d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-			  ></path>
-			</svg>
-		  </span>
-		  <p class="text">ログアウト</p>
-		</button>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="bookmarkBtn">
+                    <span class="IconContainer">
+                        <svg viewBox="0 0 384 512" height="0.9em" class="icon">
+                            <path
+                                d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
+                            ></path>
+                        </svg>
+                    </span>
+                    <p class="text">ログアウト</p>
+                </button>
+            </form>
 	</header>
 	<main>
+		<p th:text="${selectStage}">Select Stage Value</p>
 		<section id="game-area">
-            <div class="background-image" th:style="background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+            <div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
 			<div class="dialogue-bar">
                 <p text="dialogue">ここに本文を入れます♪</p>
-                <div class="choices">
-                    <button text="choice.text">>選択肢</button>
-					<button text="choice.text">>選択肢</button>
-					<button text="choice.text">>選択肢</button>
-                </div>
-                <button class="confirm-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                    </svg>
-                </button>
+                    <div class="choices">
+                        <form th:action="@{/next}">
+                            <input type="hidden" name="selectStage" th:value="${em}">
+                            <input type="hidden" name="currentEmHp" th:value="${currentEmHp}">
+                            <input type="hidden" name="currentMmHp" th:value="${currentMmHp}">
+                            <label>
+                                <input type="radio" name="choice" value="1"> ＞選択肢1
+                            </label>
+                            <label>
+                                <input type="radio" name="choice" value="2"> ＞選択肢2
+                            </label>
+                            <label>
+                                <input type="radio" name="choice" value="3"> ＞選択肢3
+                            </label>
+                            <button class="decision-button">＞＞決定</button>
+							<button class="confirm-button">
+							    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+							        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+							    </svg>
+							    <span>逃げる</span>
+							</button>
+                        </form>
             </div>
         </section>
     </main>
