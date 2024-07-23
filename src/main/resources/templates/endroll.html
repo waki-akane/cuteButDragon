@@ -3,24 +3,24 @@
 <head>
     <title>可愛いけどドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <base th:href="${url}">
-    <link rel="stylesheet" href="css/endroll.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" th:href="@{${url} + 'css/endroll.css'}">
+    <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
 	<div class="game-container">
-		<header>
-			<h1>可愛いけどドラゴン</h1>
-		</header>
-		<main>
-			<section id="game-area">
-				<div class="background-image" style="background-image: url('img/bg/end.gif');"></div>
-				<p>ここにエンドロールの内容が表示されます</p>
-			</section>
-		</main>
-		<footer>
-			<button class="commonBtn">タイトルへ</button>
-		</footer>
+	<header>
+		<h1>可愛いけどドラゴン</h1>
+	</header>
+	<main>
+		<section id="game-area">
+			<div class="background-image" th:style="background-image: url(' + ${url} + 'img/bg/end.gif);'"></div>
+			<p>ここにエンドロールの内容が表示されます</p>
+		</section>
+	</main>
+	<footer>
+		<button class="commonBtn">タイトルへ</button>
+	</footer>
 	</div>
 </body>
 </html>

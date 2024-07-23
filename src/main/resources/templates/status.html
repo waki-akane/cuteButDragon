@@ -3,53 +3,52 @@
 <head>
     <title>可愛いけどドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <base th:href="${url}">
-    <link rel="stylesheet" href="css/style2.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" th:href="@{${url} + 'css/style2.css'}">
+    <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
     <div class="game-container">
-        <header>
-            <h1>可愛いけどドラゴン</h1>
-            <button class="bookmarkBtn">
-                <span class="IconContainer">
-                    <svg viewBox="0 0 384 512" height="0.9em" class="icon">
-                        <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path>
-                    </svg>
-                </span>
-                <p class="text">ログアウト</p>
-            </button>
-        </header>
-        <main>
-			<section id="game-area">
-			    <div class="background-image" style="background-image: url('img/em/bg_1.jpg');"></div>
-			    <div class="overlay"></div>
-				<div class="center-box">
-			    <div class="left-images">
-					<img th:src="@{img/mm/1_2.png}" style="width: 100%; height: auto; margin-top: 30px;" alt="image">
-			    </div>
-			        <div class="center-box_tape"></div>
-			        <p class="center-box_title">Status</p>     
-			    </div>
-				<div class="right-box">
-				    <p>なまえ　：　</p>
-					<p>レベル　：　Ｌｖ２</p>
-					<p>技　：　</p>
-					<!-- EXP情報 -->
-					<div class="exp-bar-container">
-					    <div class="exp-bar">
-					        <div class="exp-progress" style="width: 50%;"></div>
-					    </div>
-					    <p class="exp-text">EXP: 50/100</p>
-					</div>					
-				</div>
-			</section>
-        </main>
-        <footer>    
-            <button type="submit" class="commonBtn">もう一度</button>
-            <button type="submit" class="commonBtn">ステージ選択へ戻る</button>
-        </footer>
+    <header>
+        <h1>可愛いけどドラゴン</h1>
+        <button class="bookmarkBtn">
+            <span class="IconContainer">
+                <svg viewBox="0 0 384 512" height="0.9em" class="icon">
+                    <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path>
+                </svg>
+            </span>
+            <p class="text">ログアウト</p>
+        </button>
+    </header>
+    <main>
+		<section id="game-area">
+		    <div class="background-image" th:style="background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+		    <div class="overlay"></div>
+			<div class="center-box">
+		    <div class="left-images">
+				<img th:src="@{${url} + 'img/mm/1_2.png'}" style="width: 100%; height: auto; margin-top: 30px;" alt="image">
+		    </div>
+		        <div class="center-box_tape"></div>
+		        <p class="center-box_title">Status</p>     
+		    </div>
+			<div class="right-box">
+			    <p>なまえ　：　</p>
+				<p>レベル　：　Ｌｖ２</p>
+				<p>技　：　</p>
+				<!-- EXP情報 -->
+				<div class="exp-bar-container">
+				    <div class="exp-bar">
+				        <div class="exp-progress" style="width: 50%;"></div>
+				    </div>
+				    <p class="exp-text">EXP: 50/100</p>
+				</div>					
+			</div>
+		</section>
+    </main>
+    <footer>    
+        <button type="submit" class="commonBtn">もう一度</button>
+        <button type="submit" class="commonBtn">ステージ選択へ戻る</button>
+    </footer>
     </div>
 </body>
 </html>

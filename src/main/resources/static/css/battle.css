@@ -1,1 +1,61 @@
 @charset "UTF-8";
+/* ダイアログバーと選択肢ボタンの色合わせ */
+.dialogue-bar {
+    background: rgba(252, 239, 242, 0.8); /* 半透明に設定 */
+    box-shadow: rgba(252, 239, 242, 0.8) 0 0 10px 10px;
+    margin: 10px;
+    font-size: 0.9em; /* フォントサイズを少し小さくする */
+    padding: 10px 15px; /* 上下のパディングを減らす */
+    width: 90%; /* ゲームエリアより少し小さめに設定 */
+    max-width: 800px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+.choices button {
+    background: transparent;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+    border-radius: 5px; /* ボタンの角を少し丸くする */
+}
+
+.choices button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 確認ボタン */
+.confirm-button {
+    background:transparent; /* 透明な背景色を設定 */
+    border: none;
+    padding: 0px 10px; /* パディングを設定 */
+    cursor: pointer;
+    font-size: 0.8em;
+    position: absolute;
+    bottom: -10px;  /* 下部ギリギリに配置 */
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333;
+    border-radius: 10px; /* 角を丸くする */
+    z-index: 1;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.confirm-button:hover {
+    background: rgba(0, 0, 0, 0.2); /* ホバー時の背景色 */
+    transform: translateX(-50%) translateY(-2px); /* 少し上に移動 */
+}
