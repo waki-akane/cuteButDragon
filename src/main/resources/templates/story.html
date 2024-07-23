@@ -4,7 +4,7 @@
 	<title>可愛いけどドラゴン</title>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
-	<link rel="stylesheet" th:href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
 	<div class="game-container">
@@ -38,7 +38,9 @@
 		</section>
 	</main>
 	<footer>
-		<button class="commonBtn">キャラクター選択へ</button>
+		<form th:action="@{/toCharcter}">
+		<button class="commonBtn" type="submit">キャラクター選択へ</button>
+		</form>
 	</footer>
 	</div>
 </body>
