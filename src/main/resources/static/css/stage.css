@@ -191,6 +191,6 @@ button.stage-button.disabled {
 .button-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* ボタンと矢印を中央に配置 */
-    gap: 0; /* 矢印の幅分のスペースを確保 */
+    justify-content: space-between; /* ボタンと矢印を中央に配置 */
+    gap: 1em; /* 矢印の幅分のスペースを確保 */
 }
