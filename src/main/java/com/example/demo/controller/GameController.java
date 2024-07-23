@@ -24,243 +24,248 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class GameController {
-	
+
 	@Autowired
 	MyMonsterService mms;
-	
+
 	@Autowired
 	ActionService as;
-	
+
 	@Autowired
 	EnemyMonsterService ems;
-	
+
 	@Autowired
 	UsertableService uts;
-	
+
 	@Autowired
 	InitialMonsterService ims;
-	
+
 	int currentEmHp;
-	
+
 	int currentMmHp;
-	
+
 	int Ex2 = 1000;
 	int Ex3 = 2000;
 	int Ex4 = 3000;
-	
-//	①モンスター遭遇
-//	②攻撃選択
-//	③味方モンスターの攻撃、相手へのダメージ
-//	④敵モンスターの攻撃、味方へのダメージ
-//	⑤敵モンスターHP０
-//	⑥味方モンスターHP０
-	
+
+	//	①モンスター遭遇
+	//	②攻撃選択
+	//	③味方モンスターの攻撃、相手へのダメージ
+	//	④敵モンスターの攻撃、味方へのダメージ
+	//	⑤敵モンスターHP０
+	//	⑥味方モンスターHP０
+
 	//battle1 -> Battle2(技選択画面)へ
 	@GetMapping("/next")
-    public String toBattle2(HttpSession session, Model model,@RequestParam("selectStage") int selectStage) {
+	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
-		
+
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("mm",mm);
-		
+		model.addAttribute("mm", mm);
+
 		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actionList", actionList);
-		
+
 		EnemyMonsterEntity em = ems.showEm(userId);
-		model.addAttribute("em",em);
-		
+		model.addAttribute("em", em);
+
 		currentMmHp = mm.getMmHp();
-		model.addAttribute("currentMmHp",currentMmHp);
+		model.addAttribute("currentMmHp", currentMmHp);
 		currentEmHp = em.getEmHp();
-		model.addAttribute("currentEmHp",currentEmHp);
-		
-		model.addAttribute("url",URL.url);
-		
+		model.addAttribute("currentEmHp", currentEmHp);
+
+		model.addAttribute("url", URL.url);
+
 		return "battle/battle2";
 	}
-	
+
 	//battle2→battle3
 	@GetMapping("/battle/battle3")
-	public String toBattle3(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
-			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,
-			@RequestParam("selectAction")int selectAction) {
+	public String toBattle3(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
+			@RequestParam("selectAction") int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
-		
+
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("mm",mm);
-		
+		model.addAttribute("mm", mm);
+
 		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em",em);
-		
-		model.addAttribute("currentMmHp",currentMmHp);
-		model.addAttribute("currentEmHp",currentEmHp);
-		
+		model.addAttribute("em", em);
+
+		model.addAttribute("currentMmHp", currentMmHp);
+		model.addAttribute("currentEmHp", currentEmHp);
+
 		ActionEntity action = as.showAction(selectAction);
 		model.addAttribute(action);
-		
-		model.addAttribute("url",URL.url);
-		
+
+		model.addAttribute("url", URL.url);
+
 		return "battle/battle3";
 	}
-	
+
 	//battle3 -> battle4 or battle3 -> battle6
 	@GetMapping("/battle/battle4")
-	public String toBattle4(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
-			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp,
-			@RequestParam("selectAction")int selectAction) {
+	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
+			@RequestParam("selectAction") int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
-		
+
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("mm",mm);
-		
+		model.addAttribute("mm", mm);
+
 		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em",em);
-		
+		model.addAttribute("em", em);
+
 		currentEmHp = currentEmHp - (as.showAction(selectAction).getAttack() + mm.getMmAttack());
-		
-		if(currentEmHp <= 0) {
+
+		if (currentEmHp <= 0) {
 			return "battle/battle6";
 		}
-		
-		model.addAttribute("currentMmHp",currentMmHp);
-		model.addAttribute("currentEmHp",currentEmHp);
-		
-		model.addAttribute("url",URL.url);
-		
+
+		model.addAttribute("currentMmHp", currentMmHp);
+		model.addAttribute("currentEmHp", currentEmHp);
+
+		model.addAttribute("url", URL.url);
+
 		return "battle/battle4";
 	}
-	
+
 	//battle4 -> battle2 or battle4 -> battle5
 	@GetMapping("/battle/battle2")
-	public String toBattle2(HttpSession session,Model model,@RequestParam("selectStage")int selectStage,
-			@RequestParam("currentEmHp")int currentEmHp,@RequestParam("currentMmHp")int currentMmHp) {
+	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
-		
+
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("mm",mm);
-		
+		model.addAttribute("mm", mm);
+
 		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actionList", actionList);
-		
+
 		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em",em);
-		
+		model.addAttribute("em", em);
+
 		Random rand = new Random();
 		int i = rand.nextInt(3);
 		int emAttack = 0;
-		if(i == 0) {
+		if (i == 0) {
 			emAttack = em.getEmAction1().getAttack();
-		}else if(i == 1) {
+		} else if (i == 1) {
 			emAttack = em.getEmAction2().getAttack();
-		}else if(i == 2) {
+		} else if (i == 2) {
 			emAttack = em.getEmAction3().getAttack();
 		}
-		
+
 		currentMmHp = currentMmHp - emAttack;
-		
-		if(currentMmHp <= 0) {
+
+		if (currentMmHp <= 0) {
 			return "battle/battle5";
 		}
-		
-		model.addAttribute("currentMmHp",currentMmHp);
-		model.addAttribute("currentEmHp",currentEmHp);
-		
-		model.addAttribute("url",URL.url);
-		
+
+		model.addAttribute("currentMmHp", currentMmHp);
+		model.addAttribute("currentEmHp", currentEmHp);
+
+		model.addAttribute("url", URL.url);
+
 		return "battle/battle2";
 	}
-	
+
 	//battle5 -> result
 	@GetMapping("/toLoseResult")
-	public String lose(HttpSession session,Model model,@RequestParam("selectStage")int selectStage) {
+	public String lose(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
-		
+
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("beforeMmEx",mm.getMmEx());
-		
+		model.addAttribute("beforeMmEx", mm.getMmEx());
+
 		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em",em);
-		
+		model.addAttribute("em", em);
+
 		boolean result = false;
 		mms.addEx(selectStage, mm.getMmId(), result);
 		mm = mms.findByUserId(userId);
-		
-		if(mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-			model.addAttribute("beforeMm",mm);
+
+		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
+			model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
 		}
-		
-		if(mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-			model.addAttribute("beforeMm",mm);
+
+		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
+			model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
 		}
-		
-		if(mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-			model.addAttribute("beforeMm",mm);
+
+		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
+			model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
 		}
-		
+
 		model.addAttribute("mm", mm);
-		
-		model.addAttribute("url",URL.url);
-		
+
+		model.addAttribute("url", URL.url);
+
 		return "result";
 	}
-	
+
 	//battle6 -> result
-		@GetMapping("/toWinResult")
-		public String win(HttpSession session,Model model,@RequestParam("selectStage")int selectStage) {
-			UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-			int userId = user.getUserId();
-			
-			MyMonsterEntity mm = mms.findByUserId(userId);
-			model.addAttribute("beforeMmEx",mm.getMmEx());
-			
-			EnemyMonsterEntity em = ems.showEm(selectStage);
-			model.addAttribute("em",em);
-			
-			boolean result = true;
-			mms.addEx(selectStage, mm.getMmId(), result);
-			mm = mms.findByUserId(userId);
-			
-			model.addAttribute("beforeMm",mm);
-			
-			if(mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-				//model.addAttribute("beforeMm",mm);
-				mms.mmLevelUp(mm.getMmId());
-				mm = mms.showMm(mm.getMmId());
-			}
-			
-			if(mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-				//model.addAttribute("beforeMm",mm);
-				mms.mmLevelUp(mm.getMmId());
-				mm = mms.showMm(mm.getMmId());
-			}
-			
-			if(mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-				model.addAttribute("beforeMm",mm);
-				//mms.mmLevelUp(mm.getMmId());
-				mm = mms.showMm(mm.getMmId());
-			}
-			
-			model.addAttribute("mm", mm);
-			
-			if(user.getStatus() < selectStage) {
-				uts.clearUser(user.getUserId(), selectStage);
-			}
-			
-			model.addAttribute("url",URL.url);
-			
-			return "result";
+	@GetMapping("/toWinResult")
+	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		int userId = user.getUserId();
+
+		MyMonsterEntity mm = mms.findByUserId(userId);
+		model.addAttribute("beforeMmEx", mm.getMmEx());
+
+		EnemyMonsterEntity em = ems.showEm(selectStage);
+		model.addAttribute("em", em);
+
+		boolean result = true;
+		mms.addEx(selectStage, mm.getMmId(), result);
+		mm = mms.findByUserId(userId);
+
+		model.addAttribute("beforeMm", mm);
+
+		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
+			//model.addAttribute("beforeMm",mm);
+			mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
 		}
-	
+
+		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
+			//model.addAttribute("beforeMm",mm);
+			mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
+		}
+
+		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
+			model.addAttribute("beforeMm", mm);
+			//mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
+		}
+
+		model.addAttribute("mm", mm);
+
+		if (user.getStatus() < selectStage) {
+			uts.clearUser(user.getUserId(), selectStage);
+		}
+
+		model.addAttribute("url", URL.url);
+
+		return "result";
+	}
+
+	@GetMapping("/toEndroll")
+	public String toEndroll(Model model) {
+		model.addAttribute("url", URL.url);
+		return "endroll";
+	}
 
 }
