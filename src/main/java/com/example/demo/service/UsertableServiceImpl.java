@@ -21,6 +21,8 @@ public class UsertableServiceImpl implements UsertableService{
 		String pass = new BCryptPasswordEncoder().encode(userTableDTO.getPass());
 		System.out.println(pass); 
 		ute.setPass(pass);
+		ute.setStatus(1);
+		ute.setRoleId(1);
 		utr.save(ute);
 		return 0;
 	}
