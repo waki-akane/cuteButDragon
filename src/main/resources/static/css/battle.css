@@ -24,12 +24,25 @@
     margin: 5px 0;
 }
 
+.hp-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 要素間の間隔を設定 */
+    margin-top: 5px;
+    position: relative;
+    z-index: 1; /* HPバーをキャラクター画像の後ろに表示 */
+}
+
+.hp-text {
+    font-size: 1em;
+    margin-right: 5px;
+}
+
 .hp-bar {
     background-color: #ccc;
     border-radius: 5px;
     height: 20px;
     width: 100px;
-    margin-top: 5px;
     position: relative;
     z-index: 1; /* HPバーをキャラクター画像の後ろに表示 */
 }
@@ -44,6 +57,10 @@
     z-index: 2; /* HPバーの内側部分をHPバーの上に表示 */
 }
 
+.hp-amount {
+    font-size: 1em;
+    margin-left: 5px;
+}
 
 .dialogue-bar {
     background: rgba(252, 239, 242, 0.8); /* 半透明に設定 */

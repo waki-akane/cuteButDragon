@@ -34,8 +34,12 @@
 				<div class="enemy-monster">
 					<img th:src="@{${url} + ${em.emPhoto}}" alt="敵モンスター">
 					<p class="character-name">[[${em.emName}]]</p>
-					<div class="hp-bar">
-						<div class="hp-fill" style="width: 50%;"></div>
+					<div class="hp-container">
+					    <span class="hp-text">HP:</span>
+					    <div class="hp-bar">
+					        <div class="hp-fill" style="width: 50%;"></div>
+					    </div>
+					    <span class="hp-amount">5/10</span>
 					</div>
 				</div>
             </div>
