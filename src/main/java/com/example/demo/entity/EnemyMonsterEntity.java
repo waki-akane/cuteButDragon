@@ -29,6 +29,8 @@ public class EnemyMonsterEntity {
 	private Integer lose;
 	
 	private String emPhoto;
+	
+	private String bgPhoto;
 
 	@ManyToOne
 	@JoinColumn(name = "emAction1")

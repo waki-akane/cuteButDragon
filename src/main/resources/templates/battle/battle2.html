@@ -27,21 +27,21 @@
 	</header>
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 			<!-- キャラクター -->
             <div class="character-container">
 				<!-- マイドラゴン -->
 				<div class="my-dragon">
-					<img src="/img/mm/1_2.png" alt="マイドラゴン">
-					<p class="character-name">マイドラゴン</p>
+					<img th:src="@{${url} + ${mm.im.photo}}" alt="マイドラゴン">
+					<p class="character-name">[[${mm.mmName}]]</p>
 					<div class="hp-bar">
 						<div class="hp-fill" style="width: 75%;"></div>
 					</div>
 				</div>
 				<!-- 敵モンスター -->
 				<div class="enemy-monster">
-					<img src="/img/em/2.png" alt="敵モンスター">
-					<p class="character-name">敵モンスター</p>
+					<img th:src="@{${url} + ${em.emPhoto}}" alt="敵モンスター">
+					<p class="character-name">[[${em.emName}]]</p>
 					<div class="hp-bar">
 						<div class="hp-fill" style="width: 50%;"></div>
 					</div>
@@ -68,26 +68,11 @@
 					<button class="decision-button">>>攻撃！</button>
 					<button class="decision-button">>>逃げる！</button>
 				</div>
-				<!-- ページ送り「▼」 -->
-				<button class="confirm-button">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-					</svg>
-				</button>
 			</div>
 		</section>
 	</main>
 	<footer>
-		<button class="bookmarkBtn">
-		<span class="IconContainer">
-			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
-			<path
-				d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-			></path>
-			</svg>
-		</span>
-		<p class="text">ヘルプ</p>
-		</button>
+		
 	</footer>
 	</div>
 </body>
