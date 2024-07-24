@@ -11,6 +11,7 @@
 	<div class="game-container">
 	<header>
 		<h1>可愛いけどドラゴン</h1>
+		<form th:action="@{/logout}">
 		<button class="bookmarkBtn">
 		  <span class="IconContainer">
 			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
@@ -21,20 +22,21 @@
 		  </span>
 		  <p class="text">ログアウト</p>
 		</button>
+		</form>
 	</header>
-	<form action="/submit" method="post" class="form-container">    
+	<form th:action="@{/Help}" th:object="${mmDTO}" class="form-container">    
 	<main>
 		<section id="game-area">
 				<div class="image-container">
-					<input type="radio" name="selectedImage" id="image1" value="1" hidden />
+					<input type="radio" th:field="*{imId}" id="image1" value="1" hidden />
 					<label for="image1" class="image-label">
-						<img th:src="@{${url} + 'img/mm/1.png}" alt="Image 1">
+						<img th:src="@{${url} + 'img/mm/1.png'}" alt="Image 1">
 						<div class="image-description">
 							ドラゴン1<br>ここにドラゴン1の<br>説明を入力します
 						</div>
 					</label>
 
-					<input type="radio" name="selectedImage" id="image2" value="2" hidden />
+					<input type="radio" th:field="*{imId}" id="image2" value="2" hidden />
 					<label for="image2" class="image-label">
 						<img th:src="@{${url} + 'img/mm/2.png'}" alt="Image 2">
 						<div class="image-description">
@@ -42,7 +44,7 @@
 						</div>
 					</label>
 
-					<input type="radio" name="selectedImage" id="image3" value="3" hidden />
+					<input type="radio" th:field="*{imId}" id="image3" value="3" hidden />
 					<label for="image3" class="image-label">
 						<img th:src="@{${url} + 'img/mm/3.png'}" alt="Image 3">
 						<div class="image-description">
@@ -50,7 +52,7 @@
 						</div>
 					</label>
 
-					<input type="radio" name="selectedImage" id="image4" value="4" hidden />
+					<input type="radio" th:field="*{imId}" id="image4" value="4" hidden />
 					<label for="image4" class="image-label">
 						<img th:src="@{${url} + 'img/mm/4.png'}" alt="Image 4">
 						<div class="image-description">
@@ -58,7 +60,7 @@
 						</div>
 					</label>
 
-					<input type="radio" name="selectedImage" id="image5" value="5" hidden />
+					<input type="radio" th:field="*{imId}" id="image5" value="5" hidden />
 					<label for="image5" class="image-label">
 						<img th:src="@{${url} + 'img/mm/5.png'}" alt="Image 5">
 						<div class="image-description">
