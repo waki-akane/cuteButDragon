@@ -8,10 +8,10 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
 <body>
-	<div class="game-container">
+	<div class="game-container" method="post">
 	<header>
 		<h1>可愛いけどドラゴン</h1>
-		<form th:action="@{/logout}">
+		<form th:action="@{/logout}" method="post" style="display: inline;">
 		<button class="bookmarkBtn">
 		  <span class="IconContainer">
 			<svg viewBox="0 0 384 512" height="0.9em" class="icon">

@@ -31,32 +31,43 @@
 				<img th:src="@{${url} + 'img/mm/2_2.png'}" alt="win 2">
 				
 				<!--winのとき -->
-				<img th:if="${status == 'win'}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
-				<img th:if="${status == 'win'}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="win">
+				<img th:if="${result}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
+				<img th:if="${result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="win">
 				
 				<!-- lose のとき -->
-				<img th:if="${status == 'lose'}" th:src="@{${url} + 'img/materials/lose.png'}" alt="lose" class="lose-image">
-				<img th:if="${status == 'lose'}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="lose">
+				<img th:if="${!result}" th:src="@{${url} + 'img/materials/lose.png'}" alt="lose" class="lose-image">
+				<img th:if="${!result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="lose">
 		    </div>		    
 		        <div class="center-box_tape"></div>
 		        <p class="center-box_title">Result</p>		        
 		    </div>
 			<div class="right-box">
-			    <p>なまえ： </p>
-				<p>レベル： Lv2（↑LevelUp）</p>
+			    <p>なまえ： [[${mm.mmName}]]</p>
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
 				    <div class="exp-bar">
-				        <div class="exp-progress" style="width: 70%;"></div>
+				       <div class="exp-progress" th:style="'width: ' + ${i} + '%';"></div>
 				    </div>
-				    <p class="exp-text">EXP: 50/100（+10）</p>
-				</div>					
+				    <p class="exp-text">EXP: [[${beforeMm.mmEx}]]→[[${mm.mmEx}]]/[[${maxId}]]（+[[${mm.mmEx} - ${beforeMm.mmEx}]]）</p>
+				</div>	
+				<p>レベル： Lv[[${beforeMm.mmLevel}]] → [[${mm.mmLevel}]]</p>
+				<div th:if="@{level}">
+					<p>Level Up!</p>
+					<p>攻撃力： [[${beforeMm.mmAttack}]] → [[${mm.mmAttack}]] (+[[${mm.mmAttack} - ${beforeMm.mmAttack}]]</p>
+					<p>Hp： [[${beforeMm.mmHp}]] → [[${mm.mmHp}]] (+[[${mm.mmHp} - ${beforeMm.mmHp}]] </p>
+				</div>
+								
 			</div>
 		</section>
     </main>
     <footer>    
-        <button type="submit" class="commonBtn">もう一度</button>
+		<form th:action="@{/toBattle}">
+			<input type="hidden" th:name="selectStage" th:value="${selectStage}">
+        	<button type="submit" class="commonBtn">もう一度</button>
+		</form>
+		<form th:action="@{/toStage}">
         <button type="submit" class="commonBtn">ステージ選択へ戻る</button>
+        </form>
     </footer>
     </div>
 </body>

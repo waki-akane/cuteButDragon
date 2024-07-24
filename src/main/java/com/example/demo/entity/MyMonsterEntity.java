@@ -34,5 +34,8 @@ public class MyMonsterEntity {
 	@ManyToOne
 	@JoinColumn(name = "imId")
 	private InitialMonsterEntity im;
+	
+	 
+	 
 
 }
