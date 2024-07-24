@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>可愛いけどドラゴン</title>
+    <title>可愛いくてもドラゴン</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{${url} + 'css/style2.css'}">
     <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
@@ -10,7 +10,7 @@
 <body>
     <div class="game-container">
     <header>
-        <h1>可愛いけどドラゴン</h1>
+        <h1>可愛いくてもドラゴン</h1>
   		<form th:action="@{/logout}" method="post" style="display: inline;">
 		<button type="submit" class="bookmarkBtn">
             <span class="IconContainer">
@@ -27,28 +27,34 @@
 		    <div class="overlay"></div>
 			<div class="center-box">
 		    <div class="left-images">
-				<img th:src="@{${url} + 'img/mm/1_2.png'}" style="width: 100%; height: auto; margin-top: 30px;" alt="image">
+				<img th:src="@{${url} + ${mm.im.photo}}" style="width: 100%; height: auto; margin-top: 30px;" alt="image">
 		    </div>
 		        <div class="center-box_tape"></div>
 		        <p class="center-box_title">Status</p>     
 		    </div>
 			<div class="right-box">
-			    <p>なまえ　：　</p>
-				<p>レベル　：　Ｌｖ２</p>
+			    <p>なまえ　：　[[${mm.mmName}]]</p>
+				<p>レベル　：　Ｌｖ[[${mm.mmLevel}]]</p>
+				<p>攻撃力　：　[[${mm.mmAttack}]]</p>
+				<p>HP　：　[[${mm.mmHp}]]</p>
 				<p>技　：　</p>
+				<div th:each="action : ${actions}">
+					<p>   [[${action.techName}]]  [[${action.techPoint}]]</p>
+				</div>
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
 				    <div class="exp-bar">
-				        <div class="exp-progress" style="width: 50%;"></div>
+				       <div class="exp-progress" th:style="'width: ' + ${i} + '%';"></div>
 				    </div>
-				    <p class="exp-text">EXP: 50/100</p>
+				    <p class="exp-text">EXP: [[${mm.mmEx}]]/[[${maxEx}]]</p>
 				</div>					
 			</div>
 		</section>
     </main>
-    <footer>    
-        <button type="submit" class="commonBtn">もう一度</button>
+    <footer>
+        <form th:action="@{/toStage}">
         <button type="submit" class="commonBtn">ステージ選択へ戻る</button>
+        </form>
     </footer>
     </div>
 </body>
