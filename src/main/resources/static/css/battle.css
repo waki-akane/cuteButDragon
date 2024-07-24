@@ -1,5 +1,50 @@
 @charset "UTF-8";
-/* ダイアログバーと選択肢ボタンの色合わせ */
+.character-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    position: relative; /* 親要素に相対位置を設定 */
+}
+
+.my-dragon, .enemy-monster {
+    text-align: center;
+    position: relative; /* キャラクター要素に相対位置を設定 */
+    z-index: 10; /* キャラクター画像を最前面に表示 */
+}
+
+.my-dragon img, .enemy-monster img {
+    width: 100px; /* 画像のサイズを調整 */
+    height: auto;
+    position: relative;
+    z-index: 10; /* 画像を最前面に表示 */
+}
+
+.character-name {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.hp-bar {
+    background-color: #ccc;
+    border-radius: 5px;
+    height: 20px;
+    width: 100px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 1; /* HPバーをキャラクター画像の後ろに表示 */
+}
+
+.hp-fill {
+    background-color: #f00;
+    height: 100%;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* HPバーの内側部分をHPバーの上に表示 */
+}
+
+
 .dialogue-bar {
     background: rgba(252, 239, 242, 0.8); /* 半透明に設定 */
     box-shadow: rgba(252, 239, 242, 0.8) 0 0 10px 10px;
@@ -16,23 +61,60 @@
     z-index: 1;
 }
 
-/* ラジオボタンの選択肢 */
 .choices {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 10px; /* 中央より少し下に配置 */
     z-index: 1;
+    align-items: center; /* ラジオボタンと決定ボタンの並びを揃える */
 }
 
-.choices label {
+.choices label, .decision-button {
     display: flex;
     align-items: center;
     cursor: pointer;
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em; /* フォントサイズを調整 */
+    transition: background 0.3s;
 }
 
-.choices input[type="radio"] {
-    margin-right: 5px;
+.decision-button {
+    background: transparent; /* 初期背景色なし */
+    border: none;
+    margin-left: 15px;
+    color: #333;
+    z-index: 1;
+}
+
+.decision-button:hover,
+.decision-button:active {
+    background: rgba(0, 0, 0, 0.1); /* ホバー時と選択時の背景色 */
+    padding: 5px 10px; /* 選択ボタンと同じサイズ */
+    border-radius: 5px; /* ボタンの角を少し丸くする */
+}
+
+/* 決定ボタン */
+.decision-button {
+    background: transparent; /* 初期背景色なし */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 15px;
+    color: #333;
+    border-radius: 5px;
+    z-index: 1;
+    transition: background 0.3s;
+}
+
+.decision-button:hover,
+.decision-button:active {
+    background: rgba(0, 0, 0, 0.1); /* ホバー時と選択時の背景色 */
+    padding: 5px 10px; /* 選択ボタンと同じサイズ */
+    border-radius: 5px; /* ボタンの角を少し丸くする */
 }
 
 /* 確認ボタン */
@@ -56,28 +138,12 @@
     background: rgba(0, 0, 0, 0.2); /* ホバー時の背景色 */
     transform: translateX(-50%) translateY(-2px); /* 少し上に移動 */
 }
+
+
 .confirm-button svg {
     vertical-align: middle; /* アイコンの位置をテキストと合わせる */
 }
 
 .confirm-button span {
     font-size: 1em; /* テキストのサイズを調整 */
-}
-
-/* 決定ボタン */
-.decision-button {
-    background: rgba(252, 239, 242, 0.8);
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 10px;
-    color: #333;
-    border-radius: 10px; /* 角を丸くする */
-    z-index: 1;
-    transition: background 0.3s;
-}
-
-.decision-button:hover {
-    background: rgba(252, 239, 242, 1.0); /* ホバー時の背景色 */
 }
