@@ -181,7 +181,7 @@ public class GameController {
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("beforeMmEx", mm.getMmEx());
+		model.addAttribute("beforeMm", mm);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
@@ -189,26 +189,34 @@ public class GameController {
 		boolean result = false;
 		mms.addEx(selectStage, mm.getMmId(), result);
 		mm = mms.findByUserId(userId);
+		
+		model.addAttribute("beforeMm", mm);
+		boolean level = false;
 
 		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-			model.addAttribute("beforeMm", mm);
+			//model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-			model.addAttribute("beforeMm", mm);
+			//model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-			model.addAttribute("beforeMm", mm);
+			//model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		model.addAttribute("mm", mm);
+		model.addAttribute("level" ,level);
+		model.addAttribute("result",result);
 
 		model.addAttribute("url", URL.url);
 
@@ -222,7 +230,7 @@ public class GameController {
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("beforeMmEx", mm.getMmEx());
+		model.addAttribute("beforeMm", mm);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
@@ -230,28 +238,57 @@ public class GameController {
 		boolean result = true;
 		mms.addEx(selectStage, mm.getMmId(), result);
 		mm = mms.findByUserId(userId);
-
-		model.addAttribute("beforeMm", mm);
+		boolean level = false;
+		
+		double i = 0;
+		if(mm.getMmLevel() == 1) {
+			if(mm.getMmId() > 1000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 1000;
+			}
+			model.addAttribute("maxEx", 1000);
+		}else if(mm.getMmLevel() == 2) {
+			if(mm.getMmId() > 2000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 2000;
+			}
+			model.addAttribute("maxEx", 2000);
+		}else if(mm.getMmLevel() == 3) {
+			if(mm.getMmId() > 3000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 3000;
+			}
+			model.addAttribute("maxEx", 3000);
+		}
+		model.addAttribute("i",i);
 
 		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
 			//model.addAttribute("beforeMm",mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
 			//model.addAttribute("beforeMm",mm);
 			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-			model.addAttribute("beforeMm", mm);
-			//mms.mmLevelUp(mm.getMmId());
+			//model.addAttribute("beforeMm", mm);
+			mms.mmLevelUp(mm.getMmId());
 			mm = mms.showMm(mm.getMmId());
+			level = true;
 		}
 
 		model.addAttribute("mm", mm);
+		model.addAttribute("level",level);
+		model.addAttribute("result",result);
 
 		if (user.getStatus() < selectStage) {
 			uts.clearUser(user.getUserId(), selectStage);

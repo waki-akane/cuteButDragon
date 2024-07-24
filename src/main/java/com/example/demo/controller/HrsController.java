@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.MyMonsterDTO;
 import com.example.demo.entity.EnemyMonsterEntity;
@@ -42,7 +43,7 @@ public class HrsController {
 	//もう一度ボタンを押したとき、resultからbattle1へ
 	//stage選択時処理、stage→battle1
 	@GetMapping("/toBattle")
-	public String toBattle1(Model model, HttpSession session, int selectStage) {
+	public String toBattle1(Model model, HttpSession session, @RequestParam("selectStage")int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 		MyMonsterEntity mm = mms.findByUserId(userId);
