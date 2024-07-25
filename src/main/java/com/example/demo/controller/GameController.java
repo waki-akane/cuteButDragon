@@ -84,7 +84,7 @@ public class GameController {
 	@GetMapping("/battle/battle3")
 	public String toBattle3(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
-			@RequestParam("selectAction") int selectAction) {
+			@RequestParam("selectAction") int selectAction,@RequestParam("actionList") List<ActionEntity> list) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
@@ -101,6 +101,8 @@ public class GameController {
 		model.addAttribute(action);
 
 		model.addAttribute("url", URL.url);
+		
+		model.addAttribute("actionList",list);
 
 		return "battle/battle3";
 	}
@@ -109,7 +111,7 @@ public class GameController {
 	@GetMapping("/battle/battle4")
 	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
-			@RequestParam("selectAction") int selectAction) {
+			@RequestParam("selectAction") int selectAction,@RequestParam("actionList")List<ActionEntity> list) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
@@ -127,6 +129,8 @@ public class GameController {
 
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
+		
+		model.addAttribute("actionList",list);
 
 		model.addAttribute("url", URL.url);
 
@@ -136,15 +140,15 @@ public class GameController {
 	//battle4 -> battle2 or battle4 -> battle5
 	@GetMapping("/battle/battle2")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
-			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
+			@RequestParam("actionList")List<ActionEntity> list) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
 
-		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
-		model.addAttribute("actionList", actionList);
+		model.addAttribute("actionList", list);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);

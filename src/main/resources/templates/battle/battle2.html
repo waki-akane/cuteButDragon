@@ -34,22 +34,62 @@
 				<div class="my-dragon">
 					<img th:src="@{${url} + ${mm.im.photo}}" alt="マイドラゴン">
 					<p class="character-name">[[${mm.mmName}]]</p>
-					<div class="hp-bar">
-						<div class="hp-fill" style="width: 75%;"></div>
+					<div class="hp-container">
+						<div id="num1" th:data-value="${currentMmHp}"></div>
+   						<div id="num2" th:data-value="${mm.mmHp}"></div>
+					    <span class="hp-text">HP:</span>
+					    <div class="hp-bar">
+					        <div class="hp-fill" id="mmhp-progress"></div>
+					    </div>
+					    <span class="hp-amount">[[${currentMmHp}]]/[[${mm.mmHp}]]</span>
 					</div>
+				
+				
+				<script>
+    				// HTMLから数値を取得
+   					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
+    				var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num1 / num2) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('mmhp-progress').style.width = result + '%';
+    				// 結果を「exp:num1/num2」形式で表示
+    				document.getElementById('result').innerText = 'exp:' + num1 + '/' + num2;
+				</script>
 				</div>
+				
 				<!-- 敵モンスター -->
 				<div class="enemy-monster">
 					<img th:src="@{${url} + ${em.emPhoto}}" alt="敵モンスター">
 					<p class="character-name">[[${em.emName}]]</p>
-					<div class="hp-bar">
-						<div class="hp-fill" style="width: 50%;"></div>
+					<div class="hp-container">
+						<div id="num3" th:data-value="${currentEmHp}"></div>
+   						<div id="num4" th:data-value="${em.emHp}"></div>
+					    <span class="hp-text">HP:</span>
+					    <div class="hp-bar">
+					        <div class="hp-fill" id="emhp-progress"></div>
+					    </div>
+					    <span class="hp-amount">[[${currentEmHp}]]/[[${em.emHp}]]</span>
 					</div>
+				
+				
+				<script>
+    				// HTMLから数値を取得
+   					var num3 = parseFloat(document.getElementById('num3').getAttribute('data-value'));
+    				var num4 = parseFloat(document.getElementById('num4').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num3 / num4) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('emhp-progress').style.width = result + '%';
+    				// 結果を「exp:num1/num2」形式で表示
+    				document.getElementById('result').innerText = 'exp:' + num3 + '/' + num4;
+				</script>
 				</div>
+				
             </div>
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
-				<p text="dialogue">ここに本文を入れます♪</p>
+				<p text="dialogue">どの攻撃にする？</p>
 				<!-- ↓必要なものを配置してください↓ -->
 				<!-- 技選択 -->
 				<div class="choices">
