@@ -56,8 +56,8 @@
                    <div class="arrow" ></div>
                     
                     <button class="stage-button" th:classappend="${user.status < 2} ? 'disabled' : ''">Stage 2</button>
-<!--                    <div  th:class="${user.status < 2 and user.status != null} ? 'hidden' : 'arrow'"></div>-->
-					<div class="arrow-visible"></div>
+                    <div th:class="${user.status < 2} ? 'hidden' : 'arrow'"></div>
+				
                     
                     <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : 'arrow'">Stage 3</button>
                 </div>

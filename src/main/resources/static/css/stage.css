@@ -2,11 +2,11 @@
 
 /* 基本フォントサイズとスケールの設定 */
 :root {
-    --base-font-size: 0.8vw;
-    --base-icon-size: 4vw;
-    --base-status-width: 20vw;
-    --base-status-padding: 0.4vw 0.8vw;
-    --base-button-padding: 0.4vw 0.8vw;
+    --base-font-size: 0.8vw; /* フォントサイズを0.8vwに設定 */
+    --base-icon-size: 4vw;   /* アイコンのサイズ */
+    --base-status-width: 20vw; /* ステータスバーの幅 */
+    --base-status-padding: 0.4vw 0.8vw; /* ステータスバーのパディング */
+    --base-button-padding: 0.4vw 0.8vw; /* ボタンのパディング */
 }
 
 /* グローバルフォントサイズの設定 */
@@ -172,36 +172,33 @@ button.stage-button.disabled {
 
 /* 矢印のスタイル */
 .arrow {
-    width: 20px;
-    height: 20px;
+    width: 20px; /* 矢印の幅を固定 */
+    height: 20px; /* 矢印の高さを固定 */
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-top: 20px solid rgb(255, 255, 128);
+    border-top: 20px solid #0011ff; /* 矢印の色 */
     display: inline-block;
-    margin: 0 1em;
+    margin: 0 1em; /* ボタン間のスペース */
 }
 
-/* 矢印の色をレベルごとに変更 */
-.arrow-level-0 {
-    border-top-color: rgb(255, 0, 0);
+
+
+/* 新しいクラス名を使用 */
+.hidden {
+    width: 20px; /* 矢印の幅を固定 */
+    height: 20px; /* 矢印の高さを固定 */
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(192, 192, 192); /* 矢印の色 */
+    display: inline-block;
+    margin: 0 1em; /* ボタン間のスペース */
 }
 
-.arrow-level-1 {
-    border-top-color: rgb(255, 255, 0);
-}
-
-.arrow-level-2 {
-    border-top-color: rgb(0, 255, 0);
-}
-
-.arrow-level-3 {
-    border-top-color: rgb(0, 0, 255);
-}
 
 /* ボタンと矢印のコンテナ */
 .button-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1em;
+    justify-content: space-between; /* ボタンと矢印を中央に配置 */
+    gap: 1em; /* 矢印の幅分のスペースを確保 */
 }

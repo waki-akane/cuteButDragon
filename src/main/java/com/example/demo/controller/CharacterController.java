@@ -20,7 +20,7 @@ public class CharacterController {
 	MyMonsterService mms;
 
 	//[ルール説明へ]ボタン押下時処理、キャラ選択情報DBへ登録
-	@PostMapping("/toHelp")
+	@PostMapping("toHelp")
 	public String addCharacter(MyMonsterDTO mmDTO,HttpSession session,Model model) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		UserTableEntity ut = user.getUser();
