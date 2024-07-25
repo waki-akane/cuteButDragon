@@ -50,13 +50,21 @@
 			    <button class="details-button">詳細</button>
 			    </form>
                 <!-- ボタンと矢印のコンテナ -->
-               <form th:action="@{/toBattle}" th:object="${model}" class="form-container">
+               <form th:action="@{/toBattle}" th:object="${selectStage}" class="form-container">
                 <div class="button-container">
                     <button class="stage-button" >Stage 1</button>
-                   <div class="arrow" ></div>
-                    
+                <div class="arrow-container ">
+					
+                    <div th:class="${user.status < 1} ? 'arrow inactive' : 'arrow active'"></div>
+                    <div th:class="${user.status < 1} ? 'arrow inactive' : 'arrow active'"></div>
+                   </div>
+                   
                     <button class="stage-button" th:classappend="${user.status < 2} ? 'disabled' : ''">Stage 2</button>
-                    <div th:class="${user.status < 2} ? 'hidden' : 'arrow'"></div>
+                    <div class="arrow-container ">
+					
+                    <div th:class="${user.status < 2} ? 'arrow inactive' : 'arrow active'"></div>
+                    <div th:class="${user.status < 2} ? 'arrow inactive' : 'arrow active'"></div>
+                   </div>
 				
                     
                     <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : 'arrow'">Stage 3</button>
