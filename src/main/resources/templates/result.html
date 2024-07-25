@@ -27,8 +27,6 @@
 		    <div class="overlay"></div>
 			<div class="center-box">
 		    <div class="left-images">
-				<img th:src="@{${url} + 'img/materials/win.png'}" alt="win 1" class="win-image">
-				<img th:src="@{${url} + 'img/mm/2_2.png'}" alt="win 2">
 				
 				<!--winのとき -->
 				<img th:if="${result}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
