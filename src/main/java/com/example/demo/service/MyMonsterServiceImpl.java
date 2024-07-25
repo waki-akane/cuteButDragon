@@ -59,6 +59,10 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 		mm.setMmName(myMonsterDTO.getName());
 		mm.setUserId(user);
 		mm.setIm(imr.findById(myMonsterDTO.getImId()).get());
+		mm.setMmHp(300);
+		mm.setMmLevel(1);
+		mm.setMmEx(0);
+		mm.setMmAttack(0);
 		mmr.save(mm);
 	}
 
