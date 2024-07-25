@@ -95,10 +95,14 @@ public class GameController {
 		model.addAttribute("em", em);
 
 		model.addAttribute("currentMmHp", currentMmHp);
-		model.addAttribute("currentEmHp", currentEmHp);
 
 		ActionEntity action = as.showAction(selectAction);
-		model.addAttribute(action);
+		currentEmHp = currentEmHp - (action.getAttack() + mm.getMmAttack());
+		if(currentEmHp < 0) {
+			currentEmHp = 0;
+		}
+		
+		model.addAttribute("currentEmHp", currentEmHp);
 
 		model.addAttribute("url", URL.url);
 		
@@ -121,11 +125,22 @@ public class GameController {
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 
-		currentEmHp = currentEmHp - (as.showAction(selectAction).getAttack() + mm.getMmAttack());
-
 		if (currentEmHp <= 0) {
 			return "battle/battle6";
 		}
+		
+		Random rand = new Random();
+		int i = rand.nextInt(3);
+		int emAttack = 0;
+		if (i == 0) {
+			emAttack = em.getEmAction1().getAttack();
+		} else if (i == 1) {
+			emAttack = em.getEmAction2().getAttack();
+		} else if (i == 2) {
+			emAttack = em.getEmAction3().getAttack();
+		}
+
+		currentMmHp = currentMmHp - emAttack;
 
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
@@ -152,19 +167,6 @@ public class GameController {
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
-
-		Random rand = new Random();
-		int i = rand.nextInt(3);
-		int emAttack = 0;
-		if (i == 0) {
-			emAttack = em.getEmAction1().getAttack();
-		} else if (i == 1) {
-			emAttack = em.getEmAction2().getAttack();
-		} else if (i == 2) {
-			emAttack = em.getEmAction3().getAttack();
-		}
-
-		currentMmHp = currentMmHp - emAttack;
 
 		if (currentMmHp <= 0) {
 			return "battle/battle5";
