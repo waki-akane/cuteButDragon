@@ -26,8 +26,8 @@
 	</header>
 	<main>
 		<section id="game-area" style="background:#e5c18d;">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>
-			<p class="player-name">プレイヤー名</p>
+			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'">
+			<p class="player-name">[[${user.userName}]]</p>
 			<div class="status-bar">
 			    <!-- ステータスバー内にアイコンを配置 -->
 			    <div class="icon-frame">
@@ -35,7 +35,7 @@
 			    </div>
 				<!-- ステータス情報 -->
 			    <div class="status">
-			        <p class="monster-info">モンスター名　　レベル 1</p>
+			        <p class="monster-info">[[${mm.mmName}]]　Level:[[${mm.mmLevel}]]　 </p>
 			        <div class="exp-bar-container">
 			            <div class="exp-bar">								
 			                <div class="exp-progress" style="width: 10%;"></div> 
@@ -68,6 +68,7 @@
 				
                     
                     <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : ''">Stage 3</button>
+                </div>
                 </div>
                </form>
 		</section>

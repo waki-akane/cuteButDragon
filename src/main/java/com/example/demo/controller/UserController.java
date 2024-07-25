@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.UserTableEntryDTO;
+import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.entity.URL;
+import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
@@ -18,6 +20,9 @@ public class UserController {
 
 	@Autowired
 	UsertableService uts;
+	
+	@Autowired
+	MyMonsterService mms;
 
 	@GetMapping("/login")
 	public String loginForm(Model model) {
@@ -36,6 +41,8 @@ public class UserController {
 		
 		//ログインしてるユーザー情報の取得。モデルに追加
 		model.addAttribute("user",principal.getUser());
+		MyMonsterEntity mm = mms.findByUserId(principal.getUserId());
+		model.addAttribute("mm",mm);
 		// ログインに成功したら表示する URL
 		return "stage";
 
