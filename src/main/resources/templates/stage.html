@@ -26,7 +26,7 @@
 	</header>
 	<main>
 		<section id="game-area" style="background:#e5c18d;">
-<!--			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>-->
+			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>
 			<p class="player-name">プレイヤー名</p>
 			<div class="status-bar">
 			    <!-- ステータスバー内にアイコンを配置 -->
@@ -67,7 +67,7 @@
                    </div>
 				
                     
-                    <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : 'arrow'">Stage 3</button>
+                    <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : ''">Stage 3</button>
                 </div>
                </form>
 		</section>

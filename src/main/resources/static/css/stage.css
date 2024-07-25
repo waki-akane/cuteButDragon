@@ -202,4 +202,5 @@ button.stage-button.disabled {
     align-items: center;
     justify-content: space-between; /* ボタンと矢印を中央に配置 */
     gap: 1em; /* 矢印の幅分のスペースを確保 */
+    z-index: 100;
 }
