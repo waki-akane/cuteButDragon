@@ -22,10 +22,11 @@
 		  </span>
 		  <p class="text">ログアウト</p>
 		</button>
+		</form>
 	</header>
 	<main>
 		<section id="game-area" style="background:#e5c18d;">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>
+<!--			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>-->
 			<p class="player-name">プレイヤー名</p>
 			<div class="status-bar">
 			    <!-- ステータスバー内にアイコンを配置 -->
@@ -45,19 +46,25 @@
 
 			</div>
 			    <!-- 詳細ボタン -->
+			    <form th:action="@{/status}" th:object="${user}" class="form-container">
 			    <button class="details-button">詳細</button>
+			    </form>
                 <!-- ボタンと矢印のコンテナ -->
+               <form th:action="@{/toBattle}" th:object="${model}" class="form-container">
                 <div class="button-container">
-                    <button class="stage-button" th:classappend="${level < 1} ? 'disabled' : ''">Stage 1</button>
-                    <div class="arrow" th:classappend="${level < 1} ? 'hidden' : ''"></div>
+                    <button class="stage-button" >Stage 1</button>
+                   <div class="arrow" ></div>
                     
-                    <button class="stage-button" th:classappend="${level < 2} ? 'disabled' : ''">Stage 2</button>
-                    <div class="arrow" th:classappend="${level < 2} ? 'hidden' : ''"></div>
+                    <button class="stage-button" th:classappend="${user.status < 2} ? 'disabled' : ''">Stage 2</button>
+<!--                    <div  th:class="${user.status < 2 and user.status != null} ? 'hidden' : 'arrow'"></div>-->
+					<div class="arrow-visible"></div>
                     
-                    <button class="stage-button" th:classappend="${level < 3} ? 'disabled' : ''">Stage 3</button>
+                    <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : 'arrow'">Stage 3</button>
                 </div>
+               </form>
 		</section>
 	</main>
+	<form th:action="@{/Help}" th:object="${mmDTO}" class="form-container">
 	<footer>
 		<button class="bookmarkBtn">
 		  <span class="IconContainer">
@@ -67,9 +74,11 @@
 			  ></path>
 			</svg>
 		  </span>
+		  </form>
 		  <p class="text">ヘルプ</p>
 		</button>
 	</footer>
+	</form>
 	</div>
 </body>
 </html>

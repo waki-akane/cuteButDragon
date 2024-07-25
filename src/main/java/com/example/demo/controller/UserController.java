@@ -33,6 +33,9 @@ public class UserController {
 		UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
 		model.addAttribute("username", principal.getUsername());
 		model.addAttribute("url", URL.url);
+		
+		//ログインしてるユーザー情報の取得。モデルに追加
+		model.addAttribute("user",principal.getUser());
 		// ログインに成功したら表示する URL
 		return "stage";
 

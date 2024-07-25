@@ -24,9 +24,9 @@
 		</button>
 		</form>
 	</header>
-	<form th:action="@{/Help}" th:object="${mmDTO}" class="form-container">    
 	<main>
 		<section id="game-area">
+	<form th:action="@{/toHelp}" method="post" th:object="${mmDTO}" class="form-container">    
 				<div class="image-container">
 					<input type="radio" th:field="*{imId}" id="image1" value="1" hidden />
 					<label for="image1" class="image-label">
@@ -69,10 +69,12 @@
 					</label>
 				</div>
 
-				<div class="InputContainer">
-					<input type="text" id="name" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
-				</div>
+				<!-- 入力セクション -->	
 				<label for="name" class="form-label">なまえを入力してください</label>
+				<div class="InputContainer">
+					<input type="text" id="name" th:field ="*{name}" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
+				</div>
+				
 		</section>
 		</main>
 		<footer>

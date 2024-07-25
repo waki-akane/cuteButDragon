@@ -25,7 +25,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         session.setAttribute("user", userDetailsImpl);
         
         // ログイン成功後のリダイレクト先
-        response.sendRedirect("/stage");
+        response.sendRedirect("/toStage");
     }
 
 	
