@@ -2,16 +2,16 @@
 /* 共通スタイル */
 body {
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: #f8f0ff;
     margin: 0;
     padding: 0;
-    background-color: #f8f0ff;
 }
 
 h1 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 24px;
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+  color: #fff;
+  margin: 0;
 }
 
 .game-container {
@@ -21,18 +21,17 @@ h1 {
 }
 
 header, footer {
-    background-color: #ffd1dc;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: 1.2em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #ffd1dc;   
+    padding: 1vw;
+    box-shadow: 0 0.2vw 0.5vw rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.5vw;
 }
 
 header {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 main {
@@ -41,22 +40,16 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #f8f0ff; 
+    position: relative;
 }
 
 #game-area {
     width: 70%;
-    height: 80%;
-    position: relative; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    overflow: hidden;
-    border: 2px solid #ffe4e1;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 35%;
+    position: relative;
+    border: 0.2vw solid #ffe4e1;
+    border-radius: 1vw;
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
 }
 
 .background-image {
@@ -65,9 +58,8 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    border-radius: 1vw;
+    background: center / cover no-repeat;
     z-index: 0;
 }
 
@@ -77,60 +69,10 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 1vw;
     background-color: rgba(255, 255, 255, 0.5);
-    z-index: 1; 
+    z-index: 1;
 }
-
-/* story・help */
-.box {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    top: 15%;
-    text-align: left;
-    z-index: 1000;
-    font-size: 1.7vw;      
-}
-
-/*  help */
-.help-text {
-    display: inline-block;
-    white-space: nowrap;
-    position: relative;
-    text-align: center;
-}
-
-/* story */
-.story-text {
-    display: inline-block;
-    white-space: nowrap;
-    position: relative;
-}
-
-.story-text span {
-    display: block;
-    opacity: 0;
-    animation: typing 7s steps(100, end) forwards, reveal 7s steps(100, end) forwards;
-}
-
-@keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes reveal {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* 各行にアニメーション遅延を設定 */
-.story-text span:nth-child(1) { animation-delay: 0s; }
-.story-text span:nth-child(2) { animation-delay: 2s; }
-.story-text span:nth-child(3) { animation-delay: 5s; }
-.story-text span:nth-child(4) { animation-delay: 7s; }
-.story-text span:nth-child(5) { animation-delay: 9s; }
-.story-text span:nth-child(6) { animation-delay: 12s; }
 
 /* 共通ボタン */
 button.commonBtn {
@@ -138,117 +80,113 @@ button.commonBtn {
     display: inline-block;
     cursor: pointer;
     outline: none;
-    border: 0;
-    vertical-align: middle;
+    border: 0.15vw solid #b18597;
     text-decoration: none;
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 14.5px;
     font-weight: 600;
     color: #382b22;
     text-transform: uppercase;
-    padding: 0.75em 2em;
+    padding: 0.7vw 2vw;
     background: rgb(255, 240, 240);
-    border: 2px solid #b18597;
-    border-radius: 0.75em;
+    border-radius: 1vw;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
-    margin: 0.5em; 
+    margin: 0.5vw;
+    z-index: 10;
 }
 
 button.commonBtn::before {
     position: absolute;
     content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: #f9c4d2;
     border-radius: inherit;
-    box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
-    transform: translate3d(0, 0.75em, -1em);
+    box-shadow: 0 0 0 0.15vw #b18597;
+    transform: translate3d(0, 0.75vw, -1vw);
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+    pointer-events: none;
 }
 
 button.commonBtn:hover {
     background: #ffe9e9;
-    transform: translate(0, 0.25em);
+    transform: translateY(0.25vw);
 }
 
 button.commonBtn:hover::before {
-    box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
-    transform: translate3d(0, 0.5em, -1em);
+    box-shadow: 0 0 0 0.15vw #b18597;
+    transform: translate3d(0, 0.5vw, -1vw);
 }
 
 button.commonBtn:active {
     background: #ffe9e9;
-    transform: translate(0em, 0.75em);
+    transform: translateY(0.75vw);
 }
 
 button.commonBtn:active::before {
-    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
-    transform: translate3d(0, 0, -1em);
+    box-shadow: 0 0 0 0.15vw #b18597;
+    transform: translate3d(0, 0, -1vw);
 }
 
+
+
 /* help、ログアウトボタン */
+.bmbutton-container {
+  display: flex;
+  gap: 1vw;
+}
+
 button.bookmarkBtn {
-    width: 100px;
-    height: 40px;
-    border-radius: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.349);
+    width: 7vw;
+    height: 2.5vw;
+    border-radius: 2.5vw;
+    border: 0.1vw solid rgba(255, 255, 255, 0.349);
     background-color: rgb(216, 157, 165);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition-duration: 0.3s;
+    transition: 0.3s;
     overflow: hidden;
+    font-size: 0.8vw;
 }
 
 .IconContainer {
-    width: 30px;
-    height: 30px;
+    width: 2vw;
+    height: 2vw;
     background: linear-gradient(to bottom, rgb(195, 150, 158), #FFF0F0);
-    border-radius: 50px;
+    border-radius: 4vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     z-index: 2;
-    transition-duration: 0.3s;
+    transition: 0.3s;
 }
 
-.icon {
-    border-radius: 1px;
+.status-icon {
+    border-radius: 1vw;
 }
 
 .text {
     height: 100%;
-    width: 60px;
+    width: 4.5vw;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     z-index: 1;
-    transition-duration: 0.3s;
-    font-size: 0.8em;
+    transition: 0.3s;
+    font-size: 0.8vw;
 }
 
 button.bookmarkBtn:hover .IconContainer {
-    width: 90px;
-    transition-duration: 0.3s;
+    width: 6vw;
 }
 
 button.bookmarkBtn:hover .text {
-    transform: translate(10px);
+    transform: translate(1vw);
     width: 0;
     font-size: 0;
-    transition-duration: 0.3s;
 }
 
 button.bookmarkBtn:active {
     transform: scale(0.95);
-    transition-duration: 0.3s;
 }
-
