@@ -93,20 +93,28 @@
 				<!-- ↓必要なものを配置してください↓ -->
 				<!-- 技選択 -->
 				<div class="choices">
-					<label>
-						<input type="radio" name="choice" value="0">
-						<span class="custom-radio">選択肢1　10/10</span>
-					</label>
-					<label>
-						<input type="radio" name="choice" value="1">
-						<span class="custom-radio">選択肢2　20/20</span>
-					</label>
-					<label>
-						<input type="radio" name="choice" value="2">
-						<span class="custom-radio">選択肢3　5/5</span>
-					</label>
-					<button class="decision-button">>>攻撃！</button>
-					<button class="decision-button">>>逃げる！</button>
+					<form th:action="@{/battle/battle3}">
+					<div th:each="action, actionStat : ${actionList}">
+    				<label th:classappend="${action.teckPoint == 0} ? 'disabled' : ''">
+        			<input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.teckPoint == 0}">
+        			<span class="custom-radio">
+            					[[${action.teckName}]] [[${action.teckPoint}]] / [[${actions[actionStat.index].teckPoint}]]
+        			</span>
+    				</label>
+					</div>
+
+					</div>
+					<input type="hidden" th:name="selectStage" th:value="${em.emId}">
+					<input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
+					<input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
+					<input type="hidden" th:name="actionList" th:value="${actionList}">
+					<button class="decision-button" type="submit">>>攻撃！</button>
+					</form>
+					
+					<form th:action="@{/toStage}">
+					<button class="decision-button" type="submit">>>逃げる！</button>
+					</form>
+					
 				</div>
 			</div>
 		</section>

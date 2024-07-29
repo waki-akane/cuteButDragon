@@ -87,6 +87,10 @@
     align-items: center; /* ラジオボタンと決定ボタンの並びを揃える */
 }
 
+.disabled {
+        color: gray;
+ }
+
 .choices label, .decision-button {
     display: flex;
     align-items: center;

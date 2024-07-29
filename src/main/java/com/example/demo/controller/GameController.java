@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.ActionEntity;
@@ -176,12 +177,15 @@ public class GameController {
 		model.addAttribute("currentEmHp", currentEmHp);
 
 		model.addAttribute("url", URL.url);
+		
+		List<ActionEntity> koteiList = as.imAllAction(mm.getIm().getImId());
+		model.addAttribute("actions",koteiList);
 
 		return "battle/battle2";
 	}
 
-	//battle5 -> result
-	@GetMapping("/toLoseResult")
+	//battle6 -> result
+	@PostMapping("/toLoseResult")
 	public String lose(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
@@ -229,8 +233,8 @@ public class GameController {
 		return "result";
 	}
 
-	//battle6 -> result
-	@GetMapping("/toWinResult")
+	//battle5 -> result
+	@PostMapping("/toWinResult")
 	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
@@ -295,20 +299,17 @@ public class GameController {
 		model.addAttribute("mm", mm);
 		model.addAttribute("level",level);
 		model.addAttribute("result",result);
-
-		if (user.getStatus() < selectStage) {
+		
+		model.addAttribute("url", URL.url);
+		
+		if(user.getStatus() == 2 && selectStage == 3) {
+			uts.clearUser(user.getUserId(), selectStage);
+			return "endroll";
+		}else if (user.getStatus() < selectStage){
 			uts.clearUser(user.getUserId(), selectStage);
 		}
 
-		model.addAttribute("url", URL.url);
-
 		return "result";
-	}
-
-	@GetMapping("/toEndroll")
-	public String toEndroll(Model model) {
-		model.addAttribute("url", URL.url);
-		return "endroll";
 	}
 
 }
