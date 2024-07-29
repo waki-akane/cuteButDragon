@@ -91,8 +91,9 @@ button.commonBtn {
     border-radius: 1vw;
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
-    margin: 0.5vw; 
-    z-index: 1; /* 追加 */
+    margin: 0.5vw;
+    z-index: 10; /* 高い z-index を設定 */
+    position: relative;
 }
 
 button.commonBtn::before {
@@ -104,8 +105,7 @@ button.commonBtn::before {
     box-shadow: 0 0 0 0.15vw #b18597;
     transform: translate3d(0, 0.75vw, -1vw);
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
-    z-index: -1; /* 追加 */
-    pointer-events: none; /* 追加 */
+    pointer-events: none; /* クリックイベントを無効化 */
 }
 
 button.commonBtn:hover {
@@ -127,7 +127,6 @@ button.commonBtn:active::before {
     box-shadow: 0 0 0 0.15vw #b18597;
     transform: translate3d(0, 0, -1vw);
 }
-
 
 /* help、ログアウトボタン */
 button.bookmarkBtn {
