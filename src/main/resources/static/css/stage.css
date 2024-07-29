@@ -18,11 +18,12 @@ body {
 .player-name {
   position: absolute;
   top: 1vw;
-  left: 2vw;
+  right: 2vw;
   color: #333;
   margin: 0;
-  background-color: #fceff2; /* 網掛けの色 */
+  background-color: rgba(159, 148, 148, 0.629); /* 網掛けの色 */
   padding: 0.2em; /* 背景色の余白 */
+  border-radius: 0.5vw;
 }
 
 /* ステータスバーのスタイル */
@@ -36,7 +37,7 @@ body {
   box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.1);
   width: var(--base-status-width);
   position: absolute;
-  top: 1vw;
+  top: 2.5vw;
   right: 1vw;
   height: auto;
 }
