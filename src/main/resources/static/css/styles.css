@@ -34,10 +34,6 @@ header {
     justify-content: space-between;
 }
 
-header h1 {
-    margin: 0;
-}
-
 main {
     flex: 1;
     display: flex;
@@ -85,7 +81,6 @@ button.commonBtn {
     cursor: pointer;
     outline: none;
     border: 0.15vw solid #b18597;
-    vertical-align: middle;
     text-decoration: none;
     font-weight: 600;
     color: #382b22;
@@ -96,8 +91,7 @@ button.commonBtn {
     transform-style: preserve-3d;
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
     margin: 0.5vw;
-    z-index: 10; /* 高い z-index を設定 */
-    position: relative;
+    z-index: 10;
 }
 
 button.commonBtn::before {
@@ -109,7 +103,7 @@ button.commonBtn::before {
     box-shadow: 0 0 0 0.15vw #b18597;
     transform: translate3d(0, 0.75vw, -1vw);
     transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
-    pointer-events: none; /* クリックイベントを無効化 */
+    pointer-events: none;
 }
 
 button.commonBtn:hover {
@@ -131,6 +125,7 @@ button.commonBtn:active::before {
     box-shadow: 0 0 0 0.15vw #b18597;
     transform: translate3d(0, 0, -1vw);
 }
+
 
 
 /* help、ログアウトボタン */
