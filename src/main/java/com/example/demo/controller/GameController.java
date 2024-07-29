@@ -96,7 +96,9 @@ public class GameController {
 
 		model.addAttribute("currentMmHp", currentMmHp);
 
-		ActionEntity action = as.showAction(selectAction);
+		ActionEntity action = list.get(selectAction);
+		action.setTechPoint(action.getTechPoint() - 1);
+		list.set(selectAction,action);
 		currentEmHp = currentEmHp - (action.getAttack() + mm.getMmAttack());
 		if(currentEmHp < 0) {
 			currentEmHp = 0;
@@ -125,7 +127,7 @@ public class GameController {
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 
-		if (currentEmHp <= 0) {
+		if (currentEmHp == 0) {
 			return "battle/battle6";
 		}
 		
