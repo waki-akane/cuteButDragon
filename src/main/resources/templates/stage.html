@@ -36,41 +36,68 @@
 				<!-- ステータス情報 -->
 			    <div class="status">
 			        <p class="monster-info">[[${mm.mmName}]]　Level:[[${mm.mmLevel}]]　 </p>
-			        <div class="exp-bar-container">
-			            <div class="exp-bar">								
-			                <div class="exp-progress" style="width: 10%;"></div> 
-			            </div>
-			            <div class="exp-text">EXP:50/100</div>
-			        </div>
+			       
+			      <!-- EXP情報 -->
+<div class="exp-bar-container">
+<!-- 数値をdata属性に埋め込む -->
+<div id="num1" th:data-value="${mm.mmEx}"></div>
+<div id="num2" th:data-value="${lv}"></div>
+<div class="exp-bar">
+    <div id="exp-progress" class="exp-progress"></div>
+</div>
+<div id="result"></div>
+</div>
+
+<script>
+    // HTMLから数値を取得
+    var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
+    var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
+    // 計算を実行
+    var result = (num1 / num2) * 100;
+    // 計算結果をwidthに設定
+    document.getElementById('exp-progress').style.width = result + '%';
+    // 結果を「exp:num1/num2」形式で表示
+    document.getElementById('result').innerText = 'exp:' + num1 + '/' + num2;
+</script>
 			    </div>
 
 			</div>
 			    <!-- 詳細ボタン -->
 			    <form th:action="@{/status}" th:object="${user}" class="form-container">
 			    <button class="details-button">詳細</button>
-			    </form>
+			    
                 <!-- ボタンと矢印のコンテナ -->
-               <form th:action="@{/toBattle}" th:object="${selectStage}" class="form-container">
+               <form class="form-container">
                 <div class="button-container">
-                    <button class="stage-button" >Stage 1</button>
+					<form th:action="@{/toBattle}" method="post">
+						<input type="hidden" th:name="selectStage" value="1">
+                 <button class="stage-button" type="submit">Stage 1</button>
+					</form>
+                   
                 <div class="arrow-container ">
 					
                     <div th:class="${user.status < 2} ? 'arrow inactive' : 'arrow active'"></div>
                     <div th:class="${user.status < 2} ? 'arrow inactive' : 'arrow active'"></div>
                    </div>
                    
+                   	<form th:action="@{/toBattle}" method="post" >
+						<input type="hidden" th:name="selectStage" value="2">
                     <button class="stage-button" th:classappend="${user.status < 2} ? 'disabled' : ''">Stage 2</button>
+                   	</form>
                     <div class="arrow-container ">
 					
                     <div th:class="${user.status < 3} ? 'arrow inactive' : 'arrow active'"></div>
                     <div th:class="${user.status < 3} ? 'arrow inactive' : 'arrow active'"></div>
                    </div>
 				
-                    
+                    	<form th:action="@{/toBattle}" method="post" >
+						<input type="hidden" th:name="selectStage" value="3">
                     <button class="stage-button" th:classappend="${user.status < 3} ? 'disabled' : ''">Stage 3</button>
+                    	</form>
                 </div>
                 </div>
                </form>
+			
 		</section>
 	</main>
 	<form th:action="@{/Help}" th:object="${mmDTO}" class="form-container">

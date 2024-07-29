@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.MyMonsterDTO;
@@ -36,13 +37,25 @@ public class HrsController {
 		model.addAttribute("user", ut);
 		model.addAttribute("mm",mm);
 		model.addAttribute("url",URL.url);
+		
+		int maxEx=0;
+		if(mm.getMmLevel()==1) {
+			maxEx=1000;
+		}else if(mm.getMmLevel()==2) {
+			maxEx=2000;
+		}else if(mm.getMmLevel()==3) {
+			maxEx=3000;
+		}
+		model.addAttribute("lv",maxEx);
+		System.out.println(maxEx);
+		System.out.println(mm.getMmEx());
 
 		return "stage"; //stageページにリダイレクト
 	}
 
 	//もう一度ボタンを押したとき、resultからbattle1へ
 	//stage選択時処理、stage→battle1
-	@GetMapping("/toBattle")
+	@PostMapping("/toBattle")
 	public String toBattle1(Model model, HttpSession session, @RequestParam("selectStage")int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
