@@ -128,6 +128,7 @@ button.commonBtn:active::before {
     transform: translate3d(0, 0, -1vw);
 }
 
+
 /* help、ログアウトボタン */
 button.bookmarkBtn {
     width: 7vw;
