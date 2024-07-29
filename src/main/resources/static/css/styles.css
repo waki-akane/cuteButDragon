@@ -34,6 +34,10 @@ header {
     justify-content: space-between;
 }
 
+header h1 {
+    margin: 0;
+}
+
 main {
     flex: 1;
     display: flex;
@@ -130,6 +134,11 @@ button.commonBtn:active::before {
 
 
 /* help、ログアウトボタン */
+.bmbutton-container {
+  display: flex;
+  gap: 1vw; /* ボタンの間隔を調整 */
+}
+
 button.bookmarkBtn {
     width: 7vw;
     height: 2.5vw;
