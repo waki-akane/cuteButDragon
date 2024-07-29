@@ -1,50 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>可愛いけどドラゴン</title>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+    <title>可愛いくてもドラゴン</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+    <style>
+        .box {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 15%;
+            text-align: left;
+            z-index: 2;
+            font-size: 1.7vw;
+            padding: 2vw;
+            box-sizing: border-box;
+        }
+        .story-text {
+            display: inline-block;
+            white-space: nowrap;
+            position: relative;
+        }
+        .story-text span {
+            display: block;
+            opacity: 0;
+            animation: typing 7s steps(100, end) forwards, reveal 7s steps(100, end) forwards;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes reveal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* 各行にアニメーション遅延を設定 */
+        .story-text span:nth-child(1) { animation-delay: 0s; }
+        .story-text span:nth-child(2) { animation-delay: 2s; }
+        .story-text span:nth-child(3) { animation-delay: 5s; }
+        .story-text span:nth-child(4) { animation-delay: 7s; }
+        .story-text span:nth-child(5) { animation-delay: 9s; }
+        .story-text span:nth-child(6) { animation-delay: 12s; }
+    </style>
 </head>
 <body>
-	<div class="game-container">
-	<header>
-		<h1>可愛いけどドラゴン</h1>
-		<form th:action="@{/logout}" method="post" style="display: inline;">
-		<button type="submit" class="bookmarkBtn">
-		  <span class="IconContainer">
-			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
-			  <path
-				d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-			  ></path>
+    <div class="game-container">
+        <header>
+            <h1>可愛いくてもドラゴン</h1>
+            <form th:action="@{/logout}" method="post" style="display: inline;">
+                <button type="submit" class="bookmarkBtn">
+                    <span class="IconContainer">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+			  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+			  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
 			</svg>
-		  </span>
-		  <p class="text">ログアウト</p>
-		</button>
-	</header>
-	<main>
-		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/bg.jpg);'"></div>
-			<div class="overlay"></div>
-				<div class="box">
-					<div class="story-text">
-						<span>　　　　遥か昔、神秘の森の奥深くに、畏れ多きドラゴンが住んでいた。</span>
-						<span>　 その姿は可憐ながらも、その心に宿る闇は深く、誰もがその力に恐れをなしていた。<br><br></span>
-						<span>　　　　このゲームは、神秘の森で開かれる伝説のドラゴンバトル物語です。</span>
-						<span>　　プレイヤーは「可憐で残酷なドラゴン」としてさまざまなステージで戦い、
-							<br>　　経験値を積み重ねながら他のドラゴンたちと対戦します。<br><br></span>
-						<span>　　　　好きなドラゴンを選択し、名前を付けてゲームを始めてください。<br></span>
-					</div>
-				</div>	
-		</section>
-	</main>
-	<footer>
-		<form th:action="@{/toCharcter}">
-		<button class="commonBtn" type="submit">キャラクター選択へ</button>
-		</form>
-	</footer>
-	</div>
+                    </span>
+                    <p class="text">ログアウト</p>
+                </button>
+            </form>
+        </header>
+        <main>
+            <section id="game-area">
+                <div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/bg.jpg);'"></div>
+                <div class="overlay"></div>
+                <div class="box">
+                    <div class="story-text">
+                        <span>　　　　遥か昔、神秘の森の奥深くに、畏れ多きドラゴンが住んでいた。</span>
+                        <span>　その姿は可憐ながらも、その心に宿る闇は深く、誰もがその力に恐れをなしていた。<br><br></span>
+                        <span>　　　　このゲームは、神秘の森で開かれる伝説のドラゴンバトル物語です。</span>
+                        <span>　　プレイヤーは「可憐で残酷なドラゴン」としてさまざまなステージで戦い、
+                            <br>　　経験値を積み重ねながら他のドラゴンたちと対戦します。<br><br></span>
+                        <span>　　　　好きなドラゴンを選択し、名前を付けてゲームを始めてください。<br></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <form th:action="@{/toCharcter}">
+                <button class="commonBtn" type="submit">キャラクター選択へ</button>
+            </form>
+        </footer>
+    </div>
 </body>
 </html>
-
-
