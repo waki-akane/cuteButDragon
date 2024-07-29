@@ -8,10 +8,10 @@ body {
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 1vw;
-    font-size: 1.5vw;
-    color: #fff;
+  margin-bottom: 1vw;
+  font-size: 1.5vw;
+  color: #fff;
+  margin: 0;
 }
 
 .game-container {
@@ -136,7 +136,7 @@ button.commonBtn:active::before {
 /* help、ログアウトボタン */
 .bmbutton-container {
   display: flex;
-  gap: 1vw; /* ボタンの間隔を調整 */
+  gap: 1vw;
 }
 
 button.bookmarkBtn {
