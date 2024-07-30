@@ -15,11 +15,10 @@
 			<form th:action="@{/logout}" method="post" style="display: inline;">
 				<button type="submit" class="bookmarkBtn">
 					<span class="IconContainer">
-						<svg viewBox="0 0 384 512" height="0.9em" class="icon">
-							<path
-								d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-							></path>
-						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+			  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+			  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+			</svg>
 					</span>
 					<p class="text">ログアウト</p>
 				</button>
@@ -27,7 +26,7 @@
 	</header>
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 			<!-- キャラクター -->
             <div class="character-container">
 				<!-- マイドラゴン -->
@@ -90,25 +89,9 @@
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
 				<p text="dialogue">[[${em.emName}]]の[[${action.techName}]]！！</p>
-				<p text="dialogue">[[${mm.myName}]]に[[${emAttack}]]のダメージ！！</p>
+				<p text="dialogue">[[${mm.mmName}]]に[[${emAttack}]]のダメージ！！</p>
 				<!-- ↓必要なものを配置してください↓ -->
-				<!-- 技選択 -->
-				<div class="choices">
-					<label>
-						<input type="radio" name="choice" value="1">
-						<span class="custom-radio">選択肢1　10/10</span>
-					</label>
-					<label>
-						<input type="radio" name="choice" value="2">
-						<span class="custom-radio">選択肢2　20/20</span>
-					</label>
-					<label>
-						<input type="radio" name="choice" value="3">
-						<span class="custom-radio">選択肢3　5/5</span>
-					</label>
-					<button class="decision-button">>>攻撃！</button>
-					<button class="decision-button">>>逃げる！</button>
-				</div>
+			
 				<!-- ページ送り「▼」 -->
 				<form th:action="@{/battle/battle2}" method="post" type="submit">
 					<input type="hidden" th:name="selectStage" th:value="${selectStage}">
@@ -117,25 +100,18 @@
 					<input type="hidden" th:name="actionList" th:value="${actionList}">
 					<input type="hidden" th:name="selectAction" th:value="${selectAction}">
 					
-				<button class="confirm-button">
+				<button class="confirm-button" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
 						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+						
 					</svg>
 				</button>
+				</form>
 			</div>
 		</section>
 	</main>
 	<footer>
-		<button class="bookmarkBtn">
-		<span class="IconContainer">
-			<svg viewBox="0 0 384 512" height="0.9em" class="icon">
-			<path
-				d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"
-			></path>
-			</svg>
-		</span>
-		<p class="text">ヘルプ</p>
-		</button>
+		
 	</footer>
 	</div>
 </body>

@@ -149,6 +149,8 @@ public class GameController {
 		model.addAttribute("actionList",list);
 
 		model.addAttribute("url", URL.url);
+		
+		model.addAttribute("emAttack",emAttack);
 
 		return "battle/battle4";
 	}
