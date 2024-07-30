@@ -6,7 +6,7 @@
   --base-icon-size: 4vw; /* アイコンのサイズ */
   --base-status-width: 20vw; /* ステータスバーの幅 */
   --base-status-padding: 0.4vw 0.8vw; /* ステータスバーのパディング */
-  --base-button-padding: 0.4vw 0.8vw; /* ボタンのパディング */
+  --base-button-padding: 0.3vw 0.8vw; /* ボタンのパディング */
 }
 
 /* グローバルフォントサイズの設定 */
@@ -17,7 +17,7 @@ body {
 /* プレイヤー名のスタイル */
 .player-name {
   position: absolute;
-  top: 1vw;
+  top: 0.5vw;
   right: 2vw;
   color: #333;
   margin: 0;
@@ -120,7 +120,7 @@ body {
   cursor: pointer;
   font-size: inherit;
   position: absolute; /* 絶対位置 */
-  top: 0.5vw; /* 上端からの距離 */
+  top: 0.2vw; /* 上端からの距離 */
   right: 0.5vw; /* 右端からの距離 */
   z-index: 10;
 }
