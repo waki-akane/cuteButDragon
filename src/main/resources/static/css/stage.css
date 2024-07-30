@@ -21,8 +21,8 @@ body {
   right: 2vw;
   color: #333;
   margin: 0;
-  background-color: rgba(159, 148, 148, 0.629); /* 網掛けの色 */
-  padding: 0.2em; /* 背景色の余白 */
+  background-color: rgba(159, 148, 148, 0.6);
+  padding: 0.2em;
   border-radius: 0.5vw;
 }
 
@@ -67,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-grow: 1; /* 中央エリアを広げる */
+  flex-grow: 1;
   padding-left: 1em;
 }
 
@@ -119,9 +119,9 @@ body {
   padding: var(--base-button-padding);
   cursor: pointer;
   font-size: inherit;
-  position: absolute; /* 絶対位置 */
-  top: 0.2vw; /* 上端からの距離 */
-  right: 0.5vw; /* 右端からの距離 */
+  position: absolute;
+  top: 0.2vw;
+  right: 0.5vw;
   z-index: 10;
 }
 
