@@ -1,60 +1,61 @@
 @charset "UTF-8";
 /*ユーザー、ログイン共通*/
+
 /* ログイン画面のコンテナ (共通) */
 .login-container {
     width: 90%; /* パーセンテージで幅を設定し、レスポンシブ対応 */
-    max-width: 350px; /* 最大幅を設定して、幅が大きくなりすぎないようにする */
-    margin: 50px auto;
-    padding: 15px;
-    border: 2px solid #ffe4e1;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 17.5vw; /* 最大幅を設定して、幅が大きくなりすぎないようにする */
+    margin: 2.5vw auto;
+    padding: 0.75vw;
+    border: 0.1vw solid #ffe4e1;
+    border-radius: 0.75vw;
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1);
     text-align: center;
     background-color: rgb(255, 218, 228);
     box-sizing: border-box; /* パディングとボーダーを幅に含める */
 }
 
 /* 小さな画面向けのメディアクエリ */
-@media (max-width: 600px) {
+@media (max-width: 30vw) {
     .login-container {
         width: 95%; /* 小さな画面では幅のパーセンテージを増やす */
-        margin: 20px auto; /* 小さな画面ではマージンを調整 */
+        margin: 1vw auto; /* 小さな画面ではマージンを調整 */
     }
 }
 
 /* 画像のコンテナ (共通) */
 .image-container {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .image-container img {
-    width: 150px; 
+    width: 7.5vw; 
     height: auto;
     border-radius: 50%;
 }
 
 /* 入力フィールド (共通) */
 .input-field {
-	font-family: 'M PLUS Rounded 1c', sans-serif;	
+    font-family: 'M PLUS Rounded 1c', sans-serif;    
     width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
+    padding: 0.5vw;
+    margin: 0.5vw 0;
+    border: 0.05vw solid #ccc;
+    border-radius: 0.25vw;
+    font-size: 1vw;
 }
 
 /* 共通ボタン*/
 .log-button {
-	font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     width: 80%;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.5vw;
+    margin: 0.5vw 0;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.25vw;
     background-color: rgb(192, 139, 147);
     color: white;
-    font-size: 1em;
+    font-size: 1vw;
     cursor: pointer;
 }
 
@@ -64,9 +65,9 @@
 
 /* 新規登録リンク (ログイン) */
 .new-registration-link {
-	font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     display: block;
-    margin-top: 20px;
+    margin-top: 1vw;
     color: #0000EE;
     text-decoration: none;
 }
@@ -77,17 +78,17 @@
 
 /* パスワード忘れメモ (ログイン) */
 .password-reset-note {
-	font-family: 'M PLUS Rounded 1c', sans-serif;
-    margin-top: 10px;
-    font-size: 0.7em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    margin-top: 0.5vw;
+    font-size: 0.5vw;
     color: #555;
 }
 
 /* ラベル (ユーザー) */
 .label {
-  text-align: left;
-  margin-bottom: 5px;
-  font-size: 0.9em;
-  color: #555;
-  display: block;
+    text-align: left;
+    margin-bottom: 0.25vw;
+    font-size: 0.9vw;
+    color: #555;
+    display: block;
 }
