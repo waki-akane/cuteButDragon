@@ -1,11 +1,11 @@
 @charset "UTF-8";
 /* 基本フォントサイズとスケールの設定 */
 :root {
-  --base-font-size: 0.8vw; /* フォントサイズを0.8vwに設定 */
-  --base-icon-size: 4vw; /* アイコンのサイズ */
-  --base-status-width: 20vw; /* ステータスバーの幅 */
-  --base-status-padding: 0.4vw 0.8vw; /* ステータスバーのパディング */
-  --base-button-padding: 0.2vw 0.8vw; /* ボタンのパディング */
+  --base-font-size: 0.8vw;
+  --base-icon-size: 4vw;
+  --base-status-width: 20vw;
+  --base-status-padding: 0.4vw 0.8vw;
+  --base-button-padding: 0.2vw 0.8vw;
 }
 
 /* グローバルフォントサイズの設定 */
@@ -17,17 +17,17 @@ body {
 .status-bar {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, rgba(152, 152, 152, 0.8), rgba(209, 209, 209, 0.8));
+  background: linear-gradient(to right, rgb(216, 157, 165), #ffd1dc);
   border-radius: 0.8vw;
   border: 0.1vw solid rgba(78, 78, 78, 0.5);
-  padding: 0.4vw 0.8vw; /* Example padding, adjust as needed */
+  padding: 0.4vw 0.8vw;
   box-shadow: 0 0.3vw 0.4vw rgba(0, 0, 0, 0.1), 0 0.４vw 1vw rgba(0, 0, 0, 0.2);
-  width: 20vw; /* Example width, adjust as needed */
+  width: 20vw;
   position: absolute;
   top: 1vw;
   right: 1vw;
   height: auto;
-  backdrop-filter: blur(2px); /* Optional: add blur for more depth */
+  backdrop-filter: blur(2px);
 }
 
 
@@ -36,7 +36,7 @@ body {
   width: var(--base-icon-size);
   height: var(--base-icon-size);
   border-radius: 50%;
-  border: 0.2vw solid #4e4e4e;
+  border: 0.2vw solid rgb(189, 89, 102);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +115,7 @@ body {
 
 /* 詳細ボタンのスタイル */
 .details-button {
-  background-color: #729bb2;
+  background-color: rgb(216, 157, 165);
   color: white;
   border: none;
   border-radius: 0.4vw;
@@ -152,27 +152,27 @@ body {
   cursor: pointer;
   font-size: var(--base-font-size);
   font-weight: bold;
-  color: #0011ff;
-  background-color: #f8f8fd;
+  color: #ffffff;
+  background-color: #ff99c8; /* ピンクのパステルカラー */
   padding: 0.8em 2.2em;
   border-radius: 50em;
-  border: 6px solid #8b93f8;
-  box-shadow: 0px 8px #1f35ff;
+  border: 6px solid #ff66a1; /* 少し濃いピンクのパステルカラー */
+  box-shadow: 0px 8px #cc4c75; /* 濃いめの影色 */
   transition: all 0.3s ease;
 }
 
 .stage-button:active {
   position: relative;
   top: 8px;
-  border: 6px solid #646fff;
+  border: 6px solid #cc4c75; /* アクティブ時の境界色 */
   box-shadow: 0px 0px;
 }
 
 /* 無効状態のスタイル */
 .stage-button.disabled {
-  background-color: #d3d3d3;
-  border: 6px solid #a9a9a9;
-  color: #a9a9a9;
+  background-color: #f4c2d7; /* 無効状態の背景色 */
+  border: 6px solid #e1a1b6; /* 無効状態の境界色 */
+  color: #e1a1b6; /* 無効状態の文字色 */
   cursor: not-allowed;
   box-shadow: none;
   pointer-events: none;
@@ -189,15 +189,16 @@ body {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #ccc;
+  border-left: 10px solid #ff99c8; /* ピンクのパステルカラー */
   margin: 0 10px;
   transition: border-left-color 0.3s;
 }
 
 .arrow.active {
-  border-left-color: #1f35ff;
+  border-left-color: #ff66a1; /* 少し濃いピンクのパステルカラー */
 }
 
 .arrow.inactive {
-  border-left-color: #999;
+  border-left-color: #e1a1b6; /* 濃いめの色 */
 }
+

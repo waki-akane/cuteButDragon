@@ -1,7 +1,8 @@
 @charset "UTF-8";
 /* 共通スタイル */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 body {
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: 'Orbitron', sans-serif;
   background-color: #f8f0ff;
   margin: 0;
   padding: 0;
@@ -43,6 +44,12 @@ main {
   position: relative;
 }
 
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 高さはビューの高さ全体に合わせる */
+}
+
 #game-area {
   width: 70%;
   padding-bottom: 35%;
@@ -50,6 +57,7 @@ main {
   border: 0.2vw solid #ffe4e1;
   border-radius: 1vw;
   box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .background-image {
@@ -191,7 +199,9 @@ button.bookmarkBtn:active {
   transform: scale(0.95);
 }
 
+
 .dots-container {
+  position: relative;
   background: #ffccd5;
   background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
   background-size: 2vw 2vh;
@@ -199,11 +209,11 @@ button.bookmarkBtn:active {
   font-size: 1.3vw;
   padding: 1vw 2.5vh;
   display: inline-block;
-  position: absolute;
-  width: auto;
   text-align: center;
-  top: 1.5vw;
-  left: 15%;
-  transform: translate(-50%);
+  color: white;
+  text-shadow: 0.2vw 0.2vw 0.3vw rgb(255, 0, 128);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  top: 1vw;
+  left: 1vw;
 }
-
