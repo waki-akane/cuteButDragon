@@ -1,12 +1,11 @@
 @charset "UTF-8";
-
 /* 基本フォントサイズとスケールの設定 */
 :root {
   --base-font-size: 0.8vw; /* フォントサイズを0.8vwに設定 */
   --base-icon-size: 4vw; /* アイコンのサイズ */
   --base-status-width: 20vw; /* ステータスバーの幅 */
   --base-status-padding: 0.4vw 0.8vw; /* ステータスバーのパディング */
-  --base-button-padding: 0.3vw 0.8vw; /* ボタンのパディング */
+  --base-button-padding: 0.2vw 0.8vw; /* ボタンのパディング */
 }
 
 /* グローバルフォントサイズの設定 */
@@ -14,33 +13,23 @@ body {
   font-size: var(--base-font-size);
 }
 
-/* プレイヤー名のスタイル */
-.player-name {
-  position: absolute;
-  top: 0.5vw;
-  right: 2vw;
-  color: #333;
-  margin: 0;
-  background-color: rgba(159, 148, 148, 0.6);
-  padding: 0.2em;
-  border-radius: 0.5vw;
-}
-
 /* ステータスバーのスタイル */
 .status-bar {
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #989898, #d1d1d1);
+  background: linear-gradient(to right, rgba(152, 152, 152, 0.8), rgba(209, 209, 209, 0.8));
   border-radius: 0.8vw;
-  border: 0.1vw solid #4e4e4e;
-  padding: var(--base-status-padding);
-  box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.1);
-  width: var(--base-status-width);
+  border: 0.1vw solid rgba(78, 78, 78, 0.5);
+  padding: 0.4vw 0.8vw; /* Example padding, adjust as needed */
+  box-shadow: 0 0.3vw 0.4vw rgba(0, 0, 0, 0.1), 0 0.４vw 1vw rgba(0, 0, 0, 0.2);
+  width: 20vw; /* Example width, adjust as needed */
   position: absolute;
-  top: 2.5vw;
+  top: 1vw;
   right: 1vw;
   height: auto;
+  backdrop-filter: blur(2px); /* Optional: add blur for more depth */
 }
+
 
 /* アイコンのフレームスタイル */
 .icon-frame {
@@ -53,6 +42,7 @@ body {
   justify-content: center;
   overflow: hidden;
   flex-shrink: 0;
+  box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.1), 0 0.4vw 0.8vw rgba(0, 0, 0, 0.3);
 }
 
 /* アイコンのスタイル */
@@ -85,18 +75,31 @@ body {
   position: relative;
 }
 
+/* EXPバーのフレームスタイル */
+.exp-bar-frame {
+  background-color: #ddd;
+  border-radius: 0.6vw;
+  padding: 0.2vw;
+  box-shadow: inset 0 0.1vw 0.2vw rgba(255, 255, 255, 0.6), inset 0 -0.1vw 0.2vw rgba(0, 0, 0, 0.2), 0 0.2vw 0.4vw rgba(0, 0, 0, 0.3);
+  height: 1.4vw; /* 外側のフレームの高さ */
+}
+
 /* EXPバーのスタイル */
 .exp-bar {
-  background-color: #383838;
+  background: linear-gradient(to bottom, #666, #444);
+  border: 0.1vw solid #4e4e4e;
   border-radius: 0.4vw;
   overflow: hidden;
-  height: 1vw;
+  height: 1vw; /* 内側のバーの高さ */
+  box-shadow: inset 0 0.1vw 0.2vw rgba(255, 255, 255, 0.6), inset 0 -0.1vw 0.2vw rgba(0, 0, 0, 0.2);
 }
 
 /* EXP進行のスタイル */
 .exp-progress {
-  background-color: #4caf50;
+  background: linear-gradient(to bottom, #4caf50, #388e3c);
   height: 100%;
+  transition: width 0.5s ease;
+  box-shadow: inset 0 0.1vw 0.2vw rgba(255, 255, 255, 0.6), inset 0 -0.1vw 0.2vw rgba(0, 0, 0, 0.2);
 }
 
 /* EXPテキストのスタイル */
@@ -123,6 +126,7 @@ body {
   top: 0.2vw;
   right: 0.5vw;
   z-index: 10;
+  box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.1), 0 0.4vw 0.8vw rgba(0, 0, 0, 0.3);
 }
 
 .details-button:hover {
