@@ -67,8 +67,10 @@ public class GameController {
 
 		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actionList", actionList);
+		
+		model.addAttribute("actions",actionList);
 
-		EnemyMonsterEntity em = ems.showEm(userId);
+		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 
 		currentMmHp = mm.getMmHp();

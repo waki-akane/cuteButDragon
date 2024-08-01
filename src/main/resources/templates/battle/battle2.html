@@ -94,10 +94,10 @@
 				<div class="choices">
 					<form th:action="@{/battle/battle3}">
 					<div th:each="action, actionStat : ${actionList}">
-    				<label th:classappend="${action.teckPoint == 0} ? 'disabled' : ''">
-        			<input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.teckPoint == 0}">
+    				<label th:classappend="${action.techPoint == 0} ? 'disabled' : ''">
+        			<input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.techPoint == 0}">
         			<span class="custom-radio">
-            					[[${action.teckName}]] [[${action.teckPoint}]] / [[${actions[actionStat.index].teckPoint}]]
+            					[[${action.techName}]] [[${action.techPoint}]] / [[${actions[actionStat.index].techPoint}]]
         			</span>
     				</label>
 					</div>

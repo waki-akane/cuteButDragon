@@ -21,6 +21,7 @@
             </span>
             <p class="text">ログアウト</p>
         </button>
+  		</form>
     </header>
     <main>
 		<section id="game-area">
@@ -45,7 +46,7 @@
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
 				    <div class="exp-bar">
-				       <div class="exp-progress" th:style="'width: ' + ${i} + '%';"></div>
+				       <div class="exp-progress" th:style="'width:' + ${i} + '%'"></div>
 				    </div>
 				    <p class="exp-text">EXP: [[${mm.mmEx}]]/[[${maxEx}]]</p>
 				</div>					
