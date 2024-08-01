@@ -21,7 +21,6 @@ import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.InitialMonsterService;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.UsertableService;
-import com.example.demo.service.userdetails.UserDetailsImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -61,7 +60,7 @@ public class GameController {
 	//battle1 -> Battle2(技選択画面)へ
 	@GetMapping("/next")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
@@ -93,7 +92,7 @@ public class GameController {
 	public String toBattle3(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
 			@RequestParam("selectAction") int selectAction) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
@@ -132,7 +131,7 @@ public class GameController {
 	@PostMapping("/battle/battle4")
 	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
@@ -164,6 +163,9 @@ public class GameController {
 		}
 
 		currentMmHp = currentMmHp - emAttack;
+		if(currentMmHp < 0) {
+			currentMmHp = 0;
+		}
 
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
@@ -181,7 +183,7 @@ public class GameController {
 	@PostMapping("/battle/battle2")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
@@ -213,7 +215,7 @@ public class GameController {
 	//battle6 -> result
 	@PostMapping("/toLoseResult")
 	public String lose(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 		
 		session.removeAttribute("actionList");
@@ -264,7 +266,7 @@ public class GameController {
 	//battle5 -> result
 	@PostMapping("/toWinResult")
 	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 		
 		session.removeAttribute("actionList");
@@ -326,7 +328,7 @@ public class GameController {
 			level = true;
 		}
 
-		model.addAttribute("mm", mm);
+		
 		model.addAttribute("level",level);
 		model.addAttribute("result",result);
 		
@@ -336,8 +338,14 @@ public class GameController {
 			uts.clearUser(user.getUserId(), selectStage);
 			return "endroll";
 		}else if (user.getStatus() == selectStage){
-			uts.clearUser(user.getUserId(), selectStage + 1);
+			uts.clearUser(user.getUserId(), selectStage);
 		}
+		
+		mm = mms.showMm(mm.getMmId());
+		model.addAttribute("mm", mm);
+		
+		UserTableEntity ut = uts.getByUserId(userId);
+		session.setAttribute("user", ut);
 		
 
 		return "result";
@@ -345,11 +353,10 @@ public class GameController {
 	
 	@GetMapping("/toRedirectStage")
 	public String toStage(Model model, HttpSession session) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-		UserTableEntity ut = user.getUser();
-		MyMonsterEntity mm = mms.findByUserId(ut.getUserId());
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		MyMonsterEntity mm = mms.findByUserId(user.getUserId());
 		
-		model.addAttribute("user", ut);
+		model.addAttribute("user", user);
 		model.addAttribute("mm",mm);
 		model.addAttribute("url",URL.url);
 		

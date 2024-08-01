@@ -14,7 +14,6 @@ import com.example.demo.entity.UserTableEntity;
 import com.example.demo.service.ActionService;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
-import com.example.demo.service.userdetails.UserDetailsImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -33,11 +32,10 @@ public class StageController {
 	//[ステータス]ボタン押下時処理、stage→status
 	@GetMapping("/status")
 	public String showStatus(Model model, HttpSession session) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-		UserTableEntity ut = user.getUser();
-		model.addAttribute("user", ut);
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		model.addAttribute("user", user);
 		
-		MyMonsterEntity mm = mms.findByUserId(ut.getUserId());
+		MyMonsterEntity mm = mms.findByUserId(user.getUserId());
 		model.addAttribute("mm",mm);
 		
 		List<ActionEntity> list = as.imAllAction(mm.getIm().getImId());

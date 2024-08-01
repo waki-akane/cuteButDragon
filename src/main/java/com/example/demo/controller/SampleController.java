@@ -29,7 +29,7 @@ public class SampleController {
 	
 	@GetMapping("/home")
     public String home(Model model, HttpSession session) {
-        UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
         int status = user.getStatus();
         model.addAttribute("status", status);
         return "home";

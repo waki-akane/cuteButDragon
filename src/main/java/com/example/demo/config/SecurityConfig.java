@@ -34,6 +34,9 @@ public class SecurityConfig {
 	        )
 	        .logout(logout -> logout
 	            .logoutSuccessUrl("/login?logout") // ログアウト成功後のリダイレクト先 URL
+	            .logoutUrl("/logout")
+                .invalidateHttpSession(true) // セッション無効化
+                .deleteCookies("JSESSIONID") // クッキー削除
 	        )
 	        .authorizeHttpRequests(authz -> authz
 	            .requestMatchers("/login", "/user").permitAll() // 「/login」「/register」はすべて許可

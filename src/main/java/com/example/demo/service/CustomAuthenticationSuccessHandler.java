@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.entity.UserTableEntity;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
 import jakarta.servlet.ServletException;
@@ -22,7 +23,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                                         Authentication authentication) throws IOException, ServletException {
         HttpSession session = request.getSession();
         UserDetailsImpl userDetailsImpl = (UserDetailsImpl) authentication.getPrincipal();
-        session.setAttribute("user", userDetailsImpl);
+        UserTableEntity ut = userDetailsImpl.getUser();
+        session.setAttribute("user", ut);
         
         // ログイン成功後のリダイレクト先
         response.sendRedirect("/toStage");

@@ -30,14 +30,13 @@ public class UsertableServiceImpl implements UsertableService{
 	@Override
 	public void clearUser(int userId, int selectStage) {
 		UserTableEntity ute = utr.findById(userId).get();
-		ute.setStatus(selectStage);
+		ute.setStatus(selectStage + 1);
 		utr.save(ute);
 	}
 
 	@Override
 	public UserTableEntity getByUserId(int userId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return utr.findById(userId).get();
 	}
 
 

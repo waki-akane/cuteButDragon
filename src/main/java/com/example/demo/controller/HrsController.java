@@ -14,7 +14,6 @@ import com.example.demo.entity.URL;
 import com.example.demo.entity.UserTableEntity;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.MyMonsterService;
-import com.example.demo.service.userdetails.UserDetailsImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -30,11 +29,10 @@ public class HrsController {
 	//[閉じる]ボタン押下時処理、ルール説明画面からステージ選択画面へ
 	@GetMapping("/toStage")
 	public String toStage(Model model, HttpSession session) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-		UserTableEntity ut = user.getUser();
-		MyMonsterEntity mm = mms.findByUserId(ut.getUserId());
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		MyMonsterEntity mm = mms.findByUserId(user.getUserId());
 		
-		model.addAttribute("user", ut);
+		model.addAttribute("user", user);
 		model.addAttribute("mm",mm);
 		model.addAttribute("url",URL.url);
 		
@@ -57,7 +55,7 @@ public class HrsController {
 	//stage選択時処理、stage→battle1
 	@PostMapping("/toBattle")
 	public String toBattle1(Model model, HttpSession session, @RequestParam("selectStage")int selectStage) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
