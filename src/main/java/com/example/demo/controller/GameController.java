@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ import com.example.demo.entity.ActionEntity;
 import com.example.demo.entity.EnemyMonsterEntity;
 import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.entity.URL;
+import com.example.demo.entity.UserTableEntity;
 import com.example.demo.service.ActionService;
 import com.example.demo.service.EnemyMonsterService;
 import com.example.demo.service.InitialMonsterService;
@@ -66,8 +68,11 @@ public class GameController {
 		model.addAttribute("mm", mm);
 
 		List<ActionEntity> actionList = as.imAllAction(mm.getIm().getImId());
-		model.addAttribute("actionList", actionList);
+		//現在のアクションリスト（セッションに追加）
+		session.setAttribute("actionList", actionList);
+		model.addAttribute("actionList",actionList);
 		
+		//元のアクションリスト
 		model.addAttribute("actions",actionList);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
@@ -84,10 +89,10 @@ public class GameController {
 	}
 
 	//battle2→battle3
-	@GetMapping("/battle/battle3")
+	@PostMapping("/battle/battle3")
 	public String toBattle3(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
-			@RequestParam("selectAction") int selectAction,@RequestParam("actionList") List<ActionEntity> list) {
+			@RequestParam("selectAction") int selectAction) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
@@ -98,27 +103,35 @@ public class GameController {
 		model.addAttribute("em", em);
 
 		model.addAttribute("currentMmHp", currentMmHp);
-
-		ActionEntity action = as.showAction(selectAction);
-		currentEmHp = currentEmHp - (action.getAttack() + mm.getMmAttack());
+		
+		ArrayList<ActionEntity> nowList = (ArrayList<ActionEntity>)session.getAttribute("actionList");
+		ActionEntity action = nowList.get(selectAction);
+		int attack = action.getAttack() + mm.getMmAttack();
+		currentEmHp = currentEmHp - attack;
 		if(currentEmHp < 0) {
 			currentEmHp = 0;
 		}
+		
+		model.addAttribute("attack", attack);
+		action.setTechPoint(action.getTechPoint() - 1);
+		nowList.set(selectAction,action);
+		session.setAttribute("actionList", nowList);
+		model.addAttribute("actionList",nowList);
+		model.addAttribute("action",action);
 		
 		model.addAttribute("currentEmHp", currentEmHp);
 
 		model.addAttribute("url", URL.url);
 		
-		model.addAttribute("actionList",list);
+		model.addAttribute("selectAction",selectAction);
 
 		return "battle/battle3";
 	}
 
 	//battle3 -> battle4 or battle3 -> battle6
-	@GetMapping("/battle/battle4")
+	@PostMapping("/battle/battle4")
 	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
-			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
-			@RequestParam("selectAction") int selectAction,@RequestParam("actionList")List<ActionEntity> list) {
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
@@ -127,9 +140,13 @@ public class GameController {
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
+		
+		model.addAttribute("url", URL.url);
 
 		if (currentEmHp <= 0) {
-			return "battle/battle6";
+			model.addAttribute("currentMmHp", currentMmHp);
+			model.addAttribute("currentEmHp", currentEmHp);
+			return "battle/battle5";
 		}
 		
 		Random rand = new Random();
@@ -137,10 +154,13 @@ public class GameController {
 		int emAttack = 0;
 		if (i == 0) {
 			emAttack = em.getEmAction1().getAttack();
+			model.addAttribute("action",em.getEmAction1());
 		} else if (i == 1) {
 			emAttack = em.getEmAction2().getAttack();
+			model.addAttribute("action",em.getEmAction1());
 		} else if (i == 2) {
 			emAttack = em.getEmAction3().getAttack();
+			model.addAttribute("action",em.getEmAction1());
 		}
 
 		currentMmHp = currentMmHp - emAttack;
@@ -148,37 +168,41 @@ public class GameController {
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
 		
-		model.addAttribute("actionList",list);
-
-		model.addAttribute("url", URL.url);
+		model.addAttribute("emAttack",emAttack);
+		
+		System.out.println(selectStage);
+		System.out.println(currentEmHp);
+		System.out.println(currentMmHp);
 
 		return "battle/battle4";
 	}
 
 	//battle4 -> battle2 or battle4 -> battle5
-	@GetMapping("/battle/battle2")
+	@PostMapping("/battle/battle2")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
-			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
-			@RequestParam("actionList")List<ActionEntity> list) {
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
-
-		model.addAttribute("actionList", list);
+		
+		ArrayList<ActionEntity> nowList = (ArrayList<ActionEntity>)session.getAttribute("actionList");
+		model.addAttribute("actionList", nowList);
 
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
+		
+		model.addAttribute("url", URL.url);
 
 		if (currentMmHp <= 0) {
-			return "battle/battle5";
+			model.addAttribute("currentMmHp", currentMmHp);
+			model.addAttribute("currentEmHp", currentEmHp);
+			return "battle/battle6";
 		}
 
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
-
-		model.addAttribute("url", URL.url);
 		
 		List<ActionEntity> koteiList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actions",koteiList);
@@ -191,6 +215,8 @@ public class GameController {
 	public String lose(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
+		
+		session.removeAttribute("actionList");
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("beforeMm", mm);
@@ -240,6 +266,8 @@ public class GameController {
 	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
 		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
 		int userId = user.getUserId();
+		
+		session.removeAttribute("actionList");
 
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("beforeMm", mm);
@@ -307,11 +335,37 @@ public class GameController {
 		if(user.getStatus() == 2 && selectStage == 3) {
 			uts.clearUser(user.getUserId(), selectStage);
 			return "endroll";
-		}else if (user.getStatus() < selectStage){
-			uts.clearUser(user.getUserId(), selectStage);
+		}else if (user.getStatus() == selectStage){
+			uts.clearUser(user.getUserId(), selectStage + 1);
 		}
+		
 
 		return "result";
+	}
+	
+	@GetMapping("/toRedirectStage")
+	public String toStage(Model model, HttpSession session) {
+		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
+		UserTableEntity ut = user.getUser();
+		MyMonsterEntity mm = mms.findByUserId(ut.getUserId());
+		
+		model.addAttribute("user", ut);
+		model.addAttribute("mm",mm);
+		model.addAttribute("url",URL.url);
+		
+		int maxEx=0;
+		if(mm.getMmLevel()==1) {
+			maxEx=1000;
+		}else if(mm.getMmLevel()==2) {
+			maxEx=2000;
+		}else if(mm.getMmLevel()==3) {
+			maxEx=3000;
+		}
+		model.addAttribute("lv",maxEx);
+		System.out.println(maxEx);
+		System.out.println(mm.getMmEx());
+
+		return "redirect:stage"; //stageページにリダイレクト
 	}
 
 }
