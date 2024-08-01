@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /* result、status共通 */
-
 .center-box {
     padding: 0.75vw 0.5vw;
     background: #d0b78f;
@@ -14,46 +13,35 @@
     width: 45vw;
     height: 50vh;
     z-index: 1000;
-    border-radius: 0.75vw; /* 角を丸くする */
-}
-
-/* タイトルのスタイル */
-.center-box_title {
-    text-align: center;
-    font-size: calc(1.7vw + 0.6em);
-    position: absolute; /* fixed → absolute */
-    top: 0.75vw;
-    left: 50%; 
-    transform: translateX(-50%); 
-    margin-top: 0.5vw;
-    z-index: 1001;
-    color: #431a1a;
+    border-radius: 0.75vw;
 }
 
 /* テープのスタイル */
 .center-box_tape {
-    width: 50%;
-    height: 1.75vw;
-    margin: -0.75vw auto 0;
-    background: rgb(170, 121, 65);
+    width: 45%;
+    height: 4vw;
+    margin: -1.25vw auto 0;
+    background: #ffccd5;
+    background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
+    background-size: 2vw 2vh;
+    background-position: 0 0, 1vw 1vh;
     transform: rotate(-3deg);
     opacity: 0.8;
     position: absolute;
-    top: 0;
-    left: 25%;
-    border-radius: 0.25vw; /* 角を丸くする */
+    top: -0.5vw;
+    left: 27%;
 }
 
-@keyframes win {
-    0%, 100% { transform: rotate(0deg); }
-    25%, 75% { transform: rotate(15deg); }
-    50% { transform: rotate(-15deg); }
-}
-
-@keyframes lose {
-    0% { transform: rotate(0deg); }
-    40% { transform: rotate(15deg); }
-    100% { transform: rotate(15deg); }
+/* テープ上の文字スタイル */
+.center-box_text {
+    position: relative; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #431a1a;
+    font-size: 2vw;
+    text-align: center;
+    z-index: 1001;
 }
 
 /* 左側画像コンテナ */
@@ -87,62 +75,124 @@
 .left-images img:last-of-type {
     height: 60%;
     object-fit: contain;
+    transform: translateX(-15%); /* 左に10%ずらす */
+}
+
+@keyframes win {
+    0%, 100% { transform: rotate(0deg); }
+    25%, 75% { transform: rotate(15deg); }
+    50% { transform: rotate(-15deg); }
+}
+
+@keyframes sparkle {
+    0% {
+        filter: brightness(100%) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+    50% {
+        filter: brightness(150%) drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    100% {
+        filter: brightness(100%) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
 }
 
 .win-image {
-    animation: win 1.5s ease-in-out 0.8s; /* 遅延を追加 */
+    animation: win 2s ease-in-out 0.8s forwards, sparkle 2s ease-in-out forwards;
     animation-fill-mode: forwards;
 }
 
-.lose-image {
-    animation: lose 1.5s ease-in-out forwards;
+@keyframes lose {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(15deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    60% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(15deg);
+    }
 }
+
+@keyframes darkening {
+    0% {
+        filter: brightness(100%);
+    }
+    40% {
+        filter: brightness(60%);
+    }
+    100% {
+        filter: brightness(80%);
+    }
+}
+
+.lose-image {
+    animation: lose 2s ease forwards, darkening 2s ease forwards;
+    animation-fill-mode: forwards;
+}
+
+
 
 /* 右側ボックス */
 .right-box {
-    width: 35%;
-    color: #431a1a;
-    text-align: left;
-    z-index: 1001;
-    position: absolute; 
-    right: 22%; 
-    top: 30%; 
-    font-size: calc(1vw + 0.5em);
-    padding-bottom: 1.5vw;
-    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+  position: absolute;
+  right: 0;
+  top: calc(5vw);
+  width: 55%;
+  height: calc(100% - 5vw);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 縦上詰にする */
+  align-items: flex-start; /* 横左寄せ */
+  box-sizing: border-box;
+  line-height: 1; /* 行間を狭く設定 */
+  font-size: 1.2vw; /* フォントサイズを相対値で設定 */
+  padding: 1vw; /* 内側の余白 */
+}
+
+.right-box p {
+  margin: 0.5vw 0; /* 段落の上下マージンを調整 */
+  text-align: left; /* テキストを横左寄せ */
 }
 
 /* EXPバーのコンテナ */
 .exp-bar-container {
     margin-top: 2vw;
-    width: 100%;
+    width: 85%;
     position: relative;
 }
 
 /* EXPバー */
 .exp-bar {
-    background-color: #383838;
+    background: linear-gradient(145deg, #2e2e2e, #464646);
+    border: 0.1vw solid gold; 
     border-radius: 0.4vw;
     overflow: hidden;
-    height: 1vw;
-    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    height: 1.1vw;
+    box-sizing: border-box;
+    box-shadow: 0.2vw 0.2vw 0.5vw rgba(0, 0, 0, 0.5), -0.2vw -0.2vw 0.5vw rgba(255, 255, 255, 0.1);
+    margin-bottom: 1vw;
 }
 
 /* EXP進行 */
 .exp-progress {
-    background-color: #4caf50;
+    background: linear-gradient(to right, #4caf50, #66bb6a);
     height: 100%;
+    box-shadow: inset 0.2vw 0.2vw 0.5vw rgba(0, 0, 0, 0.5), inset -0.2vw -0.2vw 0.5vw rgba(255, 255, 255, 0.1);
 }
 
 /* EXPテキスト */
 .exp-text {
-    color: #431a1a;
-    line-height: 1;
     white-space: nowrap;
     margin: 0;
     position: absolute;
     left: 0.4vw;
-    bottom: 100%;
-    transform: translateY(-50%);
-    font-size: 0.9vw; /* フォントサイズを調整 */
+    bottom: 110%;
+    transform: translateY(50%);
+    font-size: 1vw;
 }

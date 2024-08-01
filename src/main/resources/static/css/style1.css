@@ -1,57 +1,42 @@
 @charset "UTF-8";
-/* ユーザー、ログイン共通 */
-
 /* ログイン画面のコンテナ (共通) */
 .login-container {
-    width: 90%; /* パーセンテージで幅を設定し、レスポンシブ対応 */
-    max-width: 17.5vw; /* 最大幅を設定して、幅が大きくなりすぎないようにする */
-    margin: 2.5vw auto;
-    padding: 0.75vw;
+    width: 20%;
+    padding: 2% 0;
+    position: relative;
     border: 0.1vw solid #ffe4e1;
     border-radius: 0.75vw;
     box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: rgb(255, 218, 228);
-    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    background-color: rgb(255, 218, 228);  
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
-/* 小さな画面向けのメディアクエリ */
-@media (max-width: 30vw) {
-    .login-container {
-        width: 95%; /* 小さな画面では幅のパーセンテージを増やす */
-        margin: 1vw auto; /* 小さな画面ではマージンを調整 */
-    }
-}
-
-/* 画像のコンテナ (共通) */
 .image-container {
-    margin-bottom: 0;
+    margin-bottom: 1vw;
 }
 
 .image-container img {
-    width: 7.5vw; 
+    width: 13vw;
     height: auto;
     border-radius: 50%;
 }
 
-/* 入力フィールド (共通) */
 .input-field {
-    font-family: 'M PLUS Rounded 1c', sans-serif;    
     width: 80%;
     padding: 0.5vw;
-    margin: 0.5vw 0;
+    margin: 1vw 0;
     border: 0.05vw solid #ccc;
     border-radius: 0.25vw;
     font-size: 1vw;
-    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    box-sizing: border-box;
 }
 
-/* 共通ボタン */
 .log-button {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
     width: 80%;
     padding: 0.5vw;
-    margin: 0.5vw 0;
+    margin: 1vw 0;
     border: none;
     border-radius: 0.25vw;
     background-color: rgb(192, 139, 147);
@@ -65,32 +50,30 @@
     background-color: rgb(167, 128, 135);
 }
 
-/* 新規登録リンク (ログイン) */
 .new-registration-link {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
     display: block;
     margin-top: 1vw;
     color: #0000EE;
     text-decoration: none;
+    font-size: 1.2vw;
 }
 
 .new-registration-link:hover {
     text-decoration: underline;
 }
 
-/* パスワード忘れメモ (ログイン) */
 .password-reset-note {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
     margin-top: 0.5vw;
-    font-size: 0.8vw; /* フォントサイズを少し大きく調整 */
+    font-size: 0.8vw;
     color: #555;
 }
 
 /* ラベル (ユーザー) */
 .label {
-    text-align: left;
-    margin-bottom: 0.25vw;
-    font-size: 0.9vw;
-    color: #555;
     display: block;
+    text-align: left;
+    font-size: 1vw;
+    color: #555;
+    margin: 0.1vw 0 0.1vw 10%;
+    padding-top: 0.1vw;
 }

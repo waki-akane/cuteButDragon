@@ -190,3 +190,20 @@ button.bookmarkBtn:hover .text {
 button.bookmarkBtn:active {
   transform: scale(0.95);
 }
+
+.dots-container {
+  background: #ffccd5;
+  background-image: radial-gradient(#fff 10%, transparent 10%), radial-gradient(#fff 10%, transparent 10%);
+  background-size: 2vw 2vh;
+  background-position: 0 0, 1vw 1vh;
+  font-size: 1.3vw;
+  padding: 1vw 2.5vh;
+  display: inline-block;
+  position: absolute;
+  width: auto;
+  text-align: center;
+  top: 1.5vw;
+  left: 15%;
+  transform: translate(-50%);
+}
+
