@@ -136,15 +136,13 @@
     animation-fill-mode: forwards;
 }
 
-
-
 /* 右側ボックス */
 .right-box {
   position: absolute;
   right: 0;
-  top: calc(5vw);
+  top: 2.5vw;
   width: 55%;
-  height: calc(100% - 5vw);
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* 縦上詰にする */
