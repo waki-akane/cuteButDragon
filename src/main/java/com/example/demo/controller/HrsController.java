@@ -83,20 +83,5 @@ public class HrsController {
 		return "character";
 	}
 	
-	@PostMapping("/toCharcter")
-	public String toCharacter2(Model model) {
-		model.addAttribute("mmDTO", new MyMonsterDTO());
-		
-		model.addAttribute("url",URL.url);
-		
-		return "character";
-	}
-
-	//ED、[戻る]ボタン押下時処理、endroll→login
-	//@GetMapping() 
-	//public String toLogin(int userId, Model model) {
-	//HelpControllerのtoStageメソッドと同じ処理（まとめてもいけるんかもしれません）
-	//return "";
-	//}
 
 }
