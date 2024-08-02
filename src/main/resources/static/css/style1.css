@@ -77,3 +77,11 @@
     margin: 0.1vw 0 0.1vw 10%;
     padding-top: 0.1vw;
 }
+
+.error-message {
+    color: red;
+    display: block;
+    margin-top: 0vw;
+    font-size: 0.8vw;
+    position: absolute;
+}

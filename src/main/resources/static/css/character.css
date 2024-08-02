@@ -1,11 +1,6 @@
 @charset "UTF-8";
 
-
-
-        input[type="radio"] {
-            display: none;
-        }
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 /* 画像を横に並べるコンテナ */
 .image-container {
@@ -31,6 +26,10 @@
 .image-label img {
   width: 100%; /* 画像をラベルの幅に合わせる */
   border: 0.25vw solid #ccc;
+}
+
+input[type="radio"] {
+    display: none;
 }
 
 /* 選択された画像のスタイル */
@@ -81,7 +80,7 @@ input[type="radio"]:checked + .image-label img {
   padding-left: 0.8vw;
   letter-spacing: 0.05vw;
   color: rgb(19, 19, 19);
-  font-size: 0.7vw;
+  font-size: 0.9vw;
 }
 
 .form-container {
@@ -92,5 +91,5 @@ input[type="radio"]:checked + .image-label img {
 }
 
 .form-label {
-  font-size: 0.8vw;
+  font-size: 1vw;
 }

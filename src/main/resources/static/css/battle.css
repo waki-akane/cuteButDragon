@@ -28,7 +28,9 @@
 /* キャラクター名のスタイル */
 .character-name {
     font-size: 1.4vw;
+    font-weight: bold;
     color: white;
+    text-shadow: 1px 1px 0 #000,  -1px 1px 0 #000,  1px -1px 0 #000,  -1px -1px 0 #000;
     margin: 0.3vw 0;
 }
 
@@ -41,7 +43,9 @@
 }
 
 .hp-text ,.hp-amount {
+    font-weight: bold;
     color: white;
+    text-shadow: 1px 1px 0 #000,  -1px 1px 0 #000,  1px -1px 0 #000,  -1px -1px 0 #000;
     position: absolute;
     top: -0.1vh;
     margin: 0;

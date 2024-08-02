@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* 共通スタイル */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body {
   font-family: 'Orbitron', sans-serif;
   background-color: #f8f0ff;
@@ -211,9 +212,14 @@ button.bookmarkBtn:active {
   display: inline-block;
   text-align: center;
   color: white;
-  text-shadow: 0.2vw 0.2vw 0.3vw rgb(255, 0, 128);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  top: 1vw;
-  left: 1vw;
+	text-shadow: 0.1vw 0.1vw 0.1vw rgb(255, 0, 128), 
+	    -0.1vw 0.1vw 0.1vw rgb(255, 0, 128), 
+	    0.1vw -0.1vw 0.1vw rgb(255, 0, 128), 
+	    -0.1vw -0.1vw 0.1vw rgb(255, 0, 128);
+  box-shadow: 
+    0 0.8vw 1.6vw rgba(0, 0, 0, 0.1), 
+    0 1.2vw 4vw rgba(0, 0, 0, 0.1);
+  border-radius: 1vw;
+	top: 1vw;
+	left: 1vw;
 }
