@@ -14,18 +14,18 @@
 		<h1>可愛いくてもドラゴン</h1>
 	</header>
 		<main>
-			<form th:action="@{/authenticate}"  method="post">
-				<div class="login-container">
-					<div class="image-container">
-						<img th:src="@{${url} + 'img/materials/title.png'}" alt="画像">
-					</div>
+			<div class="login-container">
+				<div class="image-container">
+					<img th:src="@{${url} + 'img/materials/title.png'}" alt="画像">
+				</div>
+				<form th:action="@{/authenticate}"  method="post">					
 					<input type="text" placeholder="ニックネーム" name="username" class="input-field" required>
 					<input type="password" placeholder="パスワード" name="password" class="input-field" required>
 					<button  type="submit" class="log-button">ログイン</button>
 					<a th:href="@{/user}" class="new-registration-link">新しく冒険を始める (新規登録)</a>
 					<p class="password-reset-note">*ログインできない場合は新規登録してください</p>
-				</div>
-			</form>
+				</form>
+			</div>
 		</main>
 	</div>
 		<footer></footer>
