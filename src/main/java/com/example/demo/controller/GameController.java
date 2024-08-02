@@ -58,11 +58,13 @@ public class GameController {
 	//	⑥味方モンスターHP０
 
 	//battle1 -> Battle2(技選択画面)へ
+	//①モンスター遭遇 -> ②攻撃選択
 	@GetMapping("/next")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
+		
+		//sessionからユーザー情報⇒MM情報の取得
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
-
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
 
@@ -73,15 +75,17 @@ public class GameController {
 		
 		//元のアクションリスト
 		model.addAttribute("actions",actionList);
-
+		
+		//EM情報の取得
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
-
+		
+		//各現在のHPをモデルへ
 		currentMmHp = mm.getMmHp();
 		model.addAttribute("currentMmHp", currentMmHp);
 		currentEmHp = em.getEmHp();
 		model.addAttribute("currentEmHp", currentEmHp);
-
+		
 		model.addAttribute("url", URL.url);
 
 		return "battle/battle2";
@@ -92,34 +96,40 @@ public class GameController {
 	public String toBattle3(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp,
 			@RequestParam("selectAction") int selectAction) {
+		
+		//ユーザー情報⇒MM情報の取得
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
-
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
-
+		
+		//EM情報の取得
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
-
+		
+		//現在のMMHp
 		model.addAttribute("currentMmHp", currentMmHp);
 		
+		//現在のアクションリストから選択攻撃を取得
 		ArrayList<ActionEntity> nowList = (ArrayList<ActionEntity>)session.getAttribute("actionList");
 		ActionEntity action = nowList.get(selectAction);
+		//攻撃力の取得
 		int attack = action.getAttack() + mm.getMmAttack();
+		model.addAttribute("attack", attack);
+		//EMの残りHpの計算
 		currentEmHp = currentEmHp - attack;
 		if(currentEmHp < 0) {
 			currentEmHp = 0;
 		}
-		
-		model.addAttribute("attack", attack);
+		model.addAttribute("currentEmHp", currentEmHp);
+		//選択攻撃の技ポイントを減らす
 		action.setTechPoint(action.getTechPoint() - 1);
 		nowList.set(selectAction,action);
+		//現在の技リストの更新
 		session.setAttribute("actionList", nowList);
 		model.addAttribute("actionList",nowList);
 		model.addAttribute("action",action);
 		
-		model.addAttribute("currentEmHp", currentEmHp);
-
 		model.addAttribute("url", URL.url);
 		
 		model.addAttribute("selectAction",selectAction);
@@ -131,6 +141,8 @@ public class GameController {
 	@PostMapping("/battle/battle4")
 	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
+		
+		
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 

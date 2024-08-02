@@ -31,7 +31,9 @@ public class HrsController {
 	public String toStage(Model model, HttpSession session) {
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		MyMonsterEntity mm = mms.findByUserId(user.getUserId());
-		
+		if(mm == null) {
+			return "redirect:/toCharcter";
+		}
 		model.addAttribute("user", user);
 		model.addAttribute("mm",mm);
 		model.addAttribute("url",URL.url);
@@ -74,6 +76,15 @@ public class HrsController {
 	//OP、[キャラ選択へ]ボタン押下時処理、ストーリー画面からキャラ選択画面へ
 	@GetMapping("/toCharcter")
 	public String toCharacter(Model model) {
+		model.addAttribute("mmDTO", new MyMonsterDTO());
+		
+		model.addAttribute("url",URL.url);
+		
+		return "character";
+	}
+	
+	@PostMapping("/toCharcter")
+	public String toCharacter2(Model model) {
 		model.addAttribute("mmDTO", new MyMonsterDTO());
 		
 		model.addAttribute("url",URL.url);

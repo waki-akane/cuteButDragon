@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import com.example.demo.dto.UserTableEntryDTO;
 import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.entity.URL;
 import com.example.demo.service.MyMonsterService;
+import com.example.demo.service.UserDetailsServiceImpl;
 import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
 
@@ -23,6 +27,9 @@ public class UserController {
 	
 	@Autowired
 	MyMonsterService mms;
+	
+	@Autowired
+	UserDetailsServiceImpl udservice;
 
 	@GetMapping("/login")
 	public String loginForm(Model model) {
@@ -44,6 +51,7 @@ public class UserController {
 		MyMonsterEntity mm = mms.findByUserId(principal.getUserId());
 		model.addAttribute("mm",mm);
 		// ログインに成功したら表示する URL
+		
 		return "stage";
 
 	}
@@ -60,7 +68,25 @@ public class UserController {
 	@PostMapping("/user")
 	public String addUser(UserTableEntryDTO ute, Model model) {
 		uts.createUser(ute);
+		UserDetails udi = udservice.loadUserByUsername(ute.getName());
+		//
+		// 認証情報を作成
+        Authentication auth = new UsernamePasswordAuthenticationToken(udi, null, udi.getAuthorities());
+
+        // SecurityContextHolderに認証情報を設定
+        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+        securityContext.setAuthentication(auth);
+        SecurityContextHolder.setContext(securityContext);
+        
+     // ユーザー名
+     	UserDetailsImpl principal = (UserDetailsImpl) auth.getPrincipal();
+     	model.addAttribute("username", principal.getUsername());
+     	model.addAttribute("password", ute.getPass());
+        
+		System.out.println(principal.getUsername());
+		System.out.println(ute.getPass());
 		model.addAttribute("url", URL.url);
+		 //return "redirect:/loginsuccess";
 		return "story";
 	}
 

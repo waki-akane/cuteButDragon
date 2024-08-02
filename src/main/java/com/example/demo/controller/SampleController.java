@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.demo.service.userdetails.UserDetailsImpl;
+import com.example.demo.entity.UserTableEntity;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -29,8 +29,8 @@ public class SampleController {
 	
 	@GetMapping("/home")
     public String home(Model model, HttpSession session) {
-		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-        int status = user.getStatus();
+		UserTableEntity user = (UserTableEntity)session.getAttribute("user");
+		int status = user.getStatus();
         model.addAttribute("status", status);
         return "home";
     }
