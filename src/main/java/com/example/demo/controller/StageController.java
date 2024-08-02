@@ -66,19 +66,4 @@ public class StageController {
 		return "help";
 	}
 
-	//stage→battle
-//	@GetMapping("/toBattle")
-//	public String toBattle(Model model, HttpSession session, int selectStage) {
-//		UserDetailsImpl user = (UserDetailsImpl) session.getAttribute("user");
-//		int userId = user.getUserId();
-//
-//		MyMonsterEntity mm = mms.findByUserId(userId);
-//		model.addAttribute("mm",mm);
-//
-//		EnemyMonsterEntity em = ems.showEm(selectStage);
-//		model.addAttribute("em", em);
-//
-//		return "battle/battle1";
-//	}
-
 }

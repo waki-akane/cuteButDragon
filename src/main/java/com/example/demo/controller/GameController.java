@@ -346,7 +346,7 @@ public class GameController {
 		
 		model.addAttribute("url", URL.url);
 		
-		if(user.getStatus() == 2 && selectStage == 3) {
+		if(user.getStatus() == 3 && selectStage == 3) {
 			uts.clearUser(user.getUserId(), selectStage);
 			return "endroll";
 		}else if (user.getStatus() == selectStage){

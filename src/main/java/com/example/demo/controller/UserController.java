@@ -8,7 +8,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.UserTableEntryDTO;
@@ -30,6 +33,11 @@ public class UserController {
 	
 	@Autowired
 	UserDetailsServiceImpl udservice;
+	
+	@ModelAttribute
+	public UserTableEntryDTO setUpForm() {
+		return new UserTableEntryDTO();
+	}
 
 	@GetMapping("/login")
 	public String loginForm(Model model) {
@@ -66,7 +74,13 @@ public class UserController {
 	}
 
 	@PostMapping("/user")
-	public String addUser(UserTableEntryDTO ute, Model model) {
+	public String addUser(@Validated UserTableEntryDTO ute, BindingResult br, Model model) {
+		if (br.hasErrors()) {
+			model.addAttribute("user", ute);
+			model.addAttribute("url", URL.url);
+			System.out.println(br.getAllErrors());
+			return "user"; 
+		}
 		uts.createUser(ute);
 		UserDetails udi = udservice.loadUserByUsername(ute.getName());
 		//
@@ -96,11 +110,5 @@ public class UserController {
 		model.addAttribute("url", URL.url);
 		return "user";
 	}
-
-	@GetMapping("/story")
-	public String addUser(Model model) {
-		model.addAttribute("url", URL.url);
-		return "story";
-	}
-
+	
 }
