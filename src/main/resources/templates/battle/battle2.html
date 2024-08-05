@@ -27,23 +27,20 @@
 	<main>
 		<section id="game-area">
 			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
-			<!-- キャラクター -->
-            <div class="character-container">
 				<!-- マイドラゴン -->
 				<div class="my-dragon">
-					<img th:src="@{${url} + ${mm.im.photo}}" alt="マイドラゴン">
 					<p class="character-name">[[${mm.mmName}]]</p>
 					<div class="hp-container">
 						<div id="num1" th:data-value="${currentMmHp}"></div>
    						<div id="num2" th:data-value="${mm.mmHp}"></div>
 					    <span class="hp-text">HP:</span>
+					    <span class="hp-amount" id="result_mm"></span>
 					    <div class="hp-bar">
 					        <div class="hp-fill" id="mmhp-progress"></div>
 					    </div>
-					    <span class="hp-amount">[[${currentMmHp}]]/[[${mm.mmHp}]]</span>
-					</div>
-				
-				
+					 </div>   
+					<img th:src="@{${url} + ${mm.im.photo}}" alt="mm">
+				</div>
 				<script>
     				// HTMLから数値を取得
    					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
@@ -53,25 +50,22 @@
     				// 計算結果をwidthに設定
     				document.getElementById('mmhp-progress').style.width = result + '%';
     				// 結果を「exp:num1/num2」形式で表示
-    				document.getElementById('result').innerText = 'exp:' + num1 + '/' + num2;
+    				document.getElementById('result_mm').innerText = num1 + '/' + num2;
 				</script>
-				</div>
-				
 				<!-- 敵モンスター -->
 				<div class="enemy-monster">
-					<img th:src="@{${url} + ${em.emPhoto}}" alt="敵モンスター">
 					<p class="character-name">[[${em.emName}]]</p>
 					<div class="hp-container">
 						<div id="num3" th:data-value="${currentEmHp}"></div>
    						<div id="num4" th:data-value="${em.emHp}"></div>
 					    <span class="hp-text">HP:</span>
+					    <span class="hp-amount" id="result_em"></span>
 					    <div class="hp-bar">
 					        <div class="hp-fill" id="emhp-progress"></div>
 					    </div>
-					    <span class="hp-amount">[[${currentEmHp}]]/[[${em.emHp}]]</span>
 					</div>
-				
-				
+					<img th:src="@{${url} + ${em.emPhoto}}" alt="em">
+				</div>
 				<script>
     				// HTMLから数値を取得
    					var num3 = parseFloat(document.getElementById('num3').getAttribute('data-value'));
@@ -81,45 +75,34 @@
     				// 計算結果をwidthに設定
     				document.getElementById('emhp-progress').style.width = result + '%';
     				// 結果を「exp:num1/num2」形式で表示
-    				document.getElementById('result').innerText = 'exp:' + num3 + '/' + num4;
+    				document.getElementById('result_em').innerText = num3 + '/' + num4;
 				</script>
-				</div>
-				
-            </div>
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
-				<p text="dialogue">どの攻撃にする？</p>
-				<!-- ↓必要なものを配置してください↓ -->
-				<!-- 技選択 -->
-				<div class="choices">
-					<form th:action="@{/battle/battle3}" method="post">
-					<div th:each="action, actionStat : ${actionList}">
-    				<label th:classappend="${action.techPoint == 0} ? 'disabled' : ''">
-        			<input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.techPoint == 0}">
-        			<span class="custom-radio">
-            					[[${action.techName}]] [[${action.techPoint}]] / [[${actions[actionStat.index].techPoint}]]
-        			</span>
-    				</label>
-					</div>
+				<p>どの攻撃にする？</p>
+<div class="choices">
+    <form th:action="@{/battle/battle3}" method="post" class="battle-form">
+        <div class="custom-radio" th:each="action, actionStat : ${actionList}">
+            <input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.techPoint == 0}">
+            <label th:classappend="${action.techPoint == 0} ? 'disabled' : ''">
+                [[${action.techName}]] [[${action.techPoint}]] / [[${actions[actionStat.index].techPoint}]]
+            </label>
+        </div>
+        <input type="hidden" th:name="selectStage" th:value="${em.emId}">
+        <input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
+        <input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
+        <button class="decision-button" type="submit">>>>攻撃！</button>
+    </form>
+    <form th:action="@{/toStage}" method="post" class="flee-form">
+        <button class="decision-button" type="submit">>>>逃げる！</button>
+    </form>
+</div>
 
-					</div>
-					<input type="hidden" th:name="selectStage" th:value="${em.emId}">
-					<input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
-					<input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
-					<button class="decision-button" type="submit">>>攻撃！</button>
-					</form>
-					
-					<form th:action="@{/toStage}" method="post">
-					<button class="decision-button" type="submit">>>逃げる！</button>
-					</form>
-					
-				</div>
+			</div>
 			</div>
 		</section>
 	</main>
-	<footer>
-		
-	</footer>
+	<footer></footer>
 	</div>
 </body>
 </html>
