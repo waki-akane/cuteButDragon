@@ -80,8 +80,9 @@
 
 .error-message {
     color: red;
-    display: block;
-    margin-top: 0vw;
-    font-size: 0.8vw;
-    position: absolute;
+    display: block; /* `display: block;` は残しても問題ないです */
+    font-size: 14px; /* または適切なpxサイズに変更 */
+    margin-top: 4px; /* 適切な余白に調整 */
+    position: static; /* 絶対位置を解除して通常のフローに戻す */
 }
+

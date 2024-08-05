@@ -74,11 +74,11 @@ public class UserController {
 	}
 
 	@PostMapping("/user")
-	public String addUser(@Validated UserTableEntryDTO ute, BindingResult br, Model model) {
+	public String addUser(@Validated @ModelAttribute UserTableEntryDTO ute, BindingResult br, Model model) {
 		if (br.hasErrors()) {
-			model.addAttribute("user", ute);
 			model.addAttribute("url", URL.url);
 			System.out.println(br.getAllErrors());
+			
 			return "user"; 
 		}
 		uts.createUser(ute);

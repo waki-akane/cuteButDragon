@@ -18,19 +18,21 @@
 						<div class="image-container">
 							<img th:src="@{${url} + 'img/materials/title.png'}" alt="画像">
 						</div>
-						<form th:action="@{/user}" th:object="${user}" method="post">
+						<form th:action="@{/user}" th:object="${userTableEntryDTO}" method="post">
 						<label for="name" class="label">ニックネーム
-							<div th:if="${#fields.hasErrors('name')}">
-								<p th:each="err:${#fields.errors('name')}" th:text="${err}" class="label"></p>
-							</div>
+    				<ul th:if="${#fields.hasErrors('name')}">
+        				<li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error-message"></li>
+    				</ul>
 						</label>
 						<input type="text" id="name" placeholder="1〜10文字のひらがな" class="input-field" th:field="*{name}" required/>
+
 						<label for="pass" class="label">パスワード
-							<div th:if="${#fields.hasErrors('pass')}">
-								<p th:each="err:${#fields.errors('pass')}" th:text="${err}" class="label"></p>
-							</div>
+    					<ul th:if="${#fields.hasErrors('pass')}">
+        					<li th:each="err : ${#fields.errors('pass')}" th:text="${err}" class="error-message"></li>
+    					</ul>
 						</label>
 						<input type="password" id="pass" placeholder="8〜16文字の半角英数字" class="input-field" th:field="*{pass}" required/>
+
 						<button type="submit" class="log-button">登録</button>
 				</form>	
 				</div>
