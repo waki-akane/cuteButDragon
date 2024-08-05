@@ -27,18 +27,16 @@
 		<section id="game-area">
 			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
 			<div class="center-box">
+			    <div class="center-box_tape">
+				    <div class="center-box_text">Result</div>
+				</div>
 		    <div class="left-images">
-				
 				<!--winのとき -->
 				<img th:if="${result}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
 				<img th:if="${result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="win">
-				
 				<!-- lose のとき -->
 				<img th:if="${!result}" th:src="@{${url} + 'img/materials/lose.png'}" alt="lose" class="lose-image">
 				<img th:if="${!result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="lose">
-		    </div>		    
-		        <div class="center-box_tape"></div>
-		        <p class="center-box_title">Result</p>		        
 		    </div>
 			<div class="right-box">
 			    <p>なまえ： [[${mm.mmName}]]</p>
@@ -54,8 +52,8 @@
 					<p>Level Up!</p>
 					<p>攻撃力： [[${beforeMm.mmAttack}]] → [[${mm.mmAttack}]] (+[[${mm.mmAttack} - ${beforeMm.mmAttack}]]</p>
 					<p>Hp： [[${beforeMm.mmHp}]] → [[${mm.mmHp}]] (+[[${mm.mmHp} - ${beforeMm.mmHp}]] </p>
-				</div>
-								
+				</div>			
+			</div>
 			</div>
 		</section>
     </main>
