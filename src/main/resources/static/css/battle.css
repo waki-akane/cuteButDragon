@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* ドラゴンとモンスターのスタイル */
 .my-dragon, .enemy-monster {
   display: flex;
@@ -10,7 +11,6 @@
   bottom: 35%;
 }
 
-/* 位置調整 */
 .my-dragon {
   left: 20%;
 }
@@ -18,6 +18,7 @@
 .enemy-monster {
   right: 20%;
 }
+
 /* キャラクター画像のスタイル */
 .my-dragon img, .enemy-monster img {
   width: 10vw;
@@ -27,176 +28,148 @@
 
 /* キャラクター名のスタイル */
 .character-name {
-    font-size: 1.4vw;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 0 #000,  -1px 1px 0 #000,  1px -1px 0 #000,  -1px -1px 0 #000;
-    margin: 0.3vw 0;
+  font-size: 1.4vw;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  margin: 0.3vw 0;
 }
 
+/* HPコンテナのスタイル */
 .hp-container {
-    width: 90%;
-    margin: 1vh auto;
-    position: relative;
-    border-radius: 1vw;
-    padding-top: 3vh;
+  width: 90%;
+  margin: 1vh auto;
+  position: relative;
+  border-radius: 1vw;
+  padding-top: 3vh;
 }
 
-.hp-text ,.hp-amount {
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px 0 #000,  -1px 1px 0 #000,  1px -1px 0 #000,  -1px -1px 0 #000;
-    position: absolute;
-    top: -0.1vh;
-    margin: 0;
+.hp-text, .hp-amount {
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+  position: absolute;
+  top: -0.1vh;
+  margin: 0;
 }
 
 .hp-text {
-    font-size: 1.2vw;
-    left: 0;
+  font-size: 1.2vw;
+  left: 0;
 }
 
 .hp-amount {
-    font-size: 1vw;
-    right: 0;
+  font-size: 1vw;
+  right: 0;
 }
 
 .hp-bar {
-    width: 100%;
-    height: 2vh;
-    background: #555;
-    border-radius: 1vw;
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 2vh;
+  background: #555;
+  border-radius: 1vw;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hp-fill {
-    height: 100%;
-    background: linear-gradient(to bottom, #ff0000, #cc0000);
-    transition: width 0.5s ease;
-    box-shadow: inset 0 -1px 3px rgba(255, 255, 255, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  background: linear-gradient(to bottom, #ff0000, #cc0000);
+  transition: width 0.5s ease;
+  box-shadow: inset 0 -1px 3px rgba(255, 255, 255, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* 選択肢のスタイル */
 .choices {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 2vw;
-    position: relative; 
-    top: -1vh;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  flex-wrap: wrap;
 }
 
 /* フォームのスタイル */
 .battle-form, .flee-form {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .battle-form {
-    flex-grow: 1;
-    justify-content: center;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .flee-form {
-    flex-shrink: 0;
+  justify-content: flex-end;
 }
 
 /* カスタムラジオボタン */
 .custom-radio {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
 
 .custom-radio input[type="radio"] {
-    display: none;
+  display: none;
 }
 
 .custom-radio label {
-    cursor: pointer;
-    font-size: 1.2vw;
-    padding: 0.5vw;
-    border-radius: 0.5vw;
-    transition: background-color 0.3s, color 0.3s;
-    display: inline-block;
+  cursor: pointer;
+  font-size: 1.2vw;
+  padding: 0.5vw;
+  border-radius: 0.5vw;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* ラジオボタンのラベルのホバー時のスタイル */
 .custom-radio label:hover {
-    background-color: rgba(252, 239, 242, 0.2);
+  background-color: rgba(252, 239, 242, 0.2);
 }
 
-/* 選択されたラジオボタンのラベルのスタイル */
 .custom-radio input[type="radio"]:checked + label {
-    color: rgb(255, 125, 120) !important;
-}
-
-/* 選択肢のスタイル */
-.choices {
-    display: flex;
-    align-items: center;
-    gap: 2vw;
-    flex-wrap: wrap;
-}
-
-/* フォームのスタイル */
-.battle-form, .flee-form {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
-    flex-grow: 1;
-}
-
-.battle-form {
-    justify-content: space-between;
-}
-
-.flee-form {
-    justify-content: flex-end;
+  color: rgb(255, 125, 120) !important;
 }
 
 /* 決定ボタンのスタイル */
 .decision-button {
-    background: none;
-    border: none;
-    font-size: 1.3vw;
-    cursor: pointer;
-    color: inherit;
-    transition: color 0.3s;
+  background: none;
+  border: none;
+  font-size: 1.3vw;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.3s;
 }
 
 .decision-button:hover {
-    color: rgb(255, 125, 120);
+  color: rgb(255, 125, 120);
 }
 
 /* ダイアログバーのスタイル */
 .dialogue-bar {
-    background: rgba(252, 239, 242, 0.8);
-    box-shadow: rgba(252, 239, 242, 0.8) 0 0 1vw 1vw;
-    font-size: 1.2vw;
-    padding: 2vw;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    text-align: center;
-    border-radius: 1vw;
-    height: 10vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background: rgba(252, 239, 242, 0.8);
+  box-shadow: rgba(252, 239, 242, 0.8) 0 0 1vw 1vw;
+  font-size: 1.2vw;
+  padding: 2vw;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+  border-radius: 1vw;
+  height: 10vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ダイアログ内のテキスト */
 .dialogue-bar p {
-    margin: 0;
-	line-height: 3;
+  margin: 0;
+  line-height: 3;
 }
 
 /* ▼ボタンのスタイル */
