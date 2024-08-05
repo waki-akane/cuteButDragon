@@ -6,6 +6,28 @@
     <link rel="stylesheet" th:href="@{${url} + 'css/style1.css'}">
     <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+	 <style>
+        .error-message {
+            font-size: 10px;
+            color: red;
+            margin-top: 2px; /* エラーメッセージとテキストボックスの間の余白を設定 */
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .input-field {
+            margin-bottom: 4px; /* テキストボックスの下に少しの余白を設定 */
+        }
+    </style>
 </head>
 <body>
 	<div class="game-container">
@@ -37,6 +59,5 @@
 				</form>	
 				</div>
 			</main>
-			<footer></footer>
 </body>
 </html>
