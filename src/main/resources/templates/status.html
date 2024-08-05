@@ -26,31 +26,37 @@
     <main>
 		<section id="game-area">
 		    <div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
-		    <div class="overlay"></div>
 			<div class="center-box">
+		        <div class="center-box_tape">
+		        <div class="center-box_text">Status</div>     
+		    </div>
 		    <div class="left-images">
 				<img th:src="@{${url} + ${mm.im.photo}}" style="width: 100%; height: auto; margin-top: 30px;" alt="image">
-		    </div>
-		        <div class="center-box_tape"></div>
-		        <p class="center-box_title">Status</p>     
 		    </div>
 			<div class="right-box">
 			    <p>なまえ　：　[[${mm.mmName}]]</p>
 				<p>レベル　：　Ｌｖ[[${mm.mmLevel}]]</p>
 				<p>攻撃力　：　[[${mm.mmAttack}]]</p>
 				<p>HP　：　[[${mm.mmHp}]]</p>
-				<p>技　：　</p>
-				<div th:each="action : ${actions}">
-					<p>   [[${action.techName}]]  [[${action.techPoint}]]</p>
+				<div style="display: flex; align-items: flex-start;">
+				    <p style="margin-right: 1em; white-space: nowrap;">技　：</p>
+				    <div>
+				        <div th:each="action : ${actions}">
+				            <p style="margin: 0.5; padding: 0;">
+				                [[${action.techName}]] [[${action.techPoint}]]
+				            </p>
+				        </div>
+				    </div>
 				</div>
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
 				    <div class="exp-bar">
 				       <div class="exp-progress" th:style="'width:' + ${i} + '%'"></div>
-				    </div>
-				    <p class="exp-text">EXP: [[${mm.mmEx}]]/[[${maxEx}]]</p>
 				</div>					
+				    <p class="exp-text">EXP: [[${mm.mmEx}]]/[[${maxEx}]]</p>
 			</div>
+				    </div>
+				     </div>
 		</section>
     </main>
     <footer>
