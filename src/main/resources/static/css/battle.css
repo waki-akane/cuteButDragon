@@ -121,16 +121,41 @@
     padding: 0.5vw;
     border-radius: 0.5vw;
     transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
 }
 
 /* ラジオボタンのラベルのホバー時のスタイル */
 .custom-radio label:hover {
-    background-color: rgba(252, 239, 242, 0.2); 
+    background-color: rgba(252, 239, 242, 0.2);
 }
 
 /* 選択されたラジオボタンのラベルのスタイル */
 .custom-radio input[type="radio"]:checked + label {
     color: rgb(255, 125, 120) !important;
+}
+
+/* 選択肢のスタイル */
+.choices {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    flex-wrap: wrap;
+}
+
+/* フォームのスタイル */
+.battle-form, .flee-form {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    flex-grow: 1;
+}
+
+.battle-form {
+    justify-content: space-between;
+}
+
+.flee-form {
+    justify-content: flex-end;
 }
 
 /* 決定ボタンのスタイル */
@@ -140,6 +165,11 @@
     font-size: 1.3vw;
     cursor: pointer;
     color: inherit;
+    transition: color 0.3s;
+}
+
+.decision-button:hover {
+    color: rgb(255, 125, 120);
 }
 
 /* ダイアログバーのスタイル */

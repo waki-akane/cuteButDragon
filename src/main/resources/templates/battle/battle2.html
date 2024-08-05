@@ -80,24 +80,23 @@
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
 				<p>どの攻撃にする？</p>
-<div class="choices">
-    <form th:action="@{/battle/battle3}" method="post" class="battle-form">
-        <div class="custom-radio" th:each="action, actionStat : ${actionList}">
-            <input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.techPoint == 0}">
-            <label th:classappend="${action.techPoint == 0} ? 'disabled' : ''">
-                [[${action.techName}]] [[${action.techPoint}]] / [[${actions[actionStat.index].techPoint}]]
-            </label>
-        </div>
-        <input type="hidden" th:name="selectStage" th:value="${em.emId}">
-        <input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
-        <input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
-        <button class="decision-button" type="submit">>>>攻撃！</button>
-    </form>
-    <form th:action="@{/toStage}" method="post" class="flee-form">
-        <button class="decision-button" type="submit">>>>逃げる！</button>
-    </form>
-</div>
-
+				<div class="choices">
+				    <form th:action="@{/battle/battle3}" method="post" class="battle-form">
+				        <div class="custom-radio" th:each="action, actionStat : ${actionList}">
+				            <input type="radio" th:name="selectAction" th:value="${actionStat.index}" th:disabled="${action.techPoint == 0}">
+				            <label th:classappend="${action.techPoint == 0} ? 'disabled' : ''">
+				                [[${action.techName}]] [[${action.techPoint}]] / [[${actions[actionStat.index].techPoint}]]
+				            </label>
+				        </div>
+				        <input type="hidden" th:name="selectStage" th:value="${em.emId}">
+				        <input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
+				        <input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
+				        <button class="decision-button" type="submit">>>>攻撃！</button>
+				    </form>
+				    <form th:action="@{/toStage}" method="post" class="flee-form">
+				        <button class="decision-button" type="submit">>>>逃げる！</button>
+				    </form>
+				</div>
 			</div>
 			</div>
 		</section>
