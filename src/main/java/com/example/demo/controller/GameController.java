@@ -184,10 +184,6 @@ public class GameController {
 		
 		model.addAttribute("emAttack",emAttack);
 		
-		System.out.println(selectStage);
-		System.out.println(currentEmHp);
-		System.out.println(currentMmHp);
-
 		return "battle/battle4";
 	}
 
@@ -381,9 +377,7 @@ public class GameController {
 			maxEx=3000;
 		}
 		model.addAttribute("lv",maxEx);
-		System.out.println(maxEx);
-		System.out.println(mm.getMmEx());
-
+		
 		return "redirect:stage"; //stageページにリダイレクト
 	}
 
