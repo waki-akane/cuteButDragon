@@ -39,9 +39,10 @@
 		</div>
 	</header>
 	<main>
-		<section id="game-area" style="background:#e5c18d;">
+		<section id="game-area" style="background:#e5c18d; padding-bottom: 31%;">
 			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/map.jpg);'"></div>
-			<p class="player-name">[[${user.userName}]]</p>
+			<div class="dots-container">ステージ選択</div>
+			<!-- <p class="player-name">[[${user.userName}]]</p> -->
 			<div class="status-bar">
 				<!-- ステータスバー内にアイコンを配置 -->
 				<div class="icon-frame">
