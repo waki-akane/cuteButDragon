@@ -10,7 +10,7 @@ public class MyMonsterDTO {
 
 	private Integer userId;
 
-	@NotBlank(message = "画像を選択してください")
+	//@NotBlank(message = "画像を選択してください")
 	private Integer imId;
 
 	@NotBlank(message = "なまえを入力してください")

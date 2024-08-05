@@ -6,6 +6,24 @@
 	<link rel="stylesheet" th:href="@{${url} + 'css/character.css'}">
 	<link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
+	 <style>
+        .error-message {
+            font-size: 10px;
+            color: red;
+            margin-top: 2px; /* エラーメッセージとテキストボックスの間の余白を設定 */
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
 	<div class="game-container" method="post">
@@ -77,10 +95,32 @@
 		</section>
 		</main>
 		<footer>
-			<button type="submit" class="commonBtn">つぎへ　　</button>
+    			<button id="submitButton" type="submit" class="commonBtn" disabled>つぎへ</button>
 		</footer>
 	</form>
 	</div>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    	const submitButton = document.getElementById('submitButton');
+    	const form = document.querySelector('.form-container');
+    	const nameInput = document.getElementById('name');
+    	const radioButtons = form.querySelectorAll('input[type="radio"]');
+
+    	function validateForm() {
+        const name = nameInput.value.trim();
+        const isRadioSelected = Array.from(radioButtons).some(radio => radio.checked);
+        submitButton.disabled = !(name && isRadioSelected);
+    	}
+
+    	// 入力フィールドの変更を監視
+    	nameInput.addEventListener('input', validateForm);
+    	radioButtons.forEach(radio => radio.addEventListener('change', validateForm));
+
+    	// 初期状態をチェック
+    	validateForm();
+		});
+	</script>
+
 </body>
 </html>
 
