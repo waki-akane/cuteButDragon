@@ -8,11 +8,9 @@ import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-
 public class UserTableEntryDTO implements Serializable {
 	@Size(max = 10, message = "最大文字数10文字を超えています。")
 	@NotEmpty(message = "名前を入力してください。")
-	//
 	@Pattern(regexp = "^[//p{InHiragana}ー]+$", message = "ひらがなで入力してください。")
 	private String name;
 	
