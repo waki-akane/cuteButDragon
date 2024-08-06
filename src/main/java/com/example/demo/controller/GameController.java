@@ -56,6 +56,7 @@ public class GameController {
 	//	④敵モンスターの攻撃、味方へのダメージ
 	//	⑤敵モンスターHP０
 	//	⑥味方モンスターHP０
+	//　⑦逃げる選択後画面
 
 	//battle1 -> Battle2(技選択画面)へ
 	//①モンスター遭遇 -> ②攻撃選択
@@ -136,33 +137,45 @@ public class GameController {
 
 		return "battle/battle3";
 	}
+	
+	//[逃げる]ボタン押下時処理
+	//battle2 -> battle7
+	@GetMapping("/nigeru")
+	public String nigeru(Model model) {
+		model.addAttribute("url",URL.url);
+		
+		return "battle/battle7";
+	}
 
 	//battle3 -> battle4 or battle3 -> battle6
 	@PostMapping("/battle/battle4")
 	public String toBattle4(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
 		
-		
+		//User情報→MM情報の取得
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
-
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
-
+		
+		//EM情報の取得
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 		
 		model.addAttribute("url", URL.url);
-
+		
+		//EMHpが０以下になった時 → battle5へ
 		if (currentEmHp <= 0) {
 			model.addAttribute("currentMmHp", currentMmHp);
 			model.addAttribute("currentEmHp", currentEmHp);
 			return "battle/battle5";
 		}
 		
+		//EMの攻撃技をランダムに生成
 		Random rand = new Random();
 		int i = rand.nextInt(3);
 		int emAttack = 0;
+		model.addAttribute("emAttack",emAttack);
 		if (i == 0) {
 			emAttack = em.getEmAction1().getAttack();
 			model.addAttribute("action",em.getEmAction1());
@@ -173,7 +186,8 @@ public class GameController {
 			emAttack = em.getEmAction3().getAttack();
 			model.addAttribute("action",em.getEmAction1());
 		}
-
+		
+		//MMHpの減少
 		currentMmHp = currentMmHp - emAttack;
 		if(currentMmHp < 0) {
 			currentMmHp = 0;
@@ -182,8 +196,6 @@ public class GameController {
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
 		
-		model.addAttribute("emAttack",emAttack);
-		
 		return "battle/battle4";
 	}
 
@@ -191,20 +203,24 @@ public class GameController {
 	@PostMapping("/battle/battle2")
 	public String toBattle2(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
 			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
+		
+		//User情報→MM情報の取得
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
-
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("mm", mm);
 		
+		//現在のMM技リストをセッションから取得
 		ArrayList<ActionEntity> nowList = (ArrayList<ActionEntity>)session.getAttribute("actionList");
 		model.addAttribute("actionList", nowList);
-
+		
+		//EM情報の取得
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
 		
 		model.addAttribute("url", URL.url);
-
+		
+		////MMHpが０以下になった時 → battle6へ
 		if (currentMmHp <= 0) {
 			model.addAttribute("currentMmHp", currentMmHp);
 			model.addAttribute("currentEmHp", currentEmHp);
@@ -214,6 +230,7 @@ public class GameController {
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
 		
+		//デフォルト時の技リストの取得
 		List<ActionEntity> koteiList = as.imAllAction(mm.getIm().getImId());
 		model.addAttribute("actions",koteiList);
 
@@ -223,73 +240,30 @@ public class GameController {
 	//battle6 -> result
 	@PostMapping("/toLoseResult")
 	public String lose(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
+		//User情報→MM情報の取得（BeforeMMとしてモデルに追加）
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
-		
-		session.removeAttribute("actionList");
-
 		MyMonsterEntity mm = mms.findByUserId(userId);
 		model.addAttribute("beforeMm", mm);
-
+		
+		//EM情報の取得
 		EnemyMonsterEntity em = ems.showEm(selectStage);
 		model.addAttribute("em", em);
-
+		
+		//セッションから現在の技リストを削除
+		session.removeAttribute("actionList");
+		
+		//勝敗をBooleanに反映
 		boolean result = false;
+		//勝敗を元に経験値を追加
 		mms.addEx(selectStage, mm.getMmId(), result);
+		//ステータス変更後のMM情報を取得
 		mm = mms.findByUserId(userId);
 		
-		model.addAttribute("beforeMm", mm);
-		boolean level = false;
-
-		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
-			level = true;
-		}
-
-		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
-			level = true;
-		}
-
-		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
-			level = true;
-		}
-
-		model.addAttribute("mm", mm);
-		model.addAttribute("level" ,level);
-		model.addAttribute("result",result);
-
-		model.addAttribute("url", URL.url);
-
-		return "result";
-	}
-
-	//battle5 -> result
-	@PostMapping("/toWinResult")
-	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
-		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
-		int userId = user.getUserId();
-		
-		session.removeAttribute("actionList");
-
-		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("beforeMm", mm);
-
-		EnemyMonsterEntity em = ems.showEm(selectStage);
-		model.addAttribute("em", em);
-
-		boolean result = true;
-		mms.addEx(selectStage, mm.getMmId(), result);
-		mm = mms.findByUserId(userId);
+		//レベルアップしたか否かの変数
 		boolean level = false;
 		
+		//Exバーを表示するための％を取得
 		double i = 0;
 		if(mm.getMmLevel() == 1) {
 			if(mm.getMmId() > 1000 ) {
@@ -314,7 +288,89 @@ public class GameController {
 			model.addAttribute("maxEx", 3000);
 		}
 		model.addAttribute("i",i);
+		
+		//MMの変更後ステータスを元にレベルアップ
+		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
+			//model.addAttribute("beforeMm", mm);
+			mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
+			level = true;
+		}
+		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
+			//model.addAttribute("beforeMm", mm);
+			mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
+			level = true;
+		}
+		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
+			//model.addAttribute("beforeMm", mm);
+			mms.mmLevelUp(mm.getMmId());
+			mm = mms.showMm(mm.getMmId());
+			level = true;
+		}
 
+		model.addAttribute("mm", mm);
+		model.addAttribute("level" ,level);
+		model.addAttribute("result",result);
+
+		model.addAttribute("url", URL.url);
+
+		return "result";
+	}
+
+	//battle5 -> result
+	@PostMapping("/toWinResult")
+	public String win(HttpSession session, Model model, @RequestParam("selectStage") int selectStage) {
+		
+		//User情報→MM情報の取得（BeforeMMとしてモデルに追加）
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		int userId = user.getUserId();
+		MyMonsterEntity mm = mms.findByUserId(userId);
+		model.addAttribute("beforeMm", mm);
+		
+		//セッションから現在の技リストを削除
+		session.removeAttribute("actionList");
+		
+		//EM情報の取得
+		EnemyMonsterEntity em = ems.showEm(selectStage);
+		model.addAttribute("em", em);
+		
+		//勝敗をBooleanに反映
+		boolean result = true;
+		//勝敗を元に経験値を追加
+		mms.addEx(selectStage, mm.getMmId(), result);
+		//ステータス変更後のMM情報を取得
+		mm = mms.findByUserId(userId);
+		//レベルアップしたか否かを反映する変数
+		boolean level = false;
+		
+		//Exバーを表示するための％を取得
+		double i = 0;
+		if(mm.getMmLevel() == 1) {
+			if(mm.getMmId() > 1000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 1000;
+			}
+			model.addAttribute("maxEx", 1000);
+		}else if(mm.getMmLevel() == 2) {
+			if(mm.getMmId() > 2000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 2000;
+			}
+			model.addAttribute("maxEx", 2000);
+		}else if(mm.getMmLevel() == 3) {
+			if(mm.getMmId() > 3000 ) {
+				i = 100;
+			}else {
+				i = mm.getMmEx() / 3000;
+			}
+			model.addAttribute("maxEx", 3000);
+		}
+		model.addAttribute("i",i);
+		
+		//MMの更新後ステータスを元にレベルアップ
 		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
 			//model.addAttribute("beforeMm",mm);
 			mms.mmLevelUp(mm.getMmId());
@@ -342,6 +398,7 @@ public class GameController {
 		
 		model.addAttribute("url", URL.url);
 		
+		//ステージ３初回クリア時エンドロールへ、それ以外はステータスの変更
 		if(user.getStatus() == 3 && selectStage == 3) {
 			uts.clearUser(user.getUserId(), selectStage);
 			return "endroll";
@@ -358,6 +415,7 @@ public class GameController {
 
 		return "result";
 	}
+	
 	
 	@GetMapping("/toRedirectStage")
 	public String toStage(Model model, HttpSession session) {
@@ -380,5 +438,6 @@ public class GameController {
 		
 		return "redirect:stage"; //stageページにリダイレクト
 	}
+	
 
 }
