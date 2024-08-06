@@ -6,6 +6,86 @@
     <link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 </head>
+<style>
+	.container {
+    width: 70%;
+    height: 50%;
+    overflow: hidden;
+    position: absolute;
+    font-size: 1.5vw;
+    box-sizing: border-box;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -10%);
+	}
+	
+	.story-text {
+	    display: inline-block;
+	    white-space: nowrap;
+	    position: relative;
+	}
+	
+	.story-text span {
+	    display: block;
+	    opacity: 0;
+	    animation: typing 6s steps(100, end) forwards, reveal 6s steps(100, end) forwards;
+	}
+	
+	@keyframes typing {
+	    from { width: 0; }
+	    to { width: 100%; }
+	}
+	
+	@keyframes reveal {
+	    from { opacity: 0; }
+	    to { opacity: 1; }
+	}
+	
+	.story-text span:nth-child(1) { animation-delay: 0s; }
+	.story-text span:nth-child(2) { animation-delay: 3s; }
+	.story-text span:nth-child(3) { animation-delay: 7s; }
+	.story-text span:nth-child(4) { animation-delay: 10s; }
+	
+	.image-row {
+	    position: absolute;
+	    bottom: 70px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    display: flex;
+	    gap: 10px;
+	    opacity: 0;
+	    animation: showImages 2s forwards;
+	    animation-delay: 13s;
+	}
+	
+	@keyframes showImages {
+	    from { opacity: 0; }
+	    to { opacity: 1; }
+	}
+	
+	.bouncing-image {
+	    width: 100px;
+	    height: 100px;
+	    animation: bounce 2s infinite ease-in-out;
+	}
+	
+	@keyframes bounce {
+	    0%, 100% {
+	        transform: translateY(0);
+	    }
+	    50% {
+	        transform: translateY(-50px);
+	    }
+	}
+	
+	.bouncing-image:nth-child(2) { animation-delay: 0.4s; }
+	.bouncing-image:nth-child(3) { animation-delay: 0.8s; }
+	.bouncing-image:nth-child(4) { animation-delay: 1.2s; }
+	.bouncing-image:nth-child(5) { animation-delay: 1.6s; }
+	.bouncing-image:nth-child(6) { animation-delay: 2s; }
+	.bouncing-image:nth-child(7) { animation-delay: 2.4s; }
+	.bouncing-image:nth-child(8) { animation-delay: 2.8s; }
+</style>
 <body>
 	<div class="game-container">
 	<header>
@@ -13,8 +93,25 @@
 	</header>
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/end.gif);'"></div>
-			<p>ここにエンドロールの内容が表示されます</p>
+			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/bg/bg.png);'"></div>
+                <div class="container">
+                    <div class="story-text">
+                        <span>　　　　全てのステージを乗り越え、最高峰に達しました。</span>
+                        <span>　ドラゴンは、森の奥深くで永遠に輝き続ける運命を手に入れました。<br><br></span>
+                        <span>　　　　　　　　　　　　　　　　　　　　　　　　　　　　おしまい<br><br></span>
+                        <span>　　　　　　　スタッフ：佐々木/和気/川原/堤/野本</span>
+                    </div>
+                </div>
+                <div class="image-row" id="image-row">
+					<img th:src="@{${url} + 'img/mm/1_2.png'}" class="bob-up-down" alt="mm1">
+					<img th:src="@{${url} + 'img/mm/2_2.png'}" class="bob-up-down" alt="mm2">
+					<img th:src="@{${url} + 'img/mm/3_2.png'}" class="bob-up-down" alt="mm3">
+					<img th:src="@{${url} + 'img/mm/4_2.png'}" class="bob-up-down" alt="mm4">
+					<img th:src="@{${url} + 'img/mm/5_2.png'}" class="bob-up-down" alt="mm5">
+					<img th:src="@{${url} + 'img/em/1.png'}" class="bob-up-down" alt="em1">
+					<img th:src="@{${url} + 'img/em/2.png'}" class="bob-up-down" alt="em2">
+					<img th:src="@{${url} + 'img/em/3.png'}" class="bob-up-down" alt="em3">
+                </div>
 		</section>
 	</main>
 	<footer>
@@ -23,5 +120,13 @@
 		</form>
 	</footer>
 	</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageRow = document.getElementById('image-row');
+            const images = Array.from(imageRow.children);
+            images.sort(() => Math.random() - 0.5);
+            images.forEach(image => imageRow.appendChild(image));
+        });
+    </script>
 </body>
 </html>
