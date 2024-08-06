@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <style>
-	/* 画像をフェードアウトさせるアニメーション */
 	@keyframes fadeOut {
 		  0% {
 		    opacity: 1;
@@ -17,16 +16,14 @@
 		  }
 		  50% {
 		    opacity: 0.5;
-		    transform: scale(1.5); /* 画像が拡大 */
+		    transform: scale(1.5);
 		  }
 		  100% {
 		    opacity: 0;
-		    transform: scale(0); /* 画像が縮小して消える */
+		    transform: scale(0);
 		  }
 		}
 
-		
-	/* 画像の初期状態 */
 	.my-dragon img {
 	  animation: fadeOut 1s ease-out forwards;
 	}
@@ -35,7 +32,7 @@
 	<div class="game-container">
 	<header>
 		<h1>可愛いけどドラゴン</h1>	
-			<form th:action="@{/logout}" method="post" style="display: inline;">
+			<form action="/login">
 				<button type="submit" class="bookmarkBtn">
 					<span class="IconContainer">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -50,63 +47,62 @@
 	<!-- ｍｍ逃亡 -->
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
+			<div class="background-image" style="background-image: url(/img/em/bg_1.jpg);"></div>
 				<!-- マイドラゴン -->
 				<div class="my-dragon">
 					<p class="character-name">[[${mm.mmName}]]</p>
 					<div class="hp-container">
 						<div id="num1" th:data-value="${currentMmHp}"></div>
-						<div id="num2" th:data-value="${mm.mmHp}"></div>
+   						<div id="num2" th:data-value="${mm.mmHp}"></div>
 					    <span class="hp-text">HP:</span>
-						<span class="hp-amount" id="result_m"></span>
+					    <span class="hp-amount" id="result_mm"></span>
 					    <div class="hp-bar">
-							<div class="hp-fill" id="mmhp-progress"></div>
+					        <div class="hp-fill" id="mmhp-progress"></div>
 					    </div>
-					</div>
-					<img th:src="@{${url} + ${mm.im.photo}}" alt="mm">
+					 </div>   
+					<img th:src="@{${url} + ${mm.im.photo2}}" alt="mm">
 				</div>
 				<script>
-					// HTMLから数値を取得
-					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
-					var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
-					// 計算を実行
-					var result = (num1 / num2) * 100;
-					// 計算結果をwidthに設定
-					document.getElementById('mmhp-progress').style.width = result + '%';
-					// 結果を「exp:num1/num2」形式で表示
-					document.getElementById('result_m').innerText = num1 + '/' + num2;
+    				// HTMLから数値を取得
+   					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
+    				var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num1 / num2) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('mmhp-progress').style.width = result + '%';
+    				// 結果を「exp:num1/num2」形式で表示
+    				document.getElementById('result_mm').innerText = num1 + '/' + num2;
 				</script>
 				<!-- 敵モンスター -->
 				<div class="enemy-monster">
-				    <p class="character-name">[[${em.emName}]]</p>
-				    <div class="hp-container">
-				        <div id="num3" th:data-value="${currentEmHp}"></div>
-				        <div id="num4" th:data-value="${em.emHp}"></div>
-				        <span class="hp-text">HP:</span>
-						<span class="hp-amount" id="result_e"></span>
-				        <div class="hp-bar">
-				            <div class="hp-fill" id="emhp-progress"></div>
-				        </div>
-				    </div>
-				    <img th:src="@{${url} + ${em.emPhoto}}" alt="em">
+					<p class="character-name">[[${em.emName}]]</p>
+					<div class="hp-container">
+						<div id="num3" th:data-value="${currentEmHp}"></div>
+   						<div id="num4" th:data-value="${em.emHp}"></div>
+					    <span class="hp-text">HP:</span>
+					    <span class="hp-amount" id="result_em"></span>
+					    <div class="hp-bar">
+					        <div class="hp-fill" id="emhp-progress"></div>
+					    </div>
+					</div>
+					<img th:src="@{${url} + ${em.emPhoto}}" alt="em">
 				</div>
 				<script>
-				    // HTMLから数値を取得
-				    var num3 = parseFloat(document.getElementById('num3').getAttribute('data-value'));
-				    var num4 = parseFloat(document.getElementById('num4').getAttribute('data-value'));
-				    // 計算を実行
-				    var result = (num3 / num4) * 100;
-				    // 計算結果をwidthに設定
-				    document.getElementById('emhp-progress').style.width = result + '%';
-				    // 結果を「num3/num4」形式で表示
-				    document.getElementById('result_e').innerText = num3 + '/' + num4;
+    				// HTMLから数値を取得
+   					var num3 = parseFloat(document.getElementById('num3').getAttribute('data-value'));
+    				var num4 = parseFloat(document.getElementById('num4').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num3 / num4) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('emhp-progress').style.width = result + '%';
+    				// 結果を「exp:num1/num2」形式で表示
+    				document.getElementById('result_em').innerText = num3 + '/' + num4;
 				</script>
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
-				<p style="line-height: 0;">うまく逃げ切れた！</p>
-				<!-- ↓必要なものを配置してください↓ -->
+				<p style="line-height: 0;">ｍｍは逃げた</p>
 				<!-- ページ送り「▼」 -->
-				<form th:action="@{/toStage}">
+				<form action="/stage">
 				<button class="confirm-button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
 						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>

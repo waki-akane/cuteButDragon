@@ -21,6 +21,8 @@ public class InitialMonsterEntity {
 
 	private String photo;
 
+	private String photo2;
+
 	@ManyToOne
 	@JoinColumn(name = "imAction1")
 	private ActionEntity imAction1;
@@ -32,6 +34,5 @@ public class InitialMonsterEntity {
 	@ManyToOne
 	@JoinColumn(name = "imAction3")
 	private ActionEntity imAction3;
-
 
 }
