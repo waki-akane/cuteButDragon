@@ -192,6 +192,7 @@
 }
 
 /* 画像アニメーション */
+  /* 揺れる */
   @keyframes swing {
     0%,
     100% {
@@ -205,6 +206,7 @@
     animation: swing 1.5s ease-in-out infinite;
   }
 
+  /* 左右に動く */
   @keyframes slide-left-right {
     0%,
     100% {
@@ -218,19 +220,7 @@
     animation: slide-left-right 1.5s ease-in-out infinite;
   }
 
-  @keyframes bob-up-down {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-15px);
-    }
-  }
-  .bob-up-down-image {
-    animation: bob-up-down 1s ease-in-out infinite;
-  }
-
+  /* 息をする */
   @keyframes breathe {
     0%,
     100% {
@@ -244,6 +234,7 @@
     animation: breathe 1.5s ease-in-out infinite;
   }
 
+  /* 衝撃 */
   @keyframes impact {
     0% {
       transform: scale(1) translate(0, 0);
@@ -265,6 +256,7 @@
     animation: impact 0.6s ease-in-out infinite;
   }
 
+  /* 点滅 */
   @keyframes blink {
     0%,
     100% {
@@ -277,3 +269,40 @@
   .blink-image {
     animation: blink 0.2s step-start infinite;
   }
+
+  /* 上下に動く */
+  @keyframes bob-up-down {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.bob-up-down {
+    animation: em 2s infinite;
+}
+
+/* 逃げる */
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(1.5);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0);
+	}
+}
+
+.fade-out {
+	animation: fadeOut 1s ease-out forwards;
+}

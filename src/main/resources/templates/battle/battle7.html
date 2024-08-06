@@ -9,24 +9,6 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <style>
-	@keyframes fadeOut {
-		  0% {
-		    opacity: 1;
-		    transform: scale(1);
-		  }
-		  50% {
-		    opacity: 0.5;
-		    transform: scale(1.5);
-		  }
-		  100% {
-		    opacity: 0;
-		    transform: scale(0);
-		  }
-		}
-
-	.my-dragon img {
-	  animation: fadeOut 1s ease-out forwards;
-	}
 </style>
 <body>
 	<div class="game-container">
@@ -44,7 +26,6 @@
 				</button>
 			</form>
 	</header>
-	<!-- ｍｍ逃亡 -->
 	<main>
 		<section id="game-area">
 			<div class="background-image" style="background-image: url(/img/em/bg_1.jpg);"></div>
@@ -60,7 +41,7 @@
 					        <div class="hp-fill" id="mmhp-progress"></div>
 					    </div>
 					 </div>   
-					<img th:src="@{${url} + ${mm.im.photo2}}" alt="mm">
+					<img th:src="@{${url} + ${mm.im.photo2}}" alt="mm" class="fade-out">
 				</div>
 				<script>
     				// HTMLから数値を取得
@@ -85,7 +66,7 @@
 					        <div class="hp-fill" id="emhp-progress"></div>
 					    </div>
 					</div>
-					<img th:src="@{${url} + ${em.emPhoto}}" alt="em">
+					<img th:src="@{${url} + ${em.emPhoto}}" alt="em" class="breathe-image">
 				</div>
 				<script>
     				// HTMLから数値を取得
@@ -100,10 +81,11 @@
 				</script>
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
-				<p style="line-height: 0;">ｍｍは逃げた</p>
+				<p style="line-height: 0;">[[${mm.mmName}]]は逃げた</p>
 				<!-- ページ送り「▼」 -->
-				<form action="/stage">
-				<button class="confirm-button">
+				<form th:action="@{/toLoseResult}" method="post">
+				<input type="hidden" th:name="selectStage" th:value="${em.emId}">
+				<button class="confirm-button" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
 						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
 					</svg>
