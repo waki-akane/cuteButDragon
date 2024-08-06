@@ -69,12 +69,12 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 
 	//ステージクリア後の経験値アップ
 	@Override
-	public void addEx(int emId, int mmId, boolean result) {
+	public void addEx(int emId, int mmId, Boolean result) {
 		EnemyMonsterEntity em = emr.findById(emId).get();
 		MyMonsterEntity mm = mmr.findById(mmId).get();
-		if (result) {
+		if (result == true) {
 			mm.setMmEx(mm.getMmEx() + em.getWin());
-		} else {
+		} else if(result == false){
 			mm.setMmEx(mm.getMmEx() + em.getLose());
 		}
 		mmr.save(mm);

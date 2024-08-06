@@ -77,7 +77,6 @@ public class UserController {
 	public String addUser(@Validated @ModelAttribute UserTableEntryDTO ute, BindingResult br, Model model) {
 		if (br.hasErrors()) {
 			model.addAttribute("url", URL.url);
-			System.out.println(br.getAllErrors());
 			
 			return "user"; 
 		}
@@ -97,8 +96,6 @@ public class UserController {
      	model.addAttribute("username", principal.getUsername());
      	model.addAttribute("password", ute.getPass());
         
-		System.out.println(principal.getUsername());
-		System.out.println(ute.getPass());
 		model.addAttribute("url", URL.url);
 		 //return "redirect:/loginsuccess";
 		return "story";

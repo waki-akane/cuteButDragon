@@ -25,7 +25,7 @@
     </header>
     <main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 			<div class="center-box">
 			    <div class="center-box_tape">
 				    <div class="center-box_text">Result</div>
@@ -33,26 +33,37 @@
 		    <div class="left-images">
 				<!--winのとき -->
 				<img th:if="${result}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
-				<img th:if="${result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="win">
+				<img th:if="${result}" th:src="@{${url} + ${beforeMm.im.photo}}" alt="win">
 				<!-- lose のとき -->
 				<img th:if="${!result}" th:src="@{${url} + 'img/materials/lose.png'}" alt="lose" class="lose-image">
-				<img th:if="${!result}" th:src="@{${url} + 'img/mm/1_2.png'}" alt="lose">
+				<img th:if="${!result}" th:src="@{${url} +  ${beforeMm.im.photo}}" alt="lose">
 		    </div>
 			<div class="right-box">
-			    <p>なまえ： [[${mm.mmName}]]</p>
+			    <p>なまえ： [[${beforeMm.mmName}]]</p>
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
+					<div id="num1" th:data-value="${afterMm.mmEx}"></div>
+   					<div id="num2" th:data-value="${maxEx}"></div>
 				    <div class="exp-bar">
-				       <div class="exp-progress" th:style="'width: ' + ${i} + '%'"></div>
+				       <div class="exp-progress" id="mmEx"></div>
 				    </div>
-				    <p class="exp-text">EXP: [[${beforeMm.mmEx}]]→[[${mm.mmEx}]]/[[${maxId}]]（+[[${mm.mmEx} - ${beforeMm.mmEx}]]）</p>
+				    <p class="exp-text">EXP: [[${beforeMmEx}]]→[[${afterMm.mmEx}]]/[[${maxEx}]]（+[[${afterMm.mmEx} - ${beforeMmEx}]]）</p>
 				</div>	
-				<p>レベル： Lv[[${beforeMm.mmLevel}]] → [[${mm.mmLevel}]]</p>
-				<div th:if="@{level}">
+				<p>レベル： Lv[[${beforeMmLevel}]] → [[${afterMm.mmLevel}]]</p>
+				<div th:if="${level}">
 					<p>Level Up!</p>
-					<p>攻撃力： [[${beforeMm.mmAttack}]] → [[${mm.mmAttack}]] (+[[${mm.mmAttack} - ${beforeMm.mmAttack}]]</p>
-					<p>Hp： [[${beforeMm.mmHp}]] → [[${mm.mmHp}]] (+[[${mm.mmHp} - ${beforeMm.mmHp}]] </p>
-				</div>			
+					<p>攻撃力： [[${beforeMmAttack}]] → [[${afterMm.mmAttack}]] (+[[${afterMm.mmAttack} - ${beforeMmAttack}]])</p>
+					<p>Hp： [[${beforeMmHp}]] → [[${afterMm.mmHp}]] (+[[${afterMm.mmHp} - ${beforeMmHp}]]) </p>
+				</div>
+				<script>
+    				// HTMLから数値を取得
+   					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
+    				var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num1 / num2) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('mmEx').style.width = result + '%';
+				</script>			
 			</div>
 			</div>
 		</section>

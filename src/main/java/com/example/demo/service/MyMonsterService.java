@@ -17,7 +17,7 @@ public interface MyMonsterService {
 
 
 	//ステージクリア後の経験値アップ
-	public void addEx(int emId, int mmId, boolean result);
+	public void addEx(int emId, int mmId, Boolean result);
 
 	//攻撃受けた時のHP変動
 	public int subHP(int currentHp, int actionId);

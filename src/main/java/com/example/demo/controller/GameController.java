@@ -189,7 +189,7 @@ public class GameController {
 		Random rand = new Random();
 		int i = rand.nextInt(3);
 		int emAttack = 0;
-		model.addAttribute("emAttack",emAttack);
+		
 		if (i == 0) {
 			emAttack = em.getEmAction1().getAttack();
 			model.addAttribute("action",em.getEmAction1());
@@ -206,6 +206,7 @@ public class GameController {
 		if(currentMmHp < 0) {
 			currentMmHp = 0;
 		}
+		model.addAttribute("emAttack",emAttack);
 
 		model.addAttribute("currentMmHp", currentMmHp);
 		model.addAttribute("currentEmHp", currentEmHp);
@@ -258,6 +259,15 @@ public class GameController {
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 		MyMonsterEntity mm = mms.findByUserId(userId);
+		int ex = mm.getMmEx();
+		int attack = mm.getMmAttack();
+		int hp = mm.getMmHp();
+		int mmLevel = mm.getMmLevel();
+		model.addAttribute("beforeMmEx", ex);
+		model.addAttribute("beforeMmAttack",attack);
+		model.addAttribute("beforeMmHp",hp);
+		model.addAttribute("beforeMmLevel",mmLevel);
+		model.addAttribute("beforeMm",mm);
 		model.addAttribute("beforeMm", mm);
 		
 		//EM情報の取得
@@ -268,65 +278,45 @@ public class GameController {
 		session.removeAttribute("actionList");
 		
 		//勝敗をBooleanに反映
-		boolean result = false;
+		Boolean result = false;
 		//勝敗を元に経験値を追加
 		mms.addEx(selectStage, mm.getMmId(), result);
 		//ステータス変更後のMM情報を取得
-		mm = mms.findByUserId(userId);
-		
-		//レベルアップしたか否かの変数
-		boolean level = false;
-		
-		//Exバーを表示するための％を取得
-		double i = 0;
-		if(mm.getMmLevel() == 1) {
-			if(mm.getMmId() > 1000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 1000;
-			}
+		MyMonsterEntity afterMm = mms.findByUserId(userId);
+		//レベルアップしたか否かを反映する変数
+		Boolean level = false;
+				
+		if(afterMm.getMmLevel() == 1) {
 			model.addAttribute("maxEx", 1000);
-		}else if(mm.getMmLevel() == 2) {
-			if(mm.getMmId() > 2000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 2000;
-			}
+		}else if(afterMm.getMmLevel() == 2) {
 			model.addAttribute("maxEx", 2000);
-		}else if(mm.getMmLevel() == 3) {
-			if(mm.getMmId() > 3000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 3000;
-			}
+		}else if(afterMm.getMmLevel() == 3) {
 			model.addAttribute("maxEx", 3000);
 		}
-		model.addAttribute("i",i);
-		
-		//MMの変更後ステータスを元にレベルアップ
-		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
-			level = true;
-		}
-		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
-			level = true;
-		}
-		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
-			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
+				
+		//MMの更新後ステータスを元にレベルアップ
+		if (afterMm.getMmLevel() == 1 && afterMm.getMmEx() >= Ex2) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
-		model.addAttribute("mm", mm);
-		model.addAttribute("level" ,level);
+		if (afterMm.getMmLevel() == 2 && afterMm.getMmEx() >= Ex3) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+
+		if (afterMm.getMmLevel() == 3 && afterMm.getMmEx() >= Ex4) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+
+		model.addAttribute("afterMm", mm);
+		model.addAttribute("level",level);
 		model.addAttribute("result",result);
-
+				
 		model.addAttribute("url", URL.url);
 
 		return "result";
@@ -340,7 +330,15 @@ public class GameController {
 		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
 		int userId = user.getUserId();
 		MyMonsterEntity mm = mms.findByUserId(userId);
-		model.addAttribute("beforeMm", mm);
+		int ex = mm.getMmEx();
+		int attack = mm.getMmAttack();
+		int hp = mm.getMmHp();
+		int mmLevel = mm.getMmLevel();
+		model.addAttribute("beforeMmEx", ex);
+		model.addAttribute("beforeMmAttack",attack);
+		model.addAttribute("beforeMmHp",hp);
+		model.addAttribute("beforeMmLevel",mmLevel);
+		model.addAttribute("beforeMm",mm);
 		
 		//セッションから現在の技リストを削除
 		session.removeAttribute("actionList");
@@ -350,65 +348,48 @@ public class GameController {
 		model.addAttribute("em", em);
 		
 		//勝敗をBooleanに反映
-		boolean result = true;
+		Boolean result = true;
 		//勝敗を元に経験値を追加
 		mms.addEx(selectStage, mm.getMmId(), result);
 		//ステータス変更後のMM情報を取得
-		mm = mms.findByUserId(userId);
+		MyMonsterEntity afterMm = mms.findByUserId(userId);
 		//レベルアップしたか否かを反映する変数
-		boolean level = false;
+		Boolean level = false;
 		
-		//Exバーを表示するための％を取得
-		double i = 0;
-		if(mm.getMmLevel() == 1) {
-			if(mm.getMmId() > 1000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 1000;
-			}
+		if(afterMm.getMmLevel() == 1) {
 			model.addAttribute("maxEx", 1000);
-		}else if(mm.getMmLevel() == 2) {
-			if(mm.getMmId() > 2000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 2000;
-			}
+		}else if(afterMm.getMmLevel() == 2) {
 			model.addAttribute("maxEx", 2000);
-		}else if(mm.getMmLevel() == 3) {
-			if(mm.getMmId() > 3000 ) {
-				i = 100;
-			}else {
-				i = mm.getMmEx() / 3000;
-			}
+		}else if(afterMm.getMmLevel() == 3) {
 			model.addAttribute("maxEx", 3000);
 		}
-		model.addAttribute("i",i);
 		
 		//MMの更新後ステータスを元にレベルアップ
-		if (mm.getMmLevel() <= 2 && mm.getMmEx() >= Ex2) {
+		if (afterMm.getMmLevel() == 1 && afterMm.getMmEx() >= Ex2) {
 			//model.addAttribute("beforeMm",mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
-		if (mm.getMmLevel() <= 3 && mm.getMmEx() >= Ex3) {
+		if (afterMm.getMmLevel() == 2 && afterMm.getMmEx() >= Ex3) {
 			//model.addAttribute("beforeMm",mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
-		if (mm.getMmLevel() <= 4 && mm.getMmEx() >= Ex4) {
+		if (afterMm.getMmLevel() == 3 && afterMm.getMmEx() >= Ex4) {
 			//model.addAttribute("beforeMm", mm);
-			mms.mmLevelUp(mm.getMmId());
-			mm = mms.showMm(mm.getMmId());
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
 		
 		model.addAttribute("level",level);
 		model.addAttribute("result",result);
+		System.out.println(level);
 		
 		model.addAttribute("url", URL.url);
 		
@@ -420,12 +401,11 @@ public class GameController {
 			uts.clearUser(user.getUserId(), selectStage);
 		}
 		
-		mm = mms.showMm(mm.getMmId());
-		model.addAttribute("mm", mm);
+		MyMonsterEntity finalMm = mms.findByUserId(userId);
+		model.addAttribute("afterMm", finalMm);
 		
 		UserTableEntity ut = uts.getByUserId(userId);
 		session.setAttribute("user", ut);
-		
 
 		return "result";
 	}

@@ -47,8 +47,6 @@ public class HrsController {
 			maxEx=3000;
 		}
 		model.addAttribute("lv",maxEx);
-		System.out.println(maxEx);
-		System.out.println(mm.getMmEx());
 
 		return "stage"; //stageページにリダイレクト
 	}
