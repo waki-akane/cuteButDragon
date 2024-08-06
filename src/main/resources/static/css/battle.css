@@ -21,7 +21,7 @@
 
 /* キャラクター画像のスタイル */
 .my-dragon img, .enemy-monster img {
-  width: 10vw;
+  width: 13vw;
   height: auto;
   padding-top: 2vh;
 }
