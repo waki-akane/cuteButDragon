@@ -93,7 +93,10 @@
 				        <input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
 				        <button class="decision-button" type="submit">>>>攻撃！</button>
 				    </form>
-				    <form th:action="@{/toStage}" method="post" class="flee-form">
+				    <form th:action="@{/nigeru}" class="flee-form">
+						<input type="hidden" th:name="selectStage" th:value="${em.emId}">
+				        <input type="hidden" th:name="currentEmHp" th:value="${currentEmHp}">
+				        <input type="hidden" th:name="currentMmHp" th:value="${currentMmHp}">
 				        <button class="decision-button" type="submit">>>>逃げる！</button>
 				    </form>
 				</div>

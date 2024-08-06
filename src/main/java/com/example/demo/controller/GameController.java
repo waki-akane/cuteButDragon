@@ -141,8 +141,22 @@ public class GameController {
 	//[逃げる]ボタン押下時処理
 	//battle2 -> battle7
 	@GetMapping("/nigeru")
-	public String nigeru(Model model) {
+	public String nigeru(HttpSession session, Model model, @RequestParam("selectStage") int selectStage,
+			@RequestParam("currentEmHp") int currentEmHp, @RequestParam("currentMmHp") int currentMmHp) {
 		model.addAttribute("url",URL.url);
+		//ユーザー情報⇒MM情報の取得
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		int userId = user.getUserId();
+		MyMonsterEntity mm = mms.findByUserId(userId);
+		model.addAttribute("mm", mm);
+				
+		//EM情報の取得
+		EnemyMonsterEntity em = ems.showEm(selectStage);
+		model.addAttribute("em", em);
+				
+		//現在のMMHp
+		model.addAttribute("currentMmHp", currentMmHp);
+		model.addAttribute("currentEmHp",currentEmHp);
 		
 		return "battle/battle7";
 	}

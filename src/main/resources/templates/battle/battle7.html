@@ -35,7 +35,7 @@
 	<div class="game-container">
 	<header>
 		<h1>可愛いけどドラゴン</h1>	
-			<form action="/login">
+			<form th:action="@{/logout}" method="post" style="display: inline;">
 				<button type="submit" class="bookmarkBtn">
 					<span class="IconContainer">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
@@ -50,20 +50,20 @@
 	<!-- ｍｍ逃亡 -->
 	<main>
 		<section id="game-area">
-			<div class="background-image" style="background-image: url(/img/em/bg_1.jpg);"></div>
+			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 				<!-- マイドラゴン -->
 				<div class="my-dragon">
-					<p class="character-name">ｍｍ</p>
+					<p class="character-name">[[${mm.mmName}]]</p>
 					<div class="hp-container">
-						<div id="num1" data-value="0"></div>
-						<div id="num2" data-value="100"></div>
+						<div id="num1" th:data-value="${currentMmHp}"></div>
+						<div id="num2" th:data-value="${mm.mmHp}"></div>
 					    <span class="hp-text">HP:</span>
 						<span class="hp-amount" id="result_m"></span>
 					    <div class="hp-bar">
 							<div class="hp-fill" id="mmhp-progress"></div>
 					    </div>
 					</div>
-					<img src="/img/mm/4_2.png" alt="マイドラゴン">
+					<img th:src="@{${url} + ${mm.im.photo}}" alt="mm">
 				</div>
 				<script>
 					// HTMLから数値を取得
@@ -78,17 +78,17 @@
 				</script>
 				<!-- 敵モンスター -->
 				<div class="enemy-monster">
-				    <p class="character-name">ｅｍ</p>
+				    <p class="character-name">[[${em.emName}]]</p>
 				    <div class="hp-container">
-				        <div id="num3" data-value="100"></div>
-				        <div id="num4" data-value="100"></div>
+				        <div id="num3" th:data-value="${currentEmHp}"></div>
+				        <div id="num4" th:data-value="${em.emHp}"></div>
 				        <span class="hp-text">HP:</span>
 						<span class="hp-amount" id="result_e"></span>
 				        <div class="hp-bar">
 				            <div class="hp-fill" id="emhp-progress"></div>
 				        </div>
 				    </div>
-				    <img src="/img/em/1.png" alt="敵モンスター">
+				    <img th:src="@{${url} + ${em.emPhoto}}" alt="em">
 				</div>
 				<script>
 				    // HTMLから数値を取得
@@ -103,10 +103,10 @@
 				</script>
 			<!-- ダイアログバー -->
 			<div class="dialogue-bar">
-				<p style="line-height: 0;">ｍｍは逃げた</p>
+				<p style="line-height: 0;">うまく逃げ切れた！</p>
 				<!-- ↓必要なものを配置してください↓ -->
 				<!-- ページ送り「▼」 -->
-				<form action="/stage">
+				<form th:action="@{/toStage}">
 				<button class="confirm-button">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
 						<path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>

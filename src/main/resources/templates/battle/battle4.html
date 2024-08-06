@@ -27,7 +27,7 @@
 	</header>
 	<main>
 		<section id="game-area">
-			<div class="background-image" th:style="'background-image: url(' + ${url} + 'img/em/bg_1.jpg);'"></div>
+			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 			<!-- キャラクター -->
  				<!-- マイドラゴン -->
 				<div class="my-dragon">
