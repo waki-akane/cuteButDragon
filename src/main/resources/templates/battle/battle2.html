@@ -7,6 +7,26 @@
 	<link rel="stylesheet" th:href="@{${url} + 'css/styles.css'}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	 <script>
+        function checkRadio() {
+            const radios = document.querySelectorAll('input[type="radio"][name="selectAction"]');
+            let isAnyRadioChecked = false;
+            radios.forEach(radio => {
+                if (radio.checked) {
+                    isAnyRadioChecked = true;
+                }
+            });
+            document.querySelector('.decision-button').disabled = !isAnyRadioChecked;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkRadio(); // ページロード時に初期状態を設定
+            const radios = document.querySelectorAll('input[type="radio"][name="selectAction"]');
+            radios.forEach(radio => {
+                radio.addEventListener('change', checkRadio);
+            });
+        });
+    </script>
 </head>
 <body>
 	<div class="game-container">
@@ -64,7 +84,7 @@
 					        <div class="hp-fill" id="emhp-progress"></div>
 					    </div>
 					</div>
-					<img th:src="@{${url} + ${em.emPhoto}}" alt="em" class="breathe-image">
+					<img th:src="@{${url} + ${em.emPhoto}}" alt="em">
 				</div>
 				<script>
     				// HTMLから数値を取得
