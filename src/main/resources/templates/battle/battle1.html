@@ -31,7 +31,7 @@
 			<div class="background-image" th:style="'background-image: url(' + @{${url} + ${em.bgPhoto}} + ');'"></div>
 				<!-- 敵モンスター -->
 				<div class="enemy-monster" style="left: 50%; transform: translateX(-50%);">
-					<p class="character-name">[[${em.emName}]]</p>
+					<p class="character-name" style="font-size: 1.2vw;">[[${em.emName}]]</p>
 					<div class="hp-container">
 					    <span class="hp-text">HP:</span>
 					    <span class="hp-amount">[[${em.emHp}]]/[[${em.emHp}]]</span>
