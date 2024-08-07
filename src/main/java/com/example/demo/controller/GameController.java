@@ -433,5 +433,9 @@ public class GameController {
 		return "redirect:stage"; //stageページにリダイレクト
 	}
 	
-
-}
+	@GetMapping("/toEndroll")
+	public String test(Model model) {
+		model.addAttribute("url",URL.url);
+		return "endroll";
+	}
+	}
