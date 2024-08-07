@@ -343,6 +343,9 @@ button.bookmarkBtn:active {
 }
 
 /* 倒れる */
+  .topple-left-image {
+    animation: topple-left 1.5s ease-out forwards;
+  }
   @keyframes topple-left {
     0% {
       transform: rotate(0deg);
@@ -353,11 +356,10 @@ button.bookmarkBtn:active {
       opacity: 0;
     }
   }
-  .topple-left-image {
-    animation: topple-left 1.5s ease-out forwards;
+  .topple-right-image {
+    animation: topple-right 1.5s ease-out forwards;
   }
-  
-	@keyframes topple-right {
+  @keyframes topple-right {
     0% {
       transform: rotate(0deg);
       opacity: 1;
@@ -366,7 +368,4 @@ button.bookmarkBtn:active {
       transform: rotate(60deg);
       opacity: 0;
     }
-  }
-  .topple-right-image {
-    animation: topple-right 1.5s ease-out forwards;
   }
