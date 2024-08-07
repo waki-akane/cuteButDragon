@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.dto.MyMonsterDTO;
 import com.example.demo.dto.UserTableEntryDTO;
 import com.example.demo.entity.MyMonsterEntity;
 import com.example.demo.entity.URL;
+import com.example.demo.entity.UserTableEntity;
 import com.example.demo.service.MyMonsterService;
 import com.example.demo.service.UserDetailsServiceImpl;
 import com.example.demo.service.UsertableService;
 import com.example.demo.service.userdetails.UserDetailsImpl;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -106,6 +110,15 @@ public class UserController {
 		model.addAttribute("user", new UserTableEntryDTO());
 		model.addAttribute("url", URL.url);
 		return "user";
+	}
+	
+	//[ルール説明へ]ボタン押下時処理、キャラ選択情報DBへ登録
+	@PostMapping("/toHelp")
+	public String addCharacter(@Validated MyMonsterDTO mmDTO, BindingResult br, HttpSession session,Model model) {
+		UserTableEntity user = (UserTableEntity) session.getAttribute("user");
+		mms.createMm(mmDTO,user);
+		model.addAttribute("url",URL.url);
+		return "help";
 	}
 	
 }
