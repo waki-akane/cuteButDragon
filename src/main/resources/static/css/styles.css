@@ -354,21 +354,10 @@ button.bookmarkBtn:active {
     }
   }
   .topple-left-image {
-    animation: topple-fade 1.5s ease-out forwards;
+    animation: topple-left 1.5s ease-out forwards;
   }
-  @keyframes topple-left {
-    0% {
-      transform: rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(-60deg);
-      opacity: 0;
-    }
-  }
-  .topple-right-image {
-    animation: topple-fade 1.5s ease-out forwards;
-  }      @keyframes topple-left {
+  
+	@keyframes topple-right {
     0% {
       transform: rotate(0deg);
       opacity: 1;
@@ -379,5 +368,5 @@ button.bookmarkBtn:active {
     }
   }
   .topple-right-image {
-    animation: topple-fade 1.5s ease-out forwards;
+    animation: topple-right 1.5s ease-out forwards;
   }
