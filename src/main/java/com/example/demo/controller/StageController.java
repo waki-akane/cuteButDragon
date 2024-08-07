@@ -43,18 +43,13 @@ public class StageController {
 		
 		model.addAttribute("url",URL.url);
 		
-		double i = 0;
 		if(mm.getMmLevel() == 1) {
-			i = mm.getMmEx() / 1000;
 			model.addAttribute("maxEx", 1000);
 		}else if(mm.getMmLevel() == 2) {
-			i = mm.getMmEx() / 2000;
 			model.addAttribute("maxEx", 2000);
 		}else if(mm.getMmLevel() == 3) {
-			i = mm.getMmEx() / 3000;
 			model.addAttribute("maxEx", 3000);
 		}
-		model.addAttribute("i",i);
 		
 		return "status";
 	}

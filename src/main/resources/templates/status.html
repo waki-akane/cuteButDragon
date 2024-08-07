@@ -50,11 +50,22 @@
 				</div>
 				<!-- EXP情報 -->
 				<div class="exp-bar-container">
+					<div id="num1" th:data-value="${mm.mmEx}"></div>
+   					<div id="num2" th:data-value="${maxEx}"></div>
 				    <div class="exp-bar">
-				       <div class="exp-progress" th:style="'width:' + ${i} + '%'"></div>
-				</div>					
+				       <div class="exp-progress" id="mmEx"></div>
+				    </div>
 				    <p class="exp-text">EXP: [[${mm.mmEx}]]/[[${maxEx}]]</p>
-			</div>
+				</div>	
+				<script>
+    				// HTMLから数値を取得
+   					var num1 = parseFloat(document.getElementById('num1').getAttribute('data-value'));
+    				var num2 = parseFloat(document.getElementById('num2').getAttribute('data-value'));
+    				// 計算を実行
+    				var result = (num1 / num2) * 100;
+    				// 計算結果をwidthに設定
+    				document.getElementById('mmEx').style.width = result + '%';
+				</script>	
 				    </div>
 				     </div>
 		</section>
