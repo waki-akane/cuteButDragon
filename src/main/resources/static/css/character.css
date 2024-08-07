@@ -54,7 +54,7 @@ input[type="radio"]:checked + .image-label img {
   color: #080808;
   padding: 0.3vw;
   border-radius: 0.2vw;
-  margin-top: 1vw;
+  margin-top: 0.7vw;
   font-size: 0.8vw;
   text-align: center;
 }
@@ -87,16 +87,8 @@ input[type="radio"]:checked + .image-label img {
   font-size: 1vw;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3vw;
-}
-
 .form-label {
   font-size: 1.1vw;
   font-weight: bold;
   color: rgba(19, 19, 19, 0.7);
-  margin-top: 1vw;
 }
