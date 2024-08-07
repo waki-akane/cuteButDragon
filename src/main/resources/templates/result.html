@@ -33,10 +33,10 @@
 		    <div class="left-images">
 				<!--winのとき -->
 				<img th:if="${result}" th:src="@{${url} + 'img/materials/win.png'}" alt="win" class="win-image">
-				<img th:if="${result}" th:src="@{${url} + ${beforeMm.im.photo2}}" alt="win">
+				<img th:if="${result}" th:src="@{${url} + ${beforeMm.im.photo2}}" alt="win" style="animation: sparkle 2s ease forwards; animation-fill-mode: forwards;">
 				<!-- lose のとき -->
 				<img th:if="${!result}" th:src="@{${url} + 'img/materials/lose.png'}" alt="lose" class="lose-image">
-				<img th:if="${!result}" th:src="@{${url} +  ${beforeMm.im.photo2}}" alt="lose">
+				<img th:if="${!result}" th:src="@{${url} +  ${beforeMm.im.photo2}}" alt="lose" style="animation: darkening 2s ease-in-out forwards; animation-fill-mode: forwards;">
 		    </div>
 			<div class="right-box">
 			    <p>なまえ： [[${beforeMm.mmName}]]</p>
