@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   gap: 2vw;
-  margin-bottom: 2vw;
+  margin: 2vw auto 2vw auto;
   width: 90%;
 }
 
@@ -61,16 +61,11 @@ input[type="radio"]:checked + .image-label img {
 
 /* テキストボックス */
 .InputContainer {
-  width: 22vw;
-  height: 2.5vw;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
-  border-radius: 1.5vw;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0.3vw 0.3vw 0.8vw rgba(0, 0, 0, 0.075);
+  align-items: center;
+  flex-direction: column; /* 縦方向に並べる場合 */
+  margin: 0 auto; /* 中央揃え */
 }
 
 .input {
@@ -88,7 +83,8 @@ input[type="radio"]:checked + .image-label img {
 }
 
 .form-label {
-  font-size: 1.1vw;
-  font-weight: bold;
-  color: rgba(19, 19, 19, 0.7);
+  display: block;
+  text-align: center;
+  margin-bottom: 1vw; /* ラベルと入力フィールドの間のスペースを調整 */
 }
+

@@ -22,7 +22,7 @@
             margin: 0;
             padding: 0;
             list-style: none;
-        }
+        } 
     </style>
 </head>
 <body>
@@ -41,62 +41,62 @@
 		</button>
 		</form>
 	</header>
+	<form th:action="@{/toHelp}" method="post" th:object="${mmDTO}" class="form-container">
 	<main>
 		<section id="game-area">
 			<div class="background-image" style="background-image: url(/img/bg/bg.jpg)">
-				<div class="dots-container" style="left: 50%; transform: translateX(-50%);">キャラクター選択</div>
-			<form th:action="@{/toHelp}" method="post" th:object="${mmDTO}" class="form-container">
-				<div class="image-container">
-					<input type="radio" th:field="*{imId}" id="image1" value="1" hidden />
-					<label for="image1" class="image-label">
-						<img th:src="@{${url} + 'img/mm/1.png'}" alt="Image 1">
-						<div class="image-description">
-							<p style="font-weight: bold; margin: 0;">グリーンどらごん</p>
-								毒の霧が濃い。もう目が見えない、苦しい苦し、、<br>大地は腐敗し、生命は静かに終焉を迎える。
-						</div>
-					</label>
+			<div class="dots-container" style="left: 50%; transform: translateX(-50%);">キャラクター選択</div>
+			<div class="image-container">
+				<input type="radio" th:field="*{imId}" id="image1" value="1" hidden />
+				<label for="image1" class="image-label">
+					<img th:src="@{${url} + 'img/mm/1.png'}" alt="Image 1">
+					<div class="image-description">
+						<p style="font-weight: bold; margin: 0;">グリーンどらごん</p>
+							毒の霧が濃い。もう目が見えない、苦しい苦し、、<br>大地は腐敗し、生命は静かに終焉を迎える。
+					</div>
+				</label>
 
-					<input type="radio" th:field="*{imId}" id="image2" value="2" hidden />
-					<label for="image2" class="image-label">
-						<img th:src="@{${url} + 'img/mm/2.png'}" alt="Image 2">
-						<div class="image-description" style="margin-top: 0.5vw;">
-							<p style="font-weight: bold; margin: 0;">ダークどらごん</p>
-								月が欠け闇の深淵と絶望が<br>この世を支配する時、権現する。
-						</div>
-					</label>
+				<input type="radio" th:field="*{imId}" id="image2" value="2" hidden />
+				<label for="image2" class="image-label">
+					<img th:src="@{${url} + 'img/mm/2.png'}" alt="Image 2">
+					<div class="image-description" style="margin-top: 0.5vw;">
+						<p style="font-weight: bold; margin: 0;">ダークどらごん</p>
+							月が欠け闇の深淵と絶望が<br>この世を支配する時、権現する。
+					</div>
+				</label>
 
-					<input type="radio" th:field="*{imId}" id="image3" value="3" hidden />
-					<label for="image3" class="image-label">
-						<img th:src="@{${url} + 'img/mm/3.png'}" alt="Image 3">
-						<div class="image-description">
-							<p style="font-weight: bold; margin: 0;">ブルーどらごん</p>
-								息吹や羽ばたきにより周囲の万物を凍てつかせる<br>そして六花が咲き乱れる。
-						</div>
-					</label>
+				<input type="radio" th:field="*{imId}" id="image3" value="3" hidden />
+				<label for="image3" class="image-label">
+					<img th:src="@{${url} + 'img/mm/3.png'}" alt="Image 3">
+					<div class="image-description">
+						<p style="font-weight: bold; margin: 0;">ブルーどらごん</p>
+							息吹や羽ばたきにより周囲の万物を凍てつかせる<br>そして六花が咲き乱れる。
+					</div>
+				</label>
 
-					<input type="radio" th:field="*{imId}" id="image4" value="4" hidden />
-					<label for="image4" class="image-label">
-						<img th:src="@{${url} + 'img/mm/4.png'}" alt="Image 4">
-						<div class="image-description">
-							<p style="font-weight: bold; margin: 0; ">レッドどらごん</p>
-								灼熱業火狂焔焦土<br>生きとし生けるものは等しく滅びる。
-						</div>
-					</label>
+				<input type="radio" th:field="*{imId}" id="image4" value="4" hidden />
+				<label for="image4" class="image-label">
+					<img th:src="@{${url} + 'img/mm/4.png'}" alt="Image 4">
+					<div class="image-description">
+						<p style="font-weight: bold; margin: 0; ">レッドどらごん</p>
+							灼熱業火狂焔焦土<br>生きとし生けるものは等しく滅びる。
+					</div>
+				</label>
 
-					<input type="radio" th:field="*{imId}" id="image5" value="5" hidden />
-					<label for="image5" class="image-label">
-						<img th:src="@{${url} + 'img/mm/5.png'}" alt="Image 5">
-						<div class="image-description">
-							<p style="font-weight: bold; margin: 0;">ぴかちゅうドラゴン</p>
-								ねずみ型で電気を用いるポケモン。<br>別の世界からきたとか…
-						</div>
-					</label>
-				</div>
-				<!-- 入力セクション -->	
-				<label for="name" class="form-label">なまえを入力してください</label>
-				<div class="InputContainer">
-					<input type="text" id="name" th:field ="*{name}" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
-				</div>
+				<input type="radio" th:field="*{imId}" id="image5" value="5" hidden />
+				<label for="image5" class="image-label">
+					<img th:src="@{${url} + 'img/mm/5.png'}" alt="Image 5">
+					<div class="image-description">
+						<p style="font-weight: bold; margin: 0;">ぴかちゅうドラゴン</p>
+							ねずみ型で電気を用いるポケモン。<br>別の世界からきたとか…
+					</div>
+				</label>
+			</div>
+			<!-- 入力セクション -->	
+			<label for="name" class="form-label">なまえを入力してください</label>
+			<div class="InputContainer">
+				<input type="text" id="name" th:field ="*{name}" name="inputText" class="input" placeholder="1〜10文字のひらがな"/>
+			</div>
 		</section>
 		</main>
 		<footer>
@@ -125,7 +125,6 @@
     	validateForm();
 		});
 	</script>
-
 </body>
 </html>
 

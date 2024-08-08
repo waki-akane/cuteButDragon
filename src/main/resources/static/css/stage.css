@@ -182,6 +182,8 @@ body {
 .arrow-container {
   display: flex;
   align-items: center;
+  background: rgba(252, 239, 242, 0.8);
+  box-shadow: rgba(252, 239, 242, 0.8) 0 0 1vw 1vw;
 }
 
 .arrow {
