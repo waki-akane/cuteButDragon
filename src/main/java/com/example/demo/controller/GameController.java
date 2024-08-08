@@ -47,8 +47,10 @@ public class GameController {
 	int currentMmHp;
 
 	int Ex2 = 1000;
-	int Ex3 = 2000;
-	int Ex4 = 3000;
+	int Ex3 = 3000;
+	int Ex4 = 5000;
+	int Ex5 = 7000;
+	int Ex6 = 9000;
 
 	//	①モンスター遭遇
 	//	②攻撃選択
@@ -306,9 +308,13 @@ public class GameController {
 		if(afterMm.getMmLevel() == 1) {
 			model.addAttribute("maxEx", 1000);
 		}else if(afterMm.getMmLevel() == 2) {
-			model.addAttribute("maxEx", 2000);
-		}else if(afterMm.getMmLevel() == 3) {
 			model.addAttribute("maxEx", 3000);
+		}else if(afterMm.getMmLevel() == 3) {
+			model.addAttribute("maxEx", 5000);
+		}else if(afterMm.getMmLevel() == 4) {
+			model.addAttribute("maxEx", 7000);
+		}else if(afterMm.getMmLevel() == 5) {
+			model.addAttribute("maxEx", 9000);
 		}
 				
 		//MMの更新後ステータスを元にレベルアップ
@@ -329,6 +335,19 @@ public class GameController {
 			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
+		
+		if (afterMm.getMmLevel() == 4 && afterMm.getMmEx() >= Ex5) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+		
+		if (afterMm.getMmLevel() == 5 && afterMm.getMmEx() >= Ex6) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+		
 
 		model.addAttribute("afterMm", mm);
 		model.addAttribute("level",level);
@@ -376,32 +395,47 @@ public class GameController {
 		if(afterMm.getMmLevel() == 1) {
 			model.addAttribute("maxEx", 1000);
 		}else if(afterMm.getMmLevel() == 2) {
-			model.addAttribute("maxEx", 2000);
-		}else if(afterMm.getMmLevel() == 3) {
 			model.addAttribute("maxEx", 3000);
+		}else if(afterMm.getMmLevel() == 3) {
+			model.addAttribute("maxEx", 5000);
+		}else if(afterMm.getMmLevel() == 4) {
+			model.addAttribute("maxEx", 7000);
+		}else if(afterMm.getMmLevel() == 5) {
+			model.addAttribute("maxEx", 9000);
 		}
-		
+				
 		//MMの更新後ステータスを元にレベルアップ
 		if (afterMm.getMmLevel() == 1 && afterMm.getMmEx() >= Ex2) {
-			//model.addAttribute("beforeMm",mm);
 			mms.mmLevelUp(afterMm.getMmId());
 			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
 		if (afterMm.getMmLevel() == 2 && afterMm.getMmEx() >= Ex3) {
-			//model.addAttribute("beforeMm",mm);
 			mms.mmLevelUp(afterMm.getMmId());
 			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
 
 		if (afterMm.getMmLevel() == 3 && afterMm.getMmEx() >= Ex4) {
-			//model.addAttribute("beforeMm", mm);
 			mms.mmLevelUp(afterMm.getMmId());
 			afterMm = mms.showMm(afterMm.getMmId());
 			level = true;
 		}
+		
+		if (afterMm.getMmLevel() == 4 && afterMm.getMmEx() >= Ex5) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+		
+		if (afterMm.getMmLevel() == 5 && afterMm.getMmEx() >= Ex6) {
+			mms.mmLevelUp(afterMm.getMmId());
+			afterMm = mms.showMm(afterMm.getMmId());
+			level = true;
+		}
+		
+		
 
 		
 		model.addAttribute("level",level);
