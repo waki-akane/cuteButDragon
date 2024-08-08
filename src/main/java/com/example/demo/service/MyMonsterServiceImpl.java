@@ -44,8 +44,8 @@ public class MyMonsterServiceImpl implements MyMonsterService {
 	@Override
 	public int mmLevelUp(int mmId) {
 		MyMonsterEntity mm = mmr.findById(mmId).get();
-		mm.setMmHp(mm.getMmHp() + 50);
-		mm.setMmAttack(mm.getMmAttack() + 50);
+		mm.setMmHp(mm.getMmHp() + 100);
+		mm.setMmAttack(mm.getMmAttack() + 100);
 		mm.setMmLevel(mm.getMmLevel() + 1);
 		mmr.save(mm);
 		return 0;

@@ -187,18 +187,35 @@ public class GameController {
 		
 		//EMの攻撃技をランダムに生成
 		Random rand = new Random();
-		int i = rand.nextInt(3);
 		int emAttack = 0;
+		if(selectStage == 3) {
+			int i = rand.nextInt(10);
+			if(i < 3) {
+				emAttack = em.getEmAction1().getAttack();
+				model.addAttribute("action",em.getEmAction1());
+			}else if(i < 6 && i >= 3) {
+				emAttack = em.getEmAction2().getAttack();
+				model.addAttribute("action",em.getEmAction2());
+			}else if(i < 9 && i >= 6) {
+				emAttack = em.getEmAction3().getAttack();
+				model.addAttribute("action",em.getEmAction3());
+			}else {
+				emAttack = as.showAction(20).getAttack();
+				model.addAttribute("action",as.showAction(20));
+			}
+		}else {
+			int i = rand.nextInt(3);
 		
-		if (i == 0) {
-			emAttack = em.getEmAction1().getAttack();
-			model.addAttribute("action",em.getEmAction1());
-		} else if (i == 1) {
-			emAttack = em.getEmAction2().getAttack();
-			model.addAttribute("action",em.getEmAction1());
-		} else if (i == 2) {
-			emAttack = em.getEmAction3().getAttack();
-			model.addAttribute("action",em.getEmAction1());
+			if (i == 0) {
+				emAttack = em.getEmAction1().getAttack();
+				model.addAttribute("action",em.getEmAction1());
+			} else if (i == 1) {
+				emAttack = em.getEmAction2().getAttack();
+				model.addAttribute("action",em.getEmAction1());
+			} else if (i == 2) {
+				emAttack = em.getEmAction3().getAttack();
+				model.addAttribute("action",em.getEmAction1());
+			}
 		}
 		
 		//MMHpの減少

@@ -22,7 +22,7 @@ import com.example.demo.service.MyMonsterService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class StageController {
+public class PageController {
 
 	@Autowired
 	MyMonsterService mms;
